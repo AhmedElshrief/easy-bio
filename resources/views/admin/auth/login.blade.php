@@ -1,4 +1,4 @@
-@extends('dashboard.auth.layouts.master')
+@extends('admin.auth.layouts.master')
 
 @section('content')
     <div

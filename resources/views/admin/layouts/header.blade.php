@@ -17,15 +17,15 @@
             <ul class="navbar-nav flex-row align-items-center justify-content-end">
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover show" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="true">
-                        {{ Session::get('locale') == 'ar' ? 'ar' : 'en' }}
+                        {{ Session::get('lang') == 'ar' ? 'ar' : 'en' }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                         <div class="message-body">
-                            {{-- @foreach (config('translatable.locales') as $key => $locale)
-                                <a href="{{ route('admin.lang', '' )}}?lang={{ $locale }}" class="{{ (Session::get('locale')  == $locale) ? 'active' : ''}}" class="d-flex align-items-center gap-2 dropdown-item">
+                            @foreach (config('translatable.locales') as $key => $locale)
+                                <a href="{{ route('admin.lang', '' )}}?lang={{ $locale }}" class="{{ (Session::get('lang')  == $locale) ? 'active' : ''}}" class="d-flex align-items-center gap-2 dropdown-item">
                                     <p class="mb-0 fs-3 p-2">{{ $locale }}</p>
                                 </a>
-                            @endforeach --}}
+                            @endforeach
                         </div>
                     </div>
                 </li>

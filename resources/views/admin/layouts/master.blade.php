@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ Session::get('locale') }}"
-    @if (Session::get('locale') == 'ar') direction="rtl" dir="rtl" style="direction: rtl" @endif>
+{{-- {{ dd(Session::get('lang')) }} --}}
+<html lang="{{ Session::get('lang') }}"
+    @if (Session::get('lang') == 'ar') direction="rtl" dir="rtl" style="direction: rtl" @endif>
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,7 @@
     <title> {{ env('APP_NAME') }} | @yield('title')</title>
 
     {{-- <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" /> --}}
-    @include('dashboard.layouts.css')
+    @include('admin.layouts.css')
 </head>
 
 <body>
@@ -18,24 +19,24 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        @include('dashboard.layouts.sidebar')
+        @include('admin.layouts.sidebar')
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            @include('dashboard.layouts.header')
+            @include('admin.layouts.header')
             <!--  Header End -->
             <div class="container-fluid">
                 <!--  Row 1 -->
                 @yield('content')
 
-                @include('dashboard.layouts.footer')
+                @include('admin.layouts.footer')
             </div>
 
         </div>
     </div>
 
-    @include('dashboard.layouts.script')
+    @include('admin.layouts.script')
     @include('vendor.sweetalert.alert')
 </body>
 

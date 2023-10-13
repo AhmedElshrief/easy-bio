@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\LangController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -12,27 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.home.index');
-});
-
-// $prefix = 'admin.';
-
-// // Before Login Dashboard Routes
-// Route::group(['middleware' => 'guest:admin'], function () use ($prefix) {
-//     $controller = 'AuthController@';
-//     // Route Login
-//     Route::get('login', $controller . 'view')->name($prefix . 'view_login');
-//     Route::post('login', $controller . 'login')->name($prefix . 'login');
-
+// Route::get('/', function () {
+//     return view('admin.home.index');
 // });
 
+$prefix = 'admin.';
 
-// Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
+// // Before Login Dashboard Routes
+Route::group(['middleware' => 'guest:admin'], function () use ($prefix) {
+    // Route Login
+    Route::get('login', [AuthController::class, 'view'])->name($prefix . 'view_login');
+    Route::post('login', [AuthController::class, 'login'])->name($prefix . 'login');
 
-//     Route::post('logout', 'AuthController@logout')->name($prefix . 'logout');
-//     // Route::get('lang', 'LangController@changeLang')->name($prefix . 'lang');
-//     Route::get('/', 'HomeController@index')->name('admin.home');
+});
+
+
+Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
+
+    Route::post('logout', [AuthController::class, 'logout'])->name($prefix . 'logout');
+    Route::get('lang', [LangController::class, 'changeLang'])->name($prefix . 'lang');
+    Route::get('/admin', [HomeController::class, 'index'])->name('admin.home');
 
 //     Route::get('lang', 'LangController@changeLang')->name($prefix . 'lang');
 
@@ -137,4 +139,7 @@ Route::get('/', function () {
 //     //     });
 //     // });
 
-// });
+});
+
+
+

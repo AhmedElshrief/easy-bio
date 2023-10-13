@@ -36,10 +36,9 @@
                         <span>
                             <i class="ti ti-box-seam"></i>
                         </span>
-                        <span class="hide-menu">test</span>
+                        <span class="hide-menu">@lang('lang.test')</span>
                     </a>
                 </li>
-
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.field.index') }}" aria-expanded="false">

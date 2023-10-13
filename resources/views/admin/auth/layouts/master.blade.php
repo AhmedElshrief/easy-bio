@@ -9,7 +9,7 @@
         <title>{{ env('APP_NAME') }} | @yield('title')</title>
        {{-- Laravel Vite - CSS File --}}
        {{-- {{ module_vite('build-store', 'Resources/assets/sass/app.scss') }} --}}
-       @include('dashboard.auth.layouts.css')
+       @include('admin.auth.layouts.css')
        <style>
 
        </style>
@@ -25,7 +25,7 @@
     @yield('content')
 
 
-    @include('dashboard.auth.layouts.script')
+    @include('admin.auth.layouts.script')
 
 </div>
       </body>
