@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('locale');
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
         });
     }
 

@@ -14,29 +14,29 @@
             <ul id="sidebarnav">
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.home') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
-                        <span class="hide-menu">test</span>
+                        <span class="hide-menu">{{ __('lang.dashboard') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.cities.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-box"></i>
                         </span>
-                        <span class="hide-menu">test</span>
+                        <span class="hide-menu">{{ __('lang.cities') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.levels.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box-seam"></i>
+                            <i class="ti ti-box"></i>
                         </span>
-                        <span class="hide-menu">@lang('lang.test')</span>
+                        <span class="hide-menu">{{ __('lang.levels') }}</span>
                     </a>
                 </li>
 

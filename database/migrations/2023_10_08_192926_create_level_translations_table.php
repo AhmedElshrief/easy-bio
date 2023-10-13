@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('locale');
             $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
         });
     }
 

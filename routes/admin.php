@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LangController;
+use App\Http\Controllers\Admin\LevelController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -29,26 +31,23 @@ Route::group(['middleware' => 'guest:admin'], function () use ($prefix) {
 
 });
 
-
 Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
 
     Route::post('logout', [AuthController::class, 'logout'])->name($prefix . 'logout');
     Route::get('lang', [LangController::class, 'changeLang'])->name($prefix . 'lang');
     Route::get('/admin', [HomeController::class, 'index'])->name('admin.home');
 
-//     Route::get('lang', 'LangController@changeLang')->name($prefix . 'lang');
+    Route::name('admin.')->group(function () {
+        Route::resource('cities', CityController::class)->except(['show']);
+        Route::resource('levels', LevelController::class)->except(['show']);
+        // Route::resource('countries', CountryController::class)->except(['show']);
 
-//     // // route of pool types
-//     // Route::group(['prefix' => '/pool-types'], function () use ($prefix) {
-//     //     Route::controller('PoolTypeController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'type.index');
-//     //         Route::get('/create', 'create')->name($prefix.'type.create');
-//     //         Route::post('/store', 'store')->name($prefix.'type.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix.'type.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix.'type.update');
-//     //         Route::delete('/delete/{id}', 'destroy')->name($prefix.'type.delete');
-//     //     });
-//     // });
+        // Route::resource('customers', CustomerController::class)->except(['show', 'create', 'store']);
+        // Route::post('customers/changeGuest', [CustomerController::class, 'changeGuest'])->name('customers.changeGuest');
+        // Route::post('customers/changeStatus', [CustomerController::class, 'changeStatus'])->name('customers.changeStatus');
+        // Route::resource('admins', AdminController::class)->except(['show']);
+
+    });
 
 
 //     // // route of products
