@@ -24,7 +24,7 @@ class CityRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('city');
+        $id = $this->route('city')->id;
         return [
             'ar.*' => ['required', Rule::unique('city_translations', 'name')->ignore($id, 'city_id')],
             'en.*' =>['required', Rule::unique('city_translations', 'name')->ignore($id, 'city_id')],

@@ -25,7 +25,7 @@ class LevelController extends Controller
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.levels.index', [
-            'levels' => $this->model->all()
+            'levels' => $this->model->paginate(15)
         ]);
     }
 
@@ -54,24 +54,14 @@ class LevelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Level $level)
     {
         return view('admin.levels.form', [
-            'level' => $this->model->findOrFail($id)
+            'level' => $level
         ]);
     }
 
@@ -81,11 +71,10 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LevelRequest $request, $id)
+    public function update(LevelRequest $request, Level $level)
     {
         $data = $request->validated();
-        $city = $this->model->findOrFail($id);
-        $city->update($data);
+        $level->update($data);
         toast(__('lang.updated_successfully'), 'success');
         return redirect()->route('admin.levels.index');
     }

@@ -1,5 +1,5 @@
 @php
-    $title = $city->id ?  __('lang.edit') .' ' . __('lang.field')   : __('lang.add') .' ' . __('lang.field');
+    $title = $city->id ?  __('lang.edit') .' ' . __('lang.city')   : __('lang.add') .' ' . __('lang.city');
 @endphp
 
 <div class="modal-dialog modal-dialog-centered">

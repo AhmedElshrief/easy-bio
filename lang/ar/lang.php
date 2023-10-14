@@ -1,6 +1,26 @@
 <?php
 
-
 return [
-    'test' => 'اختبار',
+    'deleted_successfully' => 'تم الحذف بنجاح',
+    'added_successfully' => 'تمت الإضافة بنجاح',
+    'updated_successfully' => 'تم التحديث بنجاح',
+    'email_or_password_error' => 'البريد الالكتروني او كلمة المرور غير صحيحة',
+    'login_successfully' => 'تم تسجيل الدخول بنجاح',
+    'dashboard' => 'الرئيسية',
+    'city' => 'مدينة',
+    'name' => 'الاسم',
+    'ar.name' => 'الاسم باللغة العربية',
+    'en.name' => 'الاسم باللغة الانجليزية',
+    'cities' => 'المدن',
+    'level' => 'مستوي',
+    'levels' => 'المستويات',
+    'add' => 'إضافة',
+    'actions' => 'الاجراءات',
+    'delete_item' => 'حذف العنصر',
+    'are_you_sure' => 'هل أنت متأكد ؟',
+    'yes' => 'نعم',
+    'no' => 'لا',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
+    'save' => 'حفظ',
 ];

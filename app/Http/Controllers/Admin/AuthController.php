@@ -31,7 +31,7 @@ class AuthController extends Controller
         if ( !auth('admin')->attempt($credentials, $remember) ) {
             return $this->invalid($request);
         }
-        toast(__('lang.login_successfull'), 'success');
+        toast(__('lang.login_successfully'), 'success');
         return redirect()->route('admin.home');
     }
 

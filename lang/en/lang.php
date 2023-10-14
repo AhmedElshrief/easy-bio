@@ -1,13 +1,26 @@
 <?php
 
 return [
+    'deleted_successfully' => 'Deleted Successfully',
+    'added_successfully' => 'Added Successfully',
+    'updated_successfully' => 'Updated Successfully',
+    'email_or_password_error' => 'Email Or Password wrong',
+    'login_successfully' => 'Login has been Successfully',
     'dashboard' => 'Dashboard',
     'city' => 'City',
     'name' => 'Name',
+    'ar.name' => 'Arabic Name',
+    'en.name' => 'English Name',
     'cities' => 'Cities',
     'level' => 'Level',
     'levels' => 'Levels',
-
     'add' => 'Add',
     'actions' => 'Actions',
+    'delete_item' => 'Delete Item',
+    'are_you_sure' => 'Are you sure ?',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'save' => 'Save',
 ];

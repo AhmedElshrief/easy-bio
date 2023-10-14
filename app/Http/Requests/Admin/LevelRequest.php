@@ -24,7 +24,7 @@ class LevelRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('level');
+        $id = $this->route('level')->id;
         return [
             'ar.*' => ['required', Rule::unique('level_translations', 'name')->ignore($id, 'level_id')],
             'en.*' =>['required', Rule::unique('level_translations', 'name')->ignore($id, 'level_id')],

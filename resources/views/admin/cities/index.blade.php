@@ -55,6 +55,9 @@
                     @endcomponent
                 @endslot
             @endcomponent
+            <div class="d-flex justify-content-center mt-4">
+                {{ $cities->links() }}
+            </div>
         </div>
     </div>
 

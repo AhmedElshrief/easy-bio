@@ -42,10 +42,10 @@
                                 <p class="mb-0 fs-3">My Profile</p>
                             </a>
 
-                            <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ url('dashboard/logout') }}"
+                            <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('admin.logout') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('lang.logout') }}</a>
-                            <form id="logout-form" action="{{ url('dashboard/logout') }}" method="POST"
+                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
                                 style="display: none;">
                                 @csrf
                             </form>

@@ -53,6 +53,9 @@
                             @endif
                         @endslot
                     @endcomponent
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $levels->links() }}
+                    </div>
                 @endslot
             @endcomponent
         </div>

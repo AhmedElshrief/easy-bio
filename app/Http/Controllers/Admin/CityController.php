@@ -24,7 +24,7 @@ class CityController extends Controller
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.cities.index', [
-            'cities' => $this->model->all()
+            'cities' => $this->model->paginate(15)
         ]);
     }
 
@@ -53,24 +53,14 @@ class CityController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(City $city)
     {
         return view('admin.cities.form', [
-            'city' => $this->model->findOrFail($id)
+            'city' => $city
         ]);
     }
 
@@ -80,10 +70,9 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CityRequest $request, $id)
+    public function update(CityRequest $request, City $city)
     {
         $data = $request->validated();
-        $city = $this->model->findOrFail($id);
         $city->update($data);
         toast(__('lang.updated_successfully'), 'success');
         return redirect()->route('admin.cities.index');
