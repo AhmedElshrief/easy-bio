@@ -48,9 +48,8 @@
                                                 <div class="form-group">
                                                     <label class="switch">
                                                         <input onclick="changeActive(this,{{ $lecture->id }})"
-                                                            data-active="{{ $lecture->active }}" class="form-check-input" value="1"
-                                                            {{ optional($lecture)->active ? 'checked' : '' }} type="checkbox"
-                                                            name="active">
+                                                            data-active="{{ $lecture->active }}" class="form-check-input"
+                                                            {{ optional($lecture)->active ? 'checked' : '' }} type="checkbox">
                                                         <span class="slider"></span>
                                                     </label>
                                                 </div>
@@ -87,26 +86,19 @@
 @section('js')
     <script>
         function changeActive(el, id) {
-            $(el).on('change', function() {
-                const value = ($(el).data('active') == 0) ? 1 : 0;
+            $(el).off('change').on('change', function() {
+                const value = $(el).data('active') === 0 ? 1 : 0;
                 $(el).data('active', value);
-
-                $.ajax({
-                    url: "{{ route('admin.lectures.changeActive') }}",
-                    type: "POST",
-                    data: {
-                        'id': id,
-                        'value': value,
-                        '_token': "{{ csrf_token() }}"
-                    },
-                    success: function(results) {
-                        const alertType = results.success ? "success" : "error";
-                        swal.fire("", results.message, alertType);
-                    }
+                $.post("{{ route('admin.lectures.changeActive') }}", {
+                    'id': id,
+                    'value': value,
+                    '_token': "{{ csrf_token() }}"
+                }, function(results) {
+                    const alertType = results.success ? "success" : "error";
+                    swal.fire("", results.message, alertType);
                 });
-            })
+            });
         }
-
     </script>
 @endsection
 
