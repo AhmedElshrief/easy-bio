@@ -27,8 +27,8 @@
                             <td>#</td>
                             <td>{{ __('lang.title') }}</td>
                             <td>{{ __('lang.level') }}</td>
-                            <td>{{ __('lang.active') }}</td>
                             <td>{{ __('lang.description') }}</td>
+                            <td>{{ __('lang.active') }}</td>
                             <td>{{ __('lang.actions') }}</td>
                         @endslot
 
@@ -42,14 +42,20 @@
                                             {{ $course->title ?? '' }}
                                         </td>
                                         <td>{{ $course->level->name ?? '' }}</td>
-                                        <td>
-                                            @if ($course->active)
-                                                <span class="badge bg-success">{{ __('lang.active') }}</span>
-                                            @else
-                                                <span class="badge bg-danger">{{ __('lang.inactive') }}</span>
-                                            @endif
-                                        </td>
                                         <td>{{ $course->description ?? '' }}</td>
+                                        <td>
+                                            <div class="col-md-12 pt-2">
+                                                <div class="form-group">
+                                                    <label class="switch">
+                                                        <input onclick="changeActive(this,{{ $course->id }})"
+                                                            data-active="{{ $course->active }}" class="form-check-input" value="1"
+                                                            {{ optional($course)->active ? 'checked' : '' }} type="checkbox"
+                                                            name="active">
+                                                        <span class="slider"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.courses.edit', $course->id) }}"
                                                 class="btn btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
@@ -75,8 +81,33 @@
         </div>
     </div>
 
-    {{-- <div class="modal fade table-modal" id="table-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-    </div> --}}
 @endsection
+
+
+@section('js')
+    <script>
+        function changeActive(el, id) {
+            $(el).on('change', function() {
+                const value = ($(el).data('active') == 0) ? 1 : 0;
+                $(el).data('active', value);
+
+                $.ajax({
+                    url: "{{ route('admin.courses.changeActive') }}",
+                    type: "POST",
+                    data: {
+                        'id': id,
+                        'value': value,
+                        '_token': "{{ csrf_token() }}"
+                    },
+                    success: function(results) {
+                        const alertType = results.success ? "success" : "error";
+                        swal.fire("", results.message, alertType);
+                    }
+                });
+            })
+        }
+
+    </script>
+@endsection
+
 

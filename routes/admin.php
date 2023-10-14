@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
         Route::resource('cities', CityController::class)->except(['show']);
         Route::resource('levels', LevelController::class)->except(['show']);
         Route::resource('courses', CourseController::class)->except(['show']);
+        Route::post('courses/change-active', [CourseController::class, 'changeActive'])->name('courses.changeActive');
         // Route::resource('countries', CountryController::class)->except(['show']);
 
         // Route::resource('customers', CustomerController::class)->except(['show', 'create', 'store']);

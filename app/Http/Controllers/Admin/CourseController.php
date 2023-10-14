@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseRequest;
 use App\Models\Course;
 use App\Models\Level;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -99,6 +100,16 @@ class CourseController extends Controller
         $course->delete();
         toast(__('lang.deleted_successfully'), 'success');
         return redirect()->route('admin.courses.index');
+    }
+
+    public function changeActive(Request $request) {
+        $course = $this->model->findOrFail($request->id);
+        $course->active = $request->value;
+        $course->save();
+        return response()->json([
+            'success' => true,
+            'message' => __('lang.updated_successfully'),
+        ]);
     }
 
 }
