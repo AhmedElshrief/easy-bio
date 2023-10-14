@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 
-class Course extends Model implements TranslatableContract
+class Lecture extends Model implements TranslatableContract
 {
     use Translatable;
     protected $translatedAttributes = ['title', 'description'];
@@ -23,11 +23,7 @@ class Course extends Model implements TranslatableContract
         return $this->belongsTo(Level::class, 'level_id');
     }
 
-    public function lectures() {
-        return $this->hasMany(Lecture::class, 'course_id');
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id');
     }
 }
-
-
-
-

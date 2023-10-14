@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'lectures' => 'Lectures',
+    'lecture' => 'Lecture',
     'active' => 'Active',
     'inactive' => 'Inactive',
     'update' => 'Update',
