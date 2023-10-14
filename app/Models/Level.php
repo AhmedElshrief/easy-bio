@@ -16,6 +16,10 @@ class Level extends Model implements TranslatableContract
     public function courses() {
         return $this->hasMany(Course::class, 'level_id');
     }
+
+    public function students() {
+        return $this->hasMany(User::class, 'level_id');
+    }
 }
 
 

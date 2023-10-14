@@ -12,6 +12,10 @@ class City extends Model implements TranslatableContract
 
     protected $translatedAttributes = ['name'];
     protected $guarded = [];
+
+    public function students() {
+        return $this->hasMany(User::class, 'city_id');
+    }
 }
 
 

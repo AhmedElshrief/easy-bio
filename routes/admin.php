@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -22,18 +23,18 @@ use Illuminate\Support\Facades\Route;
 $prefix = 'admin.';
 
 // // Before Login Dashboard Routes
-Route::group(['middleware' => 'guest:admin'], function () use ($prefix) {
+Route::group(['middleware' => 'guest:admin', 'prefix' => '/admin'], function () use ($prefix) {
     // Route Login
     Route::get('login', [AuthController::class, 'view'])->name($prefix . 'view_login');
     Route::post('login', [AuthController::class, 'login'])->name($prefix . 'login');
 
 });
 
-Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
+Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use ($prefix){
 
     Route::post('logout', [AuthController::class, 'logout'])->name($prefix . 'logout');
     Route::get('lang', [LangController::class, 'changeLang'])->name($prefix . 'lang');
-    Route::get('/admin', [HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
     Route::name('admin.')->group(function () {
         Route::resource('cities', CityController::class)->except(['show']);
@@ -44,9 +45,9 @@ Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
         Route::resource('lectures', LectureController::class)->except(['show']);
         Route::post('lectures/change-active', [LectureController::class, 'changeActive'])->name('lectures.changeActive');
 
-        // Route::resource('customers', CustomerController::class)->except(['show', 'create', 'store']);
-        // Route::post('customers/changeGuest', [CustomerController::class, 'changeGuest'])->name('customers.changeGuest');
-        // Route::post('customers/changeStatus', [CustomerController::class, 'changeStatus'])->name('customers.changeStatus');
+        Route::resource('students', StudentController::class)->except(['show', 'create', 'store']);
+        Route::post('students/change-status', [StudentController::class, 'changeStatus'])->name('students.changeStatus');
+
         // Route::resource('admins', AdminController::class)->except(['show']);
 
     });

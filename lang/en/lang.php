@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'no_data_found' => 'No Data Found',
+    'student' => 'Student',
+    'students' => 'Students',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'parent_phone' => 'Parent Phone',
+    'username' => 'Username',
+    'status' => 'Status',
+    'login' => 'Login',
     'lectures' => 'Lectures',
     'lecture' => 'Lecture',
     'active' => 'Active',

@@ -58,6 +58,15 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-box"></i>
+                        </span>
+                        <span class="hide-menu">{{ __('lang.students') }}</span>
+                    </a>
+                </li>
+
             </ul>
 
         </nav>

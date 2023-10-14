@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'no_data_found' => 'لا توجد بيانات',
+    'student' => 'طالب',
+    'students' => 'الطلاب',
+    'email' => 'البريد الالكتروني',
+    'phone' => 'رقم الهاتف',
+    'parent_phone' => 'رقم الهاتف الاب',
+    'username' => 'اسم المستخدم',
+    'status' => 'الحالة',
+    'login' => 'تسجيل الدخول',
     'active' => 'مفعل',
     'inactive' => 'غير مفعل',
     'update' => 'تحديث',
