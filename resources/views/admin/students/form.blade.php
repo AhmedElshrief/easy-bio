@@ -142,20 +142,18 @@
                             </div>
                         </div>
 
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        @if ($student->id)
-                            {{ __('lang.update') }}
-                        @else
-                            {{ __('lang.save') }}
-                        @endif
-                    </button>
-                </div>
-                </form>
-            @endslot
-        @endcomponent
-    </div>
-    </div>
-
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">
+                                @if ($student->id)
+                                    {{ __('lang.update') }}
+                                @else
+                                    {{ __('lang.save') }}
+                                @endif
+                            </button>
+                        </div>
+                    </form>
+                @endslot
+            @endcomponent
+        </div>
     </div>
 @endsection

@@ -4,4 +4,5 @@ return [
     'COURSES_PATH' => 'uploads/courses/',
     'LECTURES_PATH' => 'uploads/lectures/',
     'STUDENTS_PATH' => 'uploads/students/',
+    'SETTINGS_PATH' => 'uploads/settings/',
 ];

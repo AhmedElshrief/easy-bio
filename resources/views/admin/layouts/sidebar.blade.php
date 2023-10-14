@@ -2,7 +2,7 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
+            <a href="{{ route('admin.home') }}" class="text-nowrap logo-img">
                 <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -64,6 +64,15 @@
                             <i class="ti ti-box"></i>
                         </span>
                         <span class="hide-menu">{{ __('lang.students') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-box"></i>
+                        </span>
+                        <span class="hide-menu">{{ __('lang.settings') }}</span>
                     </a>
                 </li>
 

@@ -111,9 +111,9 @@
                 </div>
                 </form>
             @endslot
-        @endcomponent
-    </div>
-    </div>
 
+            @endcomponent
+
+        </div>
     </div>
 @endsection

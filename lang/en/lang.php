@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'title_ar' => 'Arabic Title',
+    'title_en' => 'English Title',
+    'description_ar' => 'Arabic Description',
+    'description_en' => 'English Description',
+    'address_ar' => 'Arabic Address',
+    'address_en' => 'English Address',
+    'about_us_ar' => 'Arabic About Us',
+    'about_us_en' => 'English About Us',
+    'app_link' => 'App Link',
+    'youtube' => 'Youtube Link',
+    'facebook' => 'Facebook Link',
+    'logo' => 'Logo',
+    'settings' => 'Settings',
     'no_data_found' => 'No Data Found',
     'student' => 'Student',
     'students' => 'Students',
