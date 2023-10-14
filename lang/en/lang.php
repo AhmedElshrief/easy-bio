@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'update' => 'Update',
+    'title' => 'Title',
+    'description' => 'Description',
+    'active' => 'Active',
+    'courses' => 'Courses',
+    'course' => 'Course',
     'deleted_successfully' => 'Deleted Successfully',
     'added_successfully' => 'Added Successfully',
     'updated_successfully' => 'Updated Successfully',
@@ -11,6 +19,11 @@ return [
     'name' => 'Name',
     'ar.name' => 'Arabic Name',
     'en.name' => 'English Name',
+    'ar.title' => 'Arabic Title',
+    'en.title' => 'English Title',
+    'ar.description' => 'Arabic Description',
+    'en.description' => 'English Description',
+    'select_item' => 'Select Item',
     'cities' => 'Cities',
     'level' => 'Level',
     'levels' => 'Levels',

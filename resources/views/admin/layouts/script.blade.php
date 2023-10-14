@@ -3,13 +3,16 @@
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/js/simplebar.js') }}"></script>
-
-
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
 
     @yield('js')
 
-
     <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+
         @if (count($errors) > 0)
             var list = {!! $errors !!};
             var values = '';

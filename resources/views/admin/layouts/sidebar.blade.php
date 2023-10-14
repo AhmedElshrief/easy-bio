@@ -40,76 +40,14 @@
                     </a>
                 </li>
 
-                {{-- <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.field.index') }}" aria-expanded="false">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.courses.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-clipboard-list"></i>
+                            <i class="ti ti-box"></i>
                         </span>
-                        <span class="hide-menu">{{ _trans('fields') }}</span>
+                        <span class="hide-menu">{{ __('lang.courses') }}</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}" href="{{ route('admin.role.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-shield-check"></i>
-                        </span>
-                        <span class="hide-menu">{{ _trans('roles') }}</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('admin.admin.create') ? 'active' : '' }}" href="{{ route('admin.admin.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-users"></i>
-                        </span>
-                        <span class="hide-menu">{{ _trans('admins') }}</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.user.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-user"></i>
-                        </span>
-                        <span class="hide-menu">{{ _trans('users') }}</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-                      <span class="d-flex">
-                        <i class="ti ti-settings"></i>
-                    </span>
-                    <span class="hide-menu">{{ _trans('global_settings') }}</span>
-                </a>
-                    <ul aria-expanded="false" class="collapse first-level">
-                      <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
-                            <span>
-                                <i class="ti ti-settings"></i>
-                            </span>
-                            <span class="hide-menu">{{ _trans('settings') }}</span>
-                        </a>
-                      </li>
-                      <li class="sidebar-item">
-                        <a href="{{ route('admin.language.index') }}" class="sidebar-link">
-                          <div class="round-16 d-flex align-items-center justify-content-center">
-                            <i class="ti ti-globe"></i>
-                          </div>
-                          <span class="hide-menu">{{ _trans('languages') }}</span>
-                        </a>
-                      </li>
-                      <li class="sidebar-item">
-                        <a href="{{ route('admin.translation.index') }}" class="sidebar-link">
-                          <div class="round-16 d-flex align-items-center justify-content-center">
-                            <i class="ti ti-globe"></i>
-                          </div>
-                          <span class="hide-menu">{{ _trans('translations') }}</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li> --}}
-
 
             </ul>
 

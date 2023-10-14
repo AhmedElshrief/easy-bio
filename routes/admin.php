@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\LevelController;
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
     Route::name('admin.')->group(function () {
         Route::resource('cities', CityController::class)->except(['show']);
         Route::resource('levels', LevelController::class)->except(['show']);
+        Route::resource('courses', CourseController::class)->except(['show']);
         // Route::resource('countries', CountryController::class)->except(['show']);
 
         // Route::resource('customers', CustomerController::class)->except(['show', 'create', 'store']);

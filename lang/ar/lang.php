@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'active' => 'مفعل',
+    'inactive' => 'غير مفعل',
+    'update' => 'تحديث',
+    'description' => 'الوصف',
+    'title' => 'العنوان',
+    'active' => 'الحالة',
+    'courses' => 'الدورات',
+    'course' => 'دورة',
     'deleted_successfully' => 'تم الحذف بنجاح',
     'added_successfully' => 'تمت الإضافة بنجاح',
     'updated_successfully' => 'تم التحديث بنجاح',
@@ -11,6 +19,11 @@ return [
     'name' => 'الاسم',
     'ar.name' => 'الاسم باللغة العربية',
     'en.name' => 'الاسم باللغة الانجليزية',
+    'ar.title' => 'العنوان باللغة العربية',
+    'en.title' => 'العنوان باللغة الانجليزية',
+    'ar.description' => 'الوصف باللغة العربية',
+    'en.description' => 'الوصف باللغة الانجليزية',
+    'select_item' => 'اختر العنصر',
     'cities' => 'المدن',
     'level' => 'مستوي',
     'levels' => 'المستويات',

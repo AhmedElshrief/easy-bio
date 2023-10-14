@@ -12,4 +12,11 @@ class Level extends Model implements TranslatableContract
 
     protected $translatedAttributes = ['name'];
     protected $guarded = [];
+
+    public function courses() {
+        return $this->hasMany(Course::class, 'level_id');
+    }
 }
+
+
+
