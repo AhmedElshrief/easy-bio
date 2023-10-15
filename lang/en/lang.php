@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'faqs' => 'Questions and Answers',
+    'faq' => 'Question',
+    'question' => 'Question',
+    'answer' => 'Answer',
+    'ar.question' => 'Arabic Question',
+    'en.question' => 'English Question',
+    'ar.answer' => 'Arabic Answer',
+    'en.answer' => 'English Answer',
     'price' => 'Price',
     'hours' => 'Hours',
     'vimeo_embed' => 'Vimeo Embed',

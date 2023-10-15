@@ -77,6 +77,15 @@
                 </li>
 
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.faqs.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-box"></i>
+                        </span>
+                        <span class="hide-menu">{{ __('lang.faqs') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-box"></i>
