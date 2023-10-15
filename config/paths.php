@@ -6,4 +6,5 @@ return [
     'STUDENTS_PATH' => 'uploads/students/',
     'SETTINGS_PATH' => 'uploads/settings/',
     'LESSONS_PATH' => 'uploads/lessons/',
+    'WITHDRAW_REQUESTS_PATH' => 'uploads/withdraw_requests/',
 ];

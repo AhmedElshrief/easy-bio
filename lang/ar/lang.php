@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'withdraw_requests' => 'طلبات السحب',
+    'withdraw_request' => 'طلب السحب',
+    'amount' => 'المبلغ',
+    'user' => 'المستخدم',
+    'select_status' => 'اختر الحالة',
+    'pending' => 'في الانتظار',
+    'approved' => 'تمت الموافقة',
     'faqs' => 'الأسألة و الاجوبة',
     'faq' => 'سؤال',
     'question' => 'سؤال',

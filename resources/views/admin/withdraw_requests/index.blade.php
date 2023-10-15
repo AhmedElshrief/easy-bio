@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @php
-    $title = __('lang.students');
+    $title = __('lang.withdraw_requests');
 @endphp
 
 @section('title')
@@ -16,56 +16,52 @@
         <div class="col-md-12">
             @component('admin.layouts.includes.card')
                 @slot('tool')
+                    {{-- <a href="{{ route('admin.withdraw_requests.create') }}" class="btn btn-primary float-end mb-2">
+                        <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.withdraw_request') }}
+                    </a> --}}
                 @endslot
 
                 @slot('content')
                     @component('admin.layouts.includes.table')
                         @slot('headers')
                             <td>#</td>
-                            <td>{{ __('lang.name') }}</td>
-                            <td>{{ __('lang.email') }}</td>
-                            <td>{{ __('lang.phone') }}</td>
-                            <td>{{ __('lang.parent_phone') }}</td>
-                            <td>{{ __('lang.username') }}</td>
+                            <td>{{ __('lang.amount') }}</td>
+                            <td>{{ __('lang.image') }}</td>
+                            <td>{{ __('lang.user') }}</td>
                             <td>{{ __('lang.status') }}</td>
-                            <td>{{ __('lang.level') }}</td>
-                            <td>{{ __('lang.city') }}</td>
                             <td>{{ __('lang.actions') }}</td>
                         @endslot
 
                         @slot('data')
-                            @if (count($students) > 0)
-                                @foreach ($students as $student)
+                            @if (count($withdraw_requests) > 0)
+                                @foreach ($withdraw_requests as $withdraw_request)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img class="rounded-circle" src="{{ $student->image_path }}" alt="" width="50" height="50">
-                                            {{ $student->title ?? '' }}
+                                            {{ $withdraw_request->amount ?? '' }}
                                         </td>
-                                        <td>{{ $student->email ?? '' }}</td>
-                                        <td>{{ $student->phone ?? '' }}</td>
-                                        <td>{{ $student->parent_phone ?? '' }}</td>
-                                        <td>{{ $student->username ?? '' }}</td>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ $withdraw_request->image_path }}" alt="" width="50" height="50">
+                                        </td>
+                                        <td>{{ $withdraw_request->user->name ?? '' }}</td>
                                         <td>
                                             <div class="col-md-12 pt-2">
                                                 <div class="form-group">
                                                     <label class="switch">
-                                                        <input onclick="changeActive(this,{{ $student->id }})"
-                                                            data-status="{{ $student->status }}" {{  $student->status == \App\Models\User::ACTIVE ? 'checked' : '' }}
-                                                            class="form-check-input" value="{{ $student->status }}" type="checkbox"
+                                                        <input onclick="changeActive(this,{{ $withdraw_request->id }})"
+                                                            data-status="{{ $withdraw_request->status }}" {{  $withdraw_request->status == \App\Models\WithDrawRequest::APPROVED ? 'checked' : '' }}
+                                                            class="form-check-input" value="{{ $withdraw_request->status }}" type="checkbox"
                                                             name="status">
                                                         <span class="slider"></span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{ $student->level->name ?? '' }}</td>
-                                        <td>{{ $student->city->name ?? '' }}</td>
 
                                         <td>
-                                            <a href="{{ route('admin.students.edit', $student->id) }}"
+                                            <a href="{{ route('admin.withdraw_requests.edit', $withdraw_request->id) }}"
                                                 class="btn btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
-                                            <a data-href="{{ route('admin.students.destroy', $student->id) }}"
+                                            <a data-href="{{ route('admin.withdraw_requests.destroy', $withdraw_request->id) }}"
                                                 class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
                                         </td>
                                     </tr>
@@ -80,7 +76,7 @@
                         @endslot
                     @endcomponent
                     <div class="d-flex justify-content-center mt-4">
-                        {{ $students->links() }}
+                        {{ $withdraw_requests->links() }}
                     </div>
                 @endslot
             @endcomponent
@@ -92,17 +88,17 @@
 
 @section('js')
     <script>
-         function changeActive(el, id) {
+        function changeActive(el, id) {
             $(el).off('change').on('change', function() {
-                let value = 'blocked';
-                if($(el).data('status') == 'blocked') {
-                    value = 'active';
+                let value = 'pending';
+                if($(el).data('status') == 'pending') {
+                    value = 'approved';
                     $(el).data('status', value);
-                } else if($(el).data('status') == 'active') {
-                    value = 'blocked';
+                } else if($(el).data('status') == 'approved') {
+                    value = 'pending';
                     $(el).data('status', value);
                 }
-                $.post("{{ route('admin.students.changeStatus') }}", {
+                $.post("{{ route('admin.withdraw_requests.changeStatus') }}", {
                     'id': id,
                     'value': value,
                     '_token': "{{ csrf_token() }}"
@@ -112,7 +108,6 @@
                 });
             });
         }
-
     </script>
 @endsection
 

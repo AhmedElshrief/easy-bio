@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'withdraw_requests' => 'Withdraw Requests',
+    'withdraw_request' => 'Withdraw Request',
+    'amount' => 'Amount',
+    'user' => 'User',
+    'select_status' => 'Select Status',
+    'pending' => 'Pending',
+    'approved' => 'Approved',
     'faqs' => 'Questions and Answers',
     'faq' => 'Question',
     'question' => 'Question',

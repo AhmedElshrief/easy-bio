@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CourseRequest;
 use App\Http\Requests\Admin\StudentRequest;
 use App\Models\City;
 use App\Models\Course;
@@ -90,11 +89,7 @@ class StudentController extends Controller
     public function changeStatus(Request $request)
     {
         $student = $this->model->findOrFail($request->id);
-        if ($request->value == 1) {
-            $student->status = User::ACTIVE;
-        } else {
-            $student->status = User::BLOCKED;
-        }
+        $student->status = $request->value;
         $student->save();
         return response()->json([
             'success' => true,

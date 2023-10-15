@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\WithdrawRequestController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,9 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
 
         Route::resource('faqs', FaqController::class)->except(['show']);
+
+        Route::resource('withdraw_requests', WithdrawRequestController::class)->except(['show']);
+        Route::post('withdraw_requests/change-status', [WithdrawRequestController::class, 'changeStatus'])->name('withdraw_requests.changeStatus');
 
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('saveSettings', [SettingController::class, 'saveSettings'])->name('settings.saveSettings');

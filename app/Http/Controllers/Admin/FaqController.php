@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CityRequest;
 use App\Http\Requests\Admin\FaqRequest;
 use App\Models\Faq;
 

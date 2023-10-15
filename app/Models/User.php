@@ -63,6 +63,9 @@ class User extends Authenticatable
         return $this->belongsTo(City::class, 'city_id');
     }
 
+    public function withdrawRequests() {
+        return $this->hasMany(WithdrawRequest::class, 'user_id');
+    }
 
 
 }
