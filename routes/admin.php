@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\LectureController;
+use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
@@ -48,6 +49,9 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
 
         Route::resource('students', StudentController::class)->except(['show', 'create', 'store']);
         Route::post('students/change-status', [StudentController::class, 'changeStatus'])->name('students.changeStatus');
+
+        Route::resource('lessons', LessonController::class)->except(['show']);
+        Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
 
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('saveSettings', [SettingController::class, 'saveSettings'])->name('settings.saveSettings');

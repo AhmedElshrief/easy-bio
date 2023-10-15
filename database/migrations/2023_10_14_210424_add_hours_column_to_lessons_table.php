@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lesson_translations', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->string('locale');
-            $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete()->cascadeOnUpdate();
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->integer('hours')->default(24)->after('price');
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesson_translations');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('hours');
+        });
     }
 };

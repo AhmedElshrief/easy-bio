@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('withdraw_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->float('price');
-            $table->boolean('active')->default(0);
-            $table->longText('vimeo_embed');
-            $table->foreignId('lecture_id')->constrained('lectures')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->float('amount');
+            $table->string('image')->nullable();
+            $table->string('status')->default('pending');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('withdraw_requests');
     }
 };

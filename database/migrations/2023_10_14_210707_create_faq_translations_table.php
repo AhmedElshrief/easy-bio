@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('faq_translations', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->float('price');
-            $table->boolean('active')->default(0);
-            $table->longText('vimeo_embed');
-            $table->foreignId('lecture_id')->constrained('lectures')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
+            $table->string('question');
+            $table->string('answer');
+            $table->string('locale');
+            $table->foreignId('faq_id')->constrained('faqs')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('faq_translations');
     }
 };

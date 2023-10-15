@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'price' => 'Price',
+    'hours' => 'Hours',
+    'vimeo_embed' => 'Vimeo Embed',
+    'lesson' => 'Lesson',
+    'lessons' => 'Lessons',
     'title_ar' => 'Arabic Title',
     'title_en' => 'English Title',
     'description_ar' => 'Arabic Description',
