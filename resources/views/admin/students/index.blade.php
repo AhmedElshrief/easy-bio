@@ -40,7 +40,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <img class="rounded-circle" src="{{ $student->image_path }}" alt="" width="50" height="50">
-                                            {{ $student->title ?? '' }}
+                                            {{ $student->name ?? '' }}
                                         </td>
                                         <td>{{ $student->email ?? '' }}</td>
                                         <td>{{ $student->phone ?? '' }}</td>

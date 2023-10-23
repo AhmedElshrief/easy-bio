@@ -1,8 +1,21 @@
 <?php
 
 return [
-    'withdraw_requests' => 'Withdraw Requests',
-    'withdraw_request' => 'Withdraw Request',
+    'arabic' => 'Arabic',
+    'english' => 'English',
+    'admin' => 'Admin',
+    'password' => 'Password',
+    'password_confirmation' => 'Password Confirmation',
+    'image' => 'Image',
+    'permissions' => 'Permissions',
+    'admins' => 'Admins',
+    'select_all' => 'Select All',
+    'display_name' => 'Display Name',
+    'roles' => 'Roles',
+    'role' => 'Role',
+    'logout' => 'Logout',
+    'withdraw_requests' => 'Paid Requests',
+    'withdraw_request' => 'Paid Request',
     'amount' => 'Amount',
     'user' => 'User',
     'select_status' => 'Select Status',

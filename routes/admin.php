@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CourseController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\WithdrawRequestController;
@@ -63,7 +65,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('saveSettings', [SettingController::class, 'saveSettings'])->name('settings.saveSettings');
 
-        // Route::resource('admins', AdminController::class)->except(['show']);
+        Route::resource('roles', RoleController::class)->except(['show']);
+        Route::resource('admins', AdminController::class)->except(['show']);
 
     });
 

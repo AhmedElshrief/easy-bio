@@ -56,10 +56,6 @@ class WithdrawRequestController extends Controller
         if(isset($data['image'])) {
             $data['image'] = uploadImage($data['image'], config('paths.WITHDRAW_REQUESTS_PATH'), $withdraw_request->image);
         }
-
-        // if (!isset($data['status'])) {
-        //     $data['status'] = WithdrawRequest::PENDING;
-        // }
         $withdraw_request->update($data);
         toast(__('lang.updated_successfully'), 'success');
         return redirect()->route('admin.withdraw_requests.index');
@@ -81,12 +77,7 @@ class WithdrawRequestController extends Controller
     public function changeStatus(Request $request)
     {
         $withdraw_request = $this->model->findOrFail($request->id);
-        // dd($request->value);
         $withdraw_request->status = $request->value;
-        // if ($request->value == 1) {
-        // } else {
-        //     $withdraw_request->status = WithdrawRequest::PENDING;
-        // }
         $withdraw_request->save();
         return response()->json([
             'success' => true,

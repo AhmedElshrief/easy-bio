@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CourseRequest;
 use App\Http\Requests\Admin\LessonRequest;
 use App\Models\Lecture;
 use App\Models\Lesson;
