@@ -51,8 +51,16 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::resource('lectures', LectureController::class)->except(['show']);
         Route::post('lectures/change-active', [LectureController::class, 'changeActive'])->name('lectures.changeActive');
 
-        Route::resource('students', StudentController::class)->except(['show', 'create', 'store']);
+        Route::resource('students', StudentController::class)->except(['show']);
         Route::post('students/change-status', [StudentController::class, 'changeStatus'])->name('students.changeStatus');
+        Route::get('students/trashlist', [StudentController::class, 'trashlist'])->name('students.trashlist');
+        Route::get('students/restore/{id}', [StudentController::class, 'restore'])->name('students.restore');
+        Route::delete('students/hard-delete/{id}', [StudentController::class, 'hardDelete'])->name('students.hard-delete');
+        Route::post('students/delete-students', [StudentController::class, 'deleteStudents'])->name('students.delete-students');
+        Route::post('students/reset-wallets', [StudentController::class, 'resetWallets'])->name('students.reset-wallets');
+        Route::post('students/active-students', [StudentController::class, 'activeStudents'])->name('students.active-students');
+        Route::post('students/deactive-students', [StudentController::class, 'deactiveStudents'])->name('students.deactive-students');
+
 
         Route::resource('lessons', LessonController::class)->except(['show']);
         Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');

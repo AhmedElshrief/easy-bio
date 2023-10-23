@@ -4,7 +4,7 @@
             @if (isset($action)) onclick="$('#filter_body').slideToggle()" @endif>
 
             @if (isset($title))
-                <h4 class="text-white">
+                <h4>
                     @if (isset($icon))
                         <i class="ti ti-filter"></i>
                     @endif

@@ -1,6 +1,22 @@
 <?php
 
 return [
+    'are_you_sure_restore_student' => 'Are You Sure Restore Student ?',
+    'deactive_students' => 'Deactive Students',
+    'active_students' => 'Active Students',
+    'error' => 'Error',
+    'no_student_selected' => 'No Student Selected',
+    'reset_wallets' => 'Reset Wallets',
+    'delete_students' => 'Delete Students',
+    'restore_item' => 'Restore Item',
+    'restored_successfully' => 'Restored Successfully',
+    'trashlist' => 'Trash List',
+    'students_trashlist' => 'Students Trash List',
+    'or' => 'Or',
+    'filter' => 'Filter',
+    'clear' => 'Clear',
+    'search_by' => 'Search By',
+    'search' => 'Search',
     'arabic' => 'Arabic',
     'english' => 'English',
     'admin' => 'Admin',

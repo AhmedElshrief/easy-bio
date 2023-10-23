@@ -67,5 +67,23 @@ class User extends Authenticatable
         return $this->hasMany(WithdrawRequest::class, 'user_id');
     }
 
+    public function scopeFilter($query,$request)
+    {
+        return $query->where(function ($q) use ($request) {
+            if ($request->search) {
+                $q->where('name', 'like', '%' . $request->search . '%');
+                $q->orWhere('phone', 'like', '%' . $request->search . '%');
+                $q->orWhere('email', 'like', '%' . $request->search . '%');
+            }
+
+            if ($request->status) {
+                $q->where('status', $request->status);
+            }
+        });
+    }
 
 }
+
+
+
+
