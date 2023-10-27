@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(WithdrawRequest::class, 'user_id');
     }
 
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'model_id', 'id');
+    }
+
     public function scopeFilter($query,$request)
     {
         return $query->where(function ($q) use ($request) {

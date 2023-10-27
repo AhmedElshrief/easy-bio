@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\WalletTrabsactionController;
 use App\Http\Controllers\Admin\WithdrawRequestController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -69,6 +70,10 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
 
         Route::resource('withdraw_requests', WithdrawRequestController::class)->except(['show']);
         Route::post('withdraw_requests/change-status', [WithdrawRequestController::class, 'changeStatus'])->name('withdraw_requests.changeStatus');
+
+        // Route::resource('wallet_transactions', WalletTrabsactionController::class)->except(['show', 'destroy']);
+        Route::get('wallet_transactions/create/{withdraw_request}', [WalletTrabsactionController::class, 'create'])->name('wallet_transactions.create');
+        Route::post('wallet_transactions/store', [WalletTrabsactionController::class, 'store'])->name('wallet_transactions.store');
 
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('saveSettings', [SettingController::class, 'saveSettings'])->name('settings.saveSettings');

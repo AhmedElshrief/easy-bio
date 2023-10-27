@@ -84,4 +84,18 @@ class WithdrawRequestController extends Controller
             'message' => __('lang.updated_successfully'),
         ]);
     }
+
+    public function payFormModal()
+    {
+        return view('admin.withdraw_requests.pay_form_modal');
+    }
+
+    public function pay()
+    {
+        dd('pay');
+    }
 }
+
+
+
+

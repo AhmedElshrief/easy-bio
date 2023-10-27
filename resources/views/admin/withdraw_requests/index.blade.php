@@ -28,7 +28,7 @@
                             <td>{{ __('lang.amount') }}</td>
                             <td>{{ __('lang.image') }}</td>
                             <td>{{ __('lang.user') }}</td>
-                            <td>{{ __('lang.status') }}</td>
+                            <td>{{ __('lang.approved') }}</td>
                             <td>{{ __('lang.actions') }}</td>
                         @endslot
 
@@ -47,6 +47,17 @@
                                         <td>
                                             <div class="col-md-12 pt-2">
                                                 <div class="form-group">
+                                                    <label class="">
+                                                        <a data-href="{{ route('admin.wallet_transactions.create', $withdraw_request->user_id) }}" data-container=".table-modal" class="btn btn-primary btn-modal">
+                                                            {{ __('lang.approve') }}
+                                                        </a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- <td>
+                                            <div class="col-md-12 pt-2">
+                                                <div class="form-group">
                                                     <label class="switch">
                                                         <input onclick="changeActive(this,{{ $withdraw_request->id }})"
                                                             data-status="{{ $withdraw_request->status }}" {{  $withdraw_request->status == \App\Models\WithDrawRequest::APPROVED ? 'checked' : '' }}
@@ -56,7 +67,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td> --}}
 
                                         <td>
                                             <a href="{{ route('admin.withdraw_requests.edit', $withdraw_request->id) }}"
@@ -81,6 +92,10 @@
                 @endslot
             @endcomponent
         </div>
+    </div>
+
+    <div class="modal fade table-modal" id="table-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
     </div>
 
 @endsection
