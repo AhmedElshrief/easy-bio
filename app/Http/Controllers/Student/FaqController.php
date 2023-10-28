@@ -23,7 +23,7 @@ class FaqController extends Controller
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
-        return view('admin.faqs.index', [
+        return view('student.faqs.index', [
             'faqs' => $this->model->paginate(15)
         ]);
     }
@@ -34,7 +34,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        return view('admin.faqs.form', [
+        return view('student.faqs.form', [
             'faq' => $this->model
         ]);
     }
@@ -49,7 +49,7 @@ class FaqController extends Controller
         $data = $request->validated();
         $this->model->create($data);
         toast(__('lang.added_successfully'), 'success');
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('student.faqs.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
-        return view('admin.faqs.form', [
+        return view('student.faqs.form', [
             'faq' => $faq
         ]);
     }
@@ -75,7 +75,7 @@ class FaqController extends Controller
         $data = $request->validated();
         $faq->update($data);
         toast(__('lang.updated_successfully'), 'success');
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('student.faqs.index');
     }
 
     /**
@@ -87,6 +87,6 @@ class FaqController extends Controller
     {
         $faq->delete();
         toast(__('lang.deleted_successfully'), 'success');
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('student.faqs.index');
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('student.layouts.master')
 
 @php
     $title = __('lang.faqs');
@@ -10,24 +10,19 @@
 
 @section('content')
 
-    @include('admin.layouts.includes.breadcrumb', ['title' => $title])
+    @include('student.layouts.includes.breadcrumb', ['title' => $title])
 
     <div class="row pt-4">
         <div class="col-md-12">
-            @component('admin.layouts.includes.card')
-                @slot('tool')
-                    <a data-href="{{ route('admin.faqs.create') }}" data-container=".table-modal"
-                        class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i>
-                        {{ __('lang.add') . ' ' . __('lang.faq') }}</a>
-                @endslot
+            @component('student.layouts.includes.card')
 
                 @slot('content')
-                    @component('admin.layouts.includes.table')
+                    @component('student.layouts.includes.table')
                         @slot('headers')
                             <td>#</td>
                             <td>{{ __('lang.question') }}</td>
                             <td>{{ __('lang.answer') }}</td>
-                            <td>{{ __('lang.actions') }}</td>
+                            {{-- <td>{{ __('lang.actions') }}</td> --}}
                         @endslot
 
                         @slot('data')
@@ -37,18 +32,16 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $faq->question ?? '' }}</td>
                                         <td>{{ $faq->answer ?? '' }}</td>
-                                        <td>
-                                            <a data-href="{{ route('admin.faqs.edit', $faq->id) }}" data-container=".table-modal"
-                                                class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
-                                            <a data-href="{{ route('admin.faqs.destroy', $faq->id) }}"
-                                                class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
-                                        </td>
+                                        {{-- <td>
+                                            <a data-href="{{ route('student.faqs.show', $faq->id) }}" data-container=".table-modal"
+                                                class="btn btn-modal btn-primary btn-sm"><i class="ti ti-eye"></i></a>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
                                     <td colspan="7">
-                                        @include('admin.layouts.includes.alert')
+                                        @include('student.layouts.includes.alert')
                                     </td>
                                 </tr>
                             @endif

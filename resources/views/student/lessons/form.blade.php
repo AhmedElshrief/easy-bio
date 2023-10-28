@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('student.layouts.master')
 @php
     if ($lesson->id) {
         $title = __('lang.edit') . ' ' . __('lang.lesson');
@@ -13,17 +13,17 @@
 
 @section('content')
 
-    @include('admin.layouts.includes.breadcrumb', [
+    @include('student.layouts.includes.breadcrumb', [
         'title' => $title,
-        'url' => route('admin.lessons.index'),
+        'url' => route('student.lessons.index'),
         'new_item' => __('lang.lessons'),
     ])
 
     <div class="row pt-4">
         <div class="col-md-12">
-            @component('admin.layouts.includes.card')
+            @component('student.layouts.includes.card')
                 @slot('content')
-                    <form action="{{ $lesson->id ? route('admin.lessons.update', $lesson->id) : route('admin.lessons.store') }}"
+                    <form action="{{ $lesson->id ? route('student.lessons.update', $lesson->id) : route('student.lessons.store') }}"
                         method="post" enctype="multipart/form-data">
                         @csrf
                         @if ($lesson->id)

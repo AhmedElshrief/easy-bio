@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('student.layouts.master')
 
 @php
     $title = __('lang.lessons');
@@ -10,19 +10,14 @@
 
 @section('content')
 
-    @include('admin.layouts.includes.breadcrumb', ['title' => $title])
+    @include('student.layouts.includes.breadcrumb', ['title' => $title])
 
     <div class="row pt-4">
         <div class="col-md-12">
-            @component('admin.layouts.includes.card')
-                @slot('tool')
-                    <a href="{{ route('admin.lessons.create') }}" class="btn btn-primary float-end mb-2">
-                        <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.lesson') }}
-                    </a>
-                @endslot
+            @component('student.layouts.includes.card')
 
                 @slot('content')
-                    @component('admin.layouts.includes.table')
+                    @component('student.layouts.includes.table')
                         @slot('headers')
                             <td>#</td>
                             <td>{{ __('lang.title') }}</td>
@@ -31,8 +26,7 @@
                             <td>{{ __('lang.hours') }}</td>
                             {{-- <td>{{ __('lang.vimeo_embed') }}</td> --}}
                             <td>{{ __('lang.description') }}</td>
-                            <td>{{ __('lang.active') }}</td>
-                            <td>{{ __('lang.actions') }}</td>
+                            {{-- <td>{{ __('lang.actions') }}</td> --}}
                         @endslot
 
                         @slot('data')
@@ -49,30 +43,17 @@
                                         <td>{{ $lesson->hours ?? '' }}</td>
                                         {{-- <td>{{ $lesson->vimeo_embed ?? '' }}</td> --}}
                                         <td>{{ $lesson->description ?? '' }}</td>
-                                        <td>
-                                            <div class="col-md-12 pt-2">
-                                                <div class="form-group">
-                                                    <label class="switch">
-                                                        <input onclick="changeActive(this,{{ $lesson->id }})"
-                                                            data-active="{{ $lesson->active }}" class="form-check-input"
-                                                            {{ optional($lesson)->active ? 'checked' : '' }} type="checkbox">
-                                                        <span class="slider"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.lessons.edit', $lesson->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
-                                            <a data-href="{{ route('admin.lessons.destroy', $lesson->id) }}"
-                                                class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
-                                        </td>
+                                        {{-- <td>
+                                            <a href="{{ route('student.lessons.show', $lesson->id) }}" class="btn btn-primary btn-sm">
+                                                <i class="ti ti-eye"></i>
+                                            </a>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
                                     <td colspan="9">
-                                        @include('admin.layouts.includes.alert')
+                                        @include('student.layouts.includes.alert')
                                     </td>
                                 </tr>
                             @endif
@@ -88,25 +69,5 @@
 
 @endsection
 
-
-@section('js')
-    <script>
-        function changeActive(el, id) {
-            $(el).off('change').on('change', function() {
-                const value = $(el).data('active') === 0 ? 1 : 0;
-                $(el).data('active', value);
-                $.post("{{ route('admin.lessons.changeActive') }}", {
-                    'id': id,
-                    'value': value,
-                    '_token': "{{ csrf_token() }}"
-                }, function(results) {
-                    const alertType = results.success ? "success" : "error";
-                    swal.fire("", results.message, alertType);
-                });
-            });
-        }
-
-    </script>
-@endsection
 
 

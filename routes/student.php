@@ -35,10 +35,9 @@ Route::group(['middleware' => 'auth:student', 'prefix' => '/student'],function()
 
     Route::name('student.')->group(function () {
 
-        Route::resource('lessons', LessonController::class)->except(['show']);
-        Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
+        Route::resource('lessons', LessonController::class)->only(['index', 'show']);
 
-        Route::resource('faqs', FaqController::class)->except(['show']);
+        Route::resource('faqs', FaqController::class)->only(['index', 'show']);
     });
 
 });

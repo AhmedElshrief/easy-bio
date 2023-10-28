@@ -22,7 +22,7 @@
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                         <div class="message-body">
                             @foreach (config('translatable.locales') as $key => $locale)
-                                <a href="{{ route('admin.lang', '' )}}?lang={{ $locale }}" class="{{ (Session::get('locale')  == $locale) ? 'active' : ''}}" class="d-flex align-items-center gap-2 dropdown-item">
+                                <a href="{{ route('student.lang', '' )}}?lang={{ $locale }}" class="{{ (Session::get('locale')  == $locale) ? 'active' : ''}}" class="d-flex align-items-center gap-2 dropdown-item">
                                     <p class="mb-0 fs-3 p-2">{{ $locale == 'en' ? __('lang.english') : __('lang.arabic')  }}</p>
                                 </a>
                             @endforeach
