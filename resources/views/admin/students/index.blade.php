@@ -15,9 +15,9 @@
     <div class="row">
         <div class="col-md-12">
 
-            @component('admin.layouts.includes.card', ['title' => __('lang.filter'), 'id' => 'filter_body', 'icon' => true])
+            @component('admin.layouts.includes.card', ['id' => 'filter_body'])
                 @slot('tool')
-                    <button class="btn btn-xs btn-success" onclick="$('#filter_body').slideToggle()">
+                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}" onclick="$('#filter_body').slideToggle()">
                         <i class="ti ti-filter"></i>
                     </button>
                 @endslot

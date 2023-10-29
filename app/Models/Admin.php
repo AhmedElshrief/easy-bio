@@ -21,6 +21,18 @@ class Admin extends Authenticatable
         $path = public_path($this->image);
         return !$this->image || !file_exists($path)? asset('assets/images/profile/user-1.jpg') : asset($this->image);
     }
+
+    public function scopeFilter($query, $request)
+    {
+        return $query->where(function ($q) use ($request) {
+            if ($request->search) {
+                $q->where('username', 'like', '%' . $request->search . '%');
+                $q->orWhere('phone', 'like', '%' . $request->search . '%');
+                $q->orWhere('email', 'like', '%' . $request->search . '%');
+            }
+
+        });
+    }
 }
 
 

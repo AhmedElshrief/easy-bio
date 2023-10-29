@@ -12,4 +12,12 @@ class Faq extends Model implements TranslatableContract
 
     protected $translatedAttributes = ['question', 'answer'];
     protected $guarded = [];
+
+    public function scopeFilter($query, $request)
+    {
+        if ($request->search) {
+            $query->WhereTranslationLike('question', '%' . $request->search . '%')
+                ->orWhereTranslationLike('answer', '%' . $request->search . '%');
+        }
+    }
 }

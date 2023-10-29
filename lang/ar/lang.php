@@ -79,7 +79,7 @@ return [
     'inactive' => 'غير مفعل',
     'update' => 'تحديث',
     'description' => 'الوصف',
-    'title' => 'العنوان',
+    'title' => 'الاسم',
     'courses' => 'الدورات',
     'course' => 'دورة',
     'deleted_successfully' => 'تم الحذف بنجاح',

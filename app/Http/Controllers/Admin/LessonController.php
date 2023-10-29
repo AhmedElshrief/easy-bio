@@ -20,13 +20,14 @@ class LessonController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.lessons.index', [
-            'lessons' => $this->model->paginate(15)
+            'lessons' => $this->model->filter($request)->paginate(15),
+            'lectures' => Lecture::get()->pluck('title', 'id'),
         ]);
     }
 

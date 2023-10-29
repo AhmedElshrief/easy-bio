@@ -27,6 +27,21 @@ class Lesson extends Model implements TranslatableContract
     {
         return $this->belongsToMany(User::class, 'user_lessons', 'user_id', 'lesson_id');
     }
+
+    public function scopeFilter($query, $request)
+    {
+        if ($request->search) {
+            $query->WhereTranslationLike('title', '%' . $request->search . '%');
+        }
+
+        if ($request->lecture_id) {
+            $query->where('lecture_id', $request->lecture_id);
+        }
+
+        if ($request->active) {
+            $query->where('active', $request->active === 'active' ? '1' : '0');
+        }
+    }
 }
 
 

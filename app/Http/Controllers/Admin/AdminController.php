@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminRequest;
 use App\Models\Admin;
 use App\Models\Role;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -19,13 +20,13 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.admins.index', [
-            'data' => $this->model->paginate(20)
+            'data' => $this->model->filter($request)->paginate(15)
         ]);
     }
 

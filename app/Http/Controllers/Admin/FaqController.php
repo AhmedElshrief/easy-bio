@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FaqRequest;
 use App\Models\Faq;
+use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
@@ -18,13 +19,13 @@ class FaqController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.faqs.index', [
-            'faqs' => $this->model->paginate(15)
+            'faqs' => $this->model->filter($request)->paginate(15)
         ]);
     }
 

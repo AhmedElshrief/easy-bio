@@ -11,6 +11,23 @@
 
     @include('admin.layouts.includes.breadcrumb' , ['title' => $title])
 
+    <div class="row">
+        <div class="col-md-12">
+
+            @component('admin.layouts.includes.card', ['id' => 'filter_body'])
+                @slot('tool')
+                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}" onclick="$('#filter_body').slideToggle()">
+                        <i class="ti ti-filter"></i>
+                    </button>
+                @endslot
+
+                @slot('content')
+                    @include('admin.admins.filter')
+                @endslot
+            @endcomponent
+        </div>
+    </div>
+
     <div class="row pt-4">
         <div class="col-md-12">
            @component('admin.layouts.includes.card' )
@@ -49,7 +66,7 @@
                                @endforeach
                            @else
                                <tr>
-                                   <td colspan="4">
+                                   <td colspan="6">
                                        @include('admin.layouts.includes.alert')
                                    </td>
                                </tr>

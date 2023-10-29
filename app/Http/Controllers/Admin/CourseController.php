@@ -20,13 +20,15 @@ class CourseController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
+
         confirmDelete($title, $text);
         return view('admin.courses.index', [
-            'courses' => $this->model->paginate(15)
+            'courses' => $this->model->filter($request)->paginate(15),
+            'levels' => Level::get()->pluck('name', 'id'),
         ]);
     }
 

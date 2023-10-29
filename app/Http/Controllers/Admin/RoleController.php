@@ -56,12 +56,12 @@ class RoleController extends Controller
         return redirect(route('admin.roles.index'));
     }
 
-    public function edit(Role $resource)
+    public function edit(Role $role)
     {
         return view('admin.roles.form', [
             'permissions' => Permission::get()->groupBy('path'),
-            'resource' => $resource,
-            'rolePermissions' => $resource->permissions->pluck('id')->all(),
+            'resource' => $role,
+            'rolePermissions' => $role->permissions->pluck('id')->all(),
         ]);
     }
 

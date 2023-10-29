@@ -16,6 +16,13 @@ class City extends Model implements TranslatableContract
     public function students() {
         return $this->hasMany(User::class, 'city_id');
     }
+
+    public function scopeFilter($query, $request)
+    {
+        if ($request->search) {
+            $query->WhereTranslationLike('name', '%' . $request->search . '%');
+        }
+    }
 }
 
 
