@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Student\LessonRequest;
-use App\Models\Lecture;
 use App\Models\Lesson;
-use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
@@ -22,11 +19,12 @@ class LessonController extends Controller
      */
     public function index()
     {
+        $lessons = auth()->user()->lessons();
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('student.lessons.index', [
-            'lessons' => $this->model->paginate(15)
+            'lessons' => $lessons->paginate(15),
         ]);
     }
 

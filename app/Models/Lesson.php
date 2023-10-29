@@ -22,6 +22,11 @@ class Lesson extends Model implements TranslatableContract
     public function lecture() {
         return $this->belongsTo(Lecture::class, 'lecture_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_lessons', 'user_id', 'lesson_id');
+    }
 }
 
 

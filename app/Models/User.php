@@ -51,20 +51,24 @@ class User extends Authenticatable
 
     protected $appends = ['image_path'];
 
-    public function getImagePathAttribute() {
+    public function getImagePathAttribute()
+    {
         $path = public_path($this->image);
-        return !$this->image || !file_exists($path)? asset('assets/images/profile/user-1.jpg') : asset($this->image);
+        return !$this->image || !file_exists($path) ? asset('assets/images/profile/user-1.jpg') : asset($this->image);
     }
 
-    public function level() {
+    public function level()
+    {
         return $this->belongsTo(Level::class, 'level_id');
     }
 
-    public function city() {
+    public function city()
+    {
         return $this->belongsTo(City::class, 'city_id');
     }
 
-    public function withdrawRequests() {
+    public function withdrawRequests()
+    {
         return $this->hasMany(WithdrawRequest::class, 'user_id');
     }
 
@@ -73,7 +77,12 @@ class User extends Authenticatable
         return $this->hasOne(Wallet::class, 'model_id', 'id');
     }
 
-    public function scopeFilter($query,$request)
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'user_lessons', 'user_id', 'lesson_id');
+    }
+
+    public function scopeFilter($query, $request)
     {
         return $query->where(function ($q) use ($request) {
             if ($request->search) {
@@ -87,9 +96,4 @@ class User extends Authenticatable
             }
         });
     }
-
 }
-
-
-
-
