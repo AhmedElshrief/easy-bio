@@ -118,7 +118,7 @@
                                         "class"=>'form-control form-input',
                                         'rows' => 5,
                                         'required',
-                                        "placeholder"=> __('lang.select_item')
+                                        "placeholder" => __('lang.select_item')
                                     ])
                                 !!}
                             </div>
@@ -126,7 +126,7 @@
                             <div class="col-sm-12 col-md-12 pt-2">
                                 {!! Form::label('files',__('lang.files') ) !!}
                                 {!! Form::file('files[]', [
-                                        "class"=>'form-control form-input',
+                                        "class" => 'form-control form-input',
                                         'multiple',
                                 ]) !!}
                             </div>
@@ -140,7 +140,7 @@
                                                 <i class="ti ti-trash"></i>
                                             </div>
                                             <div>
-                                                {{-- <embed src="{{ asset($item->file) }}" width="200" height="200" alt="pdf" /> --}}
+                                                {{-- <embed src="{{ asset($item->path) }}" width="100" height="70" alt="pdf" /> --}}
                                                 <a href="{{ asset($item->path) }}"
                                                     target="_blank">{{ $item->origin_name }}</a>
                                             </div>

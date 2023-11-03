@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\WalletRequest;
 use App\Http\Requests\Admin\WalletTransactionRequest;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Models\WalletTransaction;
 use App\Models\WithdrawRequest;
 
@@ -33,6 +34,9 @@ class WalletTrabsactionController extends Controller
         $data['transaction_model_id'] = $request->model_id;
         $data['transaction_model_type'] = User::class;
         $data['wallet_id'] = $user->wallet->id;
+        Wallet::where('model_id', $user->id)->update([
+            'value' => $request->amount
+        ]);
         if ($request->amount < 0) {
             $data['type'] = WalletTransaction::CREDIT;
         }

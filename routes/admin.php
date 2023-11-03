@@ -81,6 +81,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
 
         Route::resource('roles', RoleController::class)->except(['show']);
         Route::resource('admins', AdminController::class)->except(['show']);
+        Route::get('profile', [AdminController::class, 'profile'])->name('profile');
+        Route::post('updateProfile/{admin}', [AdminController::class, 'updateProfile'])->name('profile.update');
 
     });
 

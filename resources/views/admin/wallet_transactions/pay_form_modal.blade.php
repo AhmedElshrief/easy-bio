@@ -1,9 +1,9 @@
 @php
-    $title = $wallet->id ? __('lang.edit') . ' ' . __('lang.wallet') : __('lang.add') . ' ' . __('lang.wallet');
+    $title = __('lang.approve');
 @endphp
 
 <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content ">
+    <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">
                 {{ $title }}
@@ -33,7 +33,7 @@
                                 ]) !!}
                             </div>
                             <div class="form-group">
-                                <label for="note"> {{ __('lang.note') }} </label>
+                                <label for="note"> {{ __('lang.notes') }} </label>
                                 {!! Form::text("note", old("note", $wallet->note), [
                                     'class' => 'form-control',
                                 ]) !!}

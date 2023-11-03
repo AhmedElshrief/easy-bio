@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'update_profile' => 'تحديث الملف الشخصي',
+    'profile' => 'الملف الشخصي',
+    'edit_profile' => 'تعديل الملف الشخصي',
+    'approve' => 'الموافقة',
+    'notes' => 'الملاحظات',
     'files' => 'الملفات',
     'are_you_sure_restore_student' => 'هل أنت متأكد من استعادة الطالب ؟',
     'deactive_students' => 'الغاء تفعيل الطلاب',

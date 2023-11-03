@@ -51,11 +51,11 @@ class AdminController extends Controller
         unset($inputs['image'], $inputs['password']);
 
         $inputs['password'] = bcrypt($request->password);
-        if($request->image){
+        if ($request->image) {
             $inputs['image'] = uploadImage($request->image, config('paths.ADMINS_PATH'));
         }
         $admin = $this->model->create($inputs);
-        if($request->role)
+        if ($request->role)
             $admin->syncRoles([$request->role]);
         toast(__('lang.added_successfully'), 'success');
         return redirect(route('admin.admins.index'));
@@ -83,16 +83,16 @@ class AdminController extends Controller
         $inputs = $request->validated();
         unset($inputs['image'], $inputs['password']);
 
-        if($request->password) {
+        if ($request->password) {
             $inputs['password'] = bcrypt($request->password);
-        }else {
+        } else {
             $inputs['password'] = $admin->password;
         }
-        if($request->image){
+        if ($request->image) {
             $path = $admin->image ?? null;
             $inputs['image'] = uploadImage($request->image, config('paths.ADMINS_PATH'), $path);
         }
-        if($request->role)
+        if ($request->role)
             $admin->syncRoles([$request->role]);
 
         $admin->update($inputs);
@@ -111,5 +111,39 @@ class AdminController extends Controller
         $admin->delete();
         toast(__('lang.deleted_successfully'), 'success');
         return redirect(route('admin.admins.index'));
+    }
+
+    /**
+     * Display the admin's profile.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profile()
+    {
+        return view('admin.admins.profile', [
+            'resource' => auth()->guard('admin')->user()
+        ]);
+    }
+
+    /**
+     * Update the user's profile.
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateProfile(AdminRequest $request, Admin $admin)
+    {
+        $data = $request->except('password', 'image');
+        //check if password
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        //check if image
+        if ($request->image) {
+            $data['image'] = $this->uploadFile($request->image, config('paths.ADMINS_PATH'));
+        }
+
+        $admin->update($data);
+
+        toast(__('lang.updated_successfully'), 'success');
+        return redirect()->back();
     }
 }

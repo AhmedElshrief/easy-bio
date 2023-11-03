@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'update_profile' => 'Update Profile',
+    'profile' => 'Profile',
+    'edit_profile' => 'Edit Profile',
+    'approve' => 'Approve',
     'files' => 'Files',
     'are_you_sure_restore_student' => 'Are You Sure Restore Student ?',
     'deactive_students' => 'Deactive Students',

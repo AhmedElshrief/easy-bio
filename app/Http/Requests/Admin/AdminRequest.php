@@ -23,7 +23,7 @@ class AdminRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('admin')->id;
+        $id = $this->route('admin')->id ?? null;
         return [
             'username' =>[ 'required', Rule::unique('admins', 'username')->ignore($id)],
             'email' => ['required', Rule::unique('admins', 'email')->ignore($id)],
@@ -31,9 +31,9 @@ class AdminRequest extends FormRequest
             'image' => ['sometimes', 'image'],
             'password' => [
                 'nullable',
-                 'confirmed',
-                 'min:8',
-                Rule::requiredIf(function () { return !(isset($this->route('admin')->image)); })
+                'confirmed',
+                'min:8',
+                Rule::requiredIf(function () { return !(isset($this->route('admin')->id)); })
             ]
         ];
     }
