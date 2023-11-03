@@ -5,6 +5,7 @@ use App\Http\Controllers\Student\FaqController;
 use App\Http\Controllers\Student\HomeController;
 use App\Http\Controllers\Student\LangController;
 use App\Http\Controllers\Student\LessonController;
+use App\Http\Controllers\Student\ProfileController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::group(['middleware' => 'auth:student', 'prefix' => '/student'],function()
         Route::resource('lessons', LessonController::class)->only(['index', 'show']);
 
         Route::resource('faqs', FaqController::class)->only(['index', 'show']);
+
+        Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+        Route::post('updateProfile/{user}', [ProfileController::class, 'updateProfile'])->name('profile.update');
+
     });
 
 });

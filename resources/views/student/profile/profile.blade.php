@@ -2,7 +2,7 @@
     $title = __('lang.profile');
 @endphp
 
-@extends('admin.layouts.master')
+@extends('student.layouts.master')
 
 @section('title')
     {{ $title }}
@@ -12,21 +12,21 @@
 @section('content')
 
     <!-- Page Header -->
-    @include('admin.layouts.includes.breadcrumb', ['title' => $title])
+    @include('student.layouts.includes.breadcrumb', ['title' => $title])
     <!-- /Page Header -->
 
 
     <div class="edit-profile">
-        <form action="{{ route('admin.profile.update', auth()->user()->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('student.profile.update', auth()->user()->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xl-4">
-                    @component('admin.layouts.includes.card')
+                    @component('student.layouts.includes.card')
                         @slot('content')
                             <div class="row mb-2">
                                 <div class="text-center">
                                     <img class="rounded-circle image-preview-image position-relative" width="200" height="200"
-                                        alt="" src="{{ $resource->image_path }}">
+                                        alt="" src="{{ $resource->image_path  }}">
                                     <label for="fileid" style="left: 46%;top: 55%;" class="position-absolute fw-bolder fs-6">
                                         <span class="ti ti-upload"></span>
                                     </label>
@@ -55,9 +55,16 @@
 
                 </div>
                 <div class="col-xl-8">
-                    @component('admin.layouts.includes.card', ['title' => __('lang.edit_profile')])
+                    @component('student.layouts.includes.card', ['title' => __('lang.edit_profile')])
                         @slot('content')
                             <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">{{ __('lang.name') }}</label>
+                                        <input class="form-control" type="text" name="name" value="{{ $resource->name }}"
+                                            placeholder="name">
+                                    </div>
+                                </div>
 
                                 <div class="col-sm-12 col-md-12">
                                     <div class="mb-3">

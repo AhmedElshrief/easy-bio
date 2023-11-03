@@ -138,7 +138,7 @@ class AdminController extends Controller
         }
         //check if image
         if ($request->image) {
-            $data['image'] = $this->uploadFile($request->image, config('paths.ADMINS_PATH'));
+            $data['image'] = uploadImage($request->image, config('paths.ADMINS_PATH'), $admin->image);
         }
 
         $admin->update($data);
