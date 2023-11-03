@@ -16,7 +16,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.home') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/home.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.dashboard') }}</span>
                     </a>
@@ -25,7 +25,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.courses.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-blackboard"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/course.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.courses') }}</span>
                     </a>
@@ -34,7 +34,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.lectures.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/lecture.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.lectures') }}</span>
                     </a>
@@ -43,7 +43,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.lessons.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/lesson.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.lessons') }}</span>
                     </a>
@@ -52,7 +52,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-id-badge"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/student.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.students') }}</span>
                     </a>
@@ -61,7 +61,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.levels.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/level.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.levels') }}</span>
                     </a>
@@ -70,7 +70,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.cities.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/city.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.cities') }}</span>
                     </a>
@@ -79,7 +79,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.faqs.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/faq.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.faqs') }}</span>
                     </a>
@@ -88,7 +88,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.admins.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-users"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/admin.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.admins') }}</span>
                     </a>
@@ -97,7 +97,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.withdraw_requests.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-credit-card"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/payment.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.withdraw_requests') }}</span>
                     </a>
@@ -106,7 +106,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-settings"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/setting.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.settings') }}</span>
                     </a>
@@ -115,7 +115,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.roles.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/permission.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.roles') }}</span>
                     </a>

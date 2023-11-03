@@ -16,7 +16,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('student.home') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/home.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.dashboard') }}</span>
                     </a>
@@ -25,7 +25,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('student.lessons.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/lesson.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.lessons') }}</span>
                     </a>
@@ -34,7 +34,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('student.faqs.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/faq.png') }}" alt="">
                         </span>
                         <span class="hide-menu">{{ __('lang.faqs') }}</span>
                     </a>
