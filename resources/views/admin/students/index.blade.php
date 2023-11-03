@@ -168,9 +168,9 @@
 
         $('#select_all').on('change', function() {
             if($(this).is(':checked')) {
-                $('.form-check-input').prop('checked', true);
+                $('.w3-check').prop('checked', true);
             } else {
-                $('.form-check-input').prop('checked', false);
+                $('.w3-check').prop('checked', false);
             }
         });
 

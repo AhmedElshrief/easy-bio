@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::post('students/deactive-students', [StudentController::class, 'deactiveStudents'])->name('students.deactive-students');
 
 
-        Route::resource('lessons', LessonController::class)->except(['show']);
+        Route::resource('lessons', LessonController::class);
         Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
         Route::delete('lessons/file/delete', [LessonController::class, 'deleteFile'])->name('lessons.delete-file');
 

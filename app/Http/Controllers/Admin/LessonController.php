@@ -35,6 +35,20 @@ class LessonController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $lesson = $this->model->findOrFail($id);
+
+        return view('admin.lessons.show', [
+            'lesson' => $lesson,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      * @return \Illuminate\Http\Response
      */

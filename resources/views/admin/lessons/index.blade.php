@@ -18,7 +18,8 @@
 
             @component('admin.layouts.includes.card', ['id' => 'filter_body'])
                 @slot('tool')
-                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}" onclick="$('#filter_body').slideToggle()">
+                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}"
+                        onclick="$('#filter_body').slideToggle()">
                         <i class="ti ti-filter"></i>
                     </button>
                 @endslot
@@ -59,7 +60,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img class="rounded-circle" src="{{ $lesson->image_path }}" alt="" width="50" height="50">
+                                            <img class="rounded-circle" src="{{ $lesson->image_path }}" alt="" width="50"
+                                                height="50">
                                             {{ $lesson->title ?? '' }}
                                         </td>
                                         <td>{{ $lesson->lecture->title ?? '' }}</td>
@@ -80,8 +82,11 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.lessons.edit', $lesson->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            <a data-href="{{ route('admin.lessons.show', $lesson->id) }}" data-container=".table-modal"
+                                                class="btn btn-sm btn-modal btn-info"> <i class="ti ti-eye"></i>
+                                            </a>
+                                            <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-primary btn-sm"><i
+                                                    class="ti ti-pencil"></i></a>
                                             <a data-href="{{ route('admin.lessons.destroy', $lesson->id) }}"
                                                 class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
                                         </td>
@@ -104,6 +109,10 @@
         </div>
     </div>
 
+    <div class="modal fade table-modal" id="table-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+    </div>
+
 @endsection
 
 
@@ -123,8 +132,5 @@
                 });
             });
         }
-
     </script>
 @endsection
-
-
