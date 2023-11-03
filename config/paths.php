@@ -8,4 +8,5 @@ return [
     'LESSONS_PATH' => 'uploads/lessons/',
     'WITHDRAW_REQUESTS_PATH' => 'uploads/withdraw_requests/',
     'ADMINS_PATH' => 'uploads/admins/',
+    'LESSONS_FILES_PATH' => 'uploads/lessons/files/',
 ];

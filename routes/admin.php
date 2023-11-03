@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
 
         Route::resource('lessons', LessonController::class)->except(['show']);
         Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
+        Route::delete('lessons/file/delete', [LessonController::class, 'deleteFile'])->name('lessons.delete-file');
 
         Route::resource('faqs', FaqController::class)->except(['show']);
 

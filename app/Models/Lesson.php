@@ -28,6 +28,10 @@ class Lesson extends Model implements TranslatableContract
         return $this->belongsToMany(User::class, 'user_lessons', 'user_id', 'lesson_id');
     }
 
+    public function files() {
+        return $this->hasMany(LessonFile::class, 'lesson_id');
+    }
+
     public function scopeFilter($query, $request)
     {
         if ($request->search) {

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'files' => 'Files',
     'are_you_sure_restore_student' => 'Are You Sure Restore Student ?',
     'deactive_students' => 'Deactive Students',
     'active_students' => 'Active Students',

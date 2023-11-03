@@ -101,17 +101,6 @@
                             </div>
 
                             <div class="col-sm-12 col-md-6 pt-2">
-                                {!! Form::label('vimeo_embed',__('lang.vimeo_embed') ) !!}
-                                <span class="text-danger">*</span>
-                                {!! Form::text('vimeo_embed', old('vimeo_embed', $lesson->vimeo_embed), [
-                                        "class"=>'form-control form-input',
-                                        'required',
-                                        "placeholder"=> __('lang.select_item')
-                                    ])
-                                !!}
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 pt-2">
                                 {!! Form::label('lecture_id',__('lang.lecture') ) !!}
                                 <span class="text-danger">*</span>
                                 {!! Form::select('lecture_id', $lectures, old('lecture_id', $lesson->lecture_id), [
@@ -120,6 +109,44 @@
                                         "placeholder"=> __('lang.select_item')
                                     ])
                                 !!}
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 pt-2">
+                                {!! Form::label('vimeo_embed',__('lang.vimeo_embed') ) !!}
+                                <span class="text-danger">*</span>
+                                {!! Form::textarea('vimeo_embed', old('vimeo_embed', $lesson->vimeo_embed), [
+                                        "class"=>'form-control form-input',
+                                        'rows' => 5,
+                                        'required',
+                                        "placeholder"=> __('lang.select_item')
+                                    ])
+                                !!}
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 pt-2">
+                                {!! Form::label('files',__('lang.files') ) !!}
+                                {!! Form::file('files[]', [
+                                        "class"=>'form-control form-input',
+                                        'multiple',
+                                ]) !!}
+                            </div>
+
+                            <div>
+                                @if (count($lesson->files) > 0)
+                                    @foreach ($lesson->files as $item)
+                                        <div class="mt-3 d-flex">
+                                            <div class="delete-file h4 text-danger cursor-pointer ms-2 me-2"
+                                                data-id="{{ $item->id }}">
+                                                <i class="ti ti-trash"></i>
+                                            </div>
+                                            <div>
+                                                {{-- <embed src="{{ asset($item->file) }}" width="200" height="200" alt="pdf" /> --}}
+                                                <a href="{{ asset($item->path) }}"
+                                                    target="_blank">{{ $item->origin_name }}</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
 
                             <div class="col-sm-12 col-md-12 pt-4">
@@ -149,4 +176,26 @@
 
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script>
+         // delete file by ajax
+         $('.delete-file').on('click', function() {
+            if (confirm('{{ __("lang.are_you_sure") }}')) {
+                $(this).parent().remove();
+                $.ajax({
+                    type: 'DELETE',
+                    url: '{{ route("admin.lessons.delete-file") }}',
+                    data: {
+                        file_id: $(this).attr('data-id'),
+                        _token: '{{ csrf_token() }}',
+                    },
+                })
+            }
+
+        });
+    </script>
+
 @endsection

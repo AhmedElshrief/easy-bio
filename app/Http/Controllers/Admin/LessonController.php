@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LessonRequest;
 use App\Models\Lecture;
 use App\Models\Lesson;
+use App\Models\LessonFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class LessonController extends Controller
 {
     protected $model;
 
-    public function __construct(Lesson $model) {
+    public function __construct(Lesson $model)
+    {
         $this->model = $model;
     }
 
@@ -51,9 +54,21 @@ class LessonController extends Controller
     public function store(LessonRequest $request)
     {
         $data = $request->validated();
-        // dd($data);
         $data['image'] = uploadImage($data['image'], config('paths.LESSONS_PATH'));
-        $this->model->create($data);
+        $files = $request->file('files');
+        unset($data['files']);
+        $lesson = $this->model->create($data);
+
+        if ($files) {
+            $lesson->files()->createMany(array_map(function ($file) use ($lesson) {
+                return [
+                    'path' => uploadImage($file, config('paths.LESSONS_FILES_PATH')),
+                    'origin_name' => $file->getClientOriginalName(),
+                    'lesson_id' => $lesson->id
+                ];
+            }, $files));
+        }
+
         toast(__('lang.added_successfully'), 'success');
         return redirect()->route('admin.lessons.index');
     }
@@ -80,9 +95,22 @@ class LessonController extends Controller
     public function update(LessonRequest $request, Lesson $lesson)
     {
         $data = $request->validated();
-        if(isset($data['image'])) {
+        if (isset($data['image'])) {
             $data['image'] = uploadImage($data['image'], config('paths.LESSONS_PATH'), $lesson->image);
         }
+        $files = $request->file('files');
+        unset($data['files']);
+
+        if ($files) {
+            $lesson->files()->createMany(array_map(function ($file) use ($lesson) {
+                return [
+                    'path' => uploadImage($file, config('paths.LESSONS_FILES_PATH')),
+                    'origin_name' => $file->getClientOriginalName(),
+                    'lesson_id' => $lesson->id
+                ];
+            }, $files));
+        }
+
         if (!isset($data['active'])) {
             $data['active'] = 0;
         }
@@ -99,12 +127,24 @@ class LessonController extends Controller
     public function destroy(Lesson $lesson)
     {
         deleteImage($lesson->image);
+        if($lesson->files) {
+            foreach ($lesson->files as $file) {
+                deleteImage($file->path);
+            }
+        }
         $lesson->delete();
         toast(__('lang.deleted_successfully'), 'success');
         return redirect()->route('admin.lessons.index');
     }
 
-    public function changeActive(Request $request) {
+    public function deleteFile(Request $request) {
+        $file = LessonFile::where('id', $request->file_id)->first();
+        File::delete($file->path);
+        $file->delete();
+    }
+
+    public function changeActive(Request $request)
+    {
         $lesson = $this->model->findOrFail($request->id);
         $lesson->active = $request->value;
         $lesson->save();
@@ -113,5 +153,4 @@ class LessonController extends Controller
             'message' => __('lang.updated_successfully'),
         ]);
     }
-
 }

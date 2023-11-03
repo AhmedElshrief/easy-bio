@@ -36,6 +36,8 @@ class LessonRequest extends FormRequest
             'active' => ['nullable'],
             'vimeo_embed' => ['required', 'string'],
             'lecture_id' => ['required'],
+            'files'      => ['nullable', 'array'],
+            'files.*'    => ['nullable', 'file', 'max:10240'],
         ];
     }
 }
