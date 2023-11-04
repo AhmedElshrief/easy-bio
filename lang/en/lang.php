@@ -16,6 +16,8 @@ return [
     'November' => 'November',
     'December' => 'December',
 
+    'test' => 'test',
+    'home_title' => 'Dr. / Mohamed Al-Sabry',
     'update_profile' => 'Update Profile',
     'profile' => 'Profile',
     'edit_profile' => 'Edit Profile',
