@@ -80,17 +80,6 @@ class AdminStatisticsBuilder
         return $this;
     }
 
-    // public function withUserLessons()
-    // {
-    //     $this->data['userLessons'] = DB::table('user_lessons')
-    //         ->select('lesson_id')
-    //         ->groupBy('lesson_id')
-    //         ->select(DB::raw('COUNT(lesson_id) as count, lesson_id'))
-    //         ->max('count')
-    //         ->get();
-    //     return $this;
-    // }
-
     public function withMaxLesson()
     {
         $r = DB::table('user_lessons')
@@ -103,9 +92,6 @@ class AdminStatisticsBuilder
         $this->data['maxLessonCount'] = $r->count;
         return $this;
     }
-
-    
-
 
     public function builder()
     {
