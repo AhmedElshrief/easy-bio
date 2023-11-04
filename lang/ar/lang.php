@@ -1,6 +1,21 @@
 <?php
 
 return [
+    'business_subscription_by_month' => 'المشتركين خلال كل شهر',
+    'subscriptions_during_year' => 'الاشتراكات خلال السنه',
+    'January' => 'يناير',
+    'February' => 'فبراير',
+    'March' => 'مارس',
+    'April' => 'ابريل',
+    'May' => 'مايو',
+    'June' => 'يونيو',
+    'July' => 'يوليو',
+    'August' => 'أغسطس',
+    'September' => 'سبتمبر',
+    'October' => 'أكتوبر',
+    'November' => 'نوفمبر',
+    'December' => 'ديسمبر',
+    
     'update_profile' => 'تحديث الملف الشخصي',
     'profile' => 'الملف الشخصي',
     'edit_profile' => 'تعديل الملف الشخصي',

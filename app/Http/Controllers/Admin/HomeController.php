@@ -19,14 +19,18 @@ class HomeController extends Controller
             ->withFaqsCount()
             ->withAdminsCount()
             ->withWithdrawRequestsCount()
+            ->withSubscriptionsChart()
+            ->withMaxLesson()
             ->builder();
+
+        // dd($data['maxLesson'], $data['maxLessonCount']);
 
         $totals = [
             [
                 'label' => __('lang.courses'),
                 'image' => 'assets/images/sidebar/course.png',
                 'count' => $data['coursesCount'],
-               ],
+            ],
             [
                 'label' => __('lang.lectures'),
                 'image' => 'assets/images/sidebar/lecture.png',
@@ -70,7 +74,10 @@ class HomeController extends Controller
         ];
 
         return view('admin.home.index', [
-            'totals' => $totals
+            'totals' => $totals,
+            'subscriptionsChart' => $data['subscriptionsChart'],
+            'maxLesson' => $data['maxLesson'],
+            'maxLessonCount' => $data['maxLessonCount']
         ]);
     }
 }

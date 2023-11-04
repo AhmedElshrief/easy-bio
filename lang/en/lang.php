@@ -1,6 +1,21 @@
 <?php
 
 return [
+    'subscriptions_during_year' => 'The subscriptions during the year',
+    'business_subscription_by_month' => 'Business Subscription by Month',
+    'January' => 'January',
+    'February' => 'February',
+    'March' => 'March',
+    'April' => 'April',
+    'May' => 'May',
+    'June' => 'June',
+    'July' => 'July',
+    'August' => 'August',
+    'September' => 'September',
+    'October' => 'October',
+    'November' => 'November',
+    'December' => 'December',
+
     'update_profile' => 'Update Profile',
     'profile' => 'Profile',
     'edit_profile' => 'Edit Profile',
