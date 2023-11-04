@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->float('price');
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(0);
             $table->longText('vimeo_embed');
-            $table->foreignId('lecture_id')->constrained('lecutres')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('lecture_id')->constrained('lectures')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

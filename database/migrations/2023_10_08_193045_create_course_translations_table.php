@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('locale');
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
         });
     }
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-{{-- {{ dd(Session::get('lang')) }} --}}
-<html lang="{{ Session::get('lang') }}"
-    @if (Session::get('lang') == 'ar') direction="rtl" dir="rtl" style="direction: rtl" @endif>
+<html lang="{{ Session::get('locale') }}"
+    @if (Session::get('locale') == 'ar') direction="rtl" dir="rtl" style="direction: rtl" @endif>
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +17,9 @@
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
+
+        @include('vendor.sweetalert.alert')
+
         <!-- Sidebar Start -->
         @include('admin.layouts.sidebar')
         <!--  Sidebar End -->
@@ -37,7 +39,6 @@
     </div>
 
     @include('admin.layouts.script')
-    @include('vendor.sweetalert.alert')
 </body>
 
 </html>

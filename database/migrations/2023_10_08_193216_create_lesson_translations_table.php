@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('locale');
             $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
         });
     }
 

@@ -1,8 +1,20 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LangController;
+use App\Http\Controllers\Admin\LectureController;
+use App\Http\Controllers\Admin\LessonController;
+use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\WalletTrabsactionController;
+use App\Http\Controllers\Admin\WithdrawRequestController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -15,129 +27,64 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin.home.index');
-// });
-
 $prefix = 'admin.';
 
 // // Before Login Dashboard Routes
-Route::group(['middleware' => 'guest:admin'], function () use ($prefix) {
+Route::group(['middleware' => 'guest:admin', 'prefix' => '/admin'], function () use ($prefix) {
     // Route Login
     Route::get('login', [AuthController::class, 'view'])->name($prefix . 'view_login');
     Route::post('login', [AuthController::class, 'login'])->name($prefix . 'login');
 
 });
 
-
-Route::group(['middleware' => 'auth:admin'],function() use ($prefix){
+Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use ($prefix){
 
     Route::post('logout', [AuthController::class, 'logout'])->name($prefix . 'logout');
     Route::get('lang', [LangController::class, 'changeLang'])->name($prefix . 'lang');
-    Route::get('/admin', [HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
-//     Route::get('lang', 'LangController@changeLang')->name($prefix . 'lang');
+    Route::name('admin.')->group(function () {
+        Route::resource('cities', CityController::class)->except(['show']);
+        Route::resource('levels', LevelController::class)->except(['show']);
+        Route::resource('courses', CourseController::class)->except(['show']);
+        Route::post('courses/change-active', [CourseController::class, 'changeActive'])->name('courses.changeActive');
 
-//     // // route of pool types
-//     // Route::group(['prefix' => '/pool-types'], function () use ($prefix) {
-//     //     Route::controller('PoolTypeController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'type.index');
-//     //         Route::get('/create', 'create')->name($prefix.'type.create');
-//     //         Route::post('/store', 'store')->name($prefix.'type.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix.'type.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix.'type.update');
-//     //         Route::delete('/delete/{id}', 'destroy')->name($prefix.'type.delete');
-//     //     });
-//     // });
+        Route::resource('lectures', LectureController::class)->except(['show']);
+        Route::post('lectures/change-active', [LectureController::class, 'changeActive'])->name('lectures.changeActive');
 
-
-//     // // route of products
-//     // Route::group(['prefix' => '/products'], function () use ($prefix) {
-//     //     Route::controller('ProductController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'product.index');
-//     //         Route::get('/create', 'create')->name($prefix.'product.create');
-//     //         Route::post('/store', 'store')->name($prefix.'product.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix.'product.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix.'product.update');
-//     //         Route::delete('/delete/{id}', 'destroy')->name($prefix.'product.delete');
-//     //     });
-//     // });
-
-//     // Route::group(['prefix' => '/fields'], function () use ($prefix) {
-//     //     Route::controller('FieldController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'field.index');
-//     //         Route::get('/create', 'create')->name($prefix.'field.create');
-//     //         Route::post('/store', 'store')->name($prefix.'field.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix.'field.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix.'field.update');
-//     //         Route::delete('/delete/{id}', 'destroy')->name($prefix.'field.delete');
-//     //         Route::post('/statusChange', 'statusChange')->name($prefix.'field.statusChange');
-
-//     //     });
-//     // });
+        Route::resource('students', StudentController::class)->except(['show']);
+        Route::post('students/change-status', [StudentController::class, 'changeStatus'])->name('students.changeStatus');
+        Route::get('students/trashlist', [StudentController::class, 'trashlist'])->name('students.trashlist');
+        Route::get('students/restore/{id}', [StudentController::class, 'restore'])->name('students.restore');
+        Route::delete('students/hard-delete/{id}', [StudentController::class, 'hardDelete'])->name('students.hard-delete');
+        Route::post('students/delete-students', [StudentController::class, 'deleteStudents'])->name('students.delete-students');
+        Route::post('students/reset-wallets', [StudentController::class, 'resetWallets'])->name('students.reset-wallets');
+        Route::post('students/active-students', [StudentController::class, 'activeStudents'])->name('students.active-students');
+        Route::post('students/deactive-students', [StudentController::class, 'deactiveStudents'])->name('students.deactive-students');
 
 
+        Route::resource('lessons', LessonController::class);
+        Route::post('lessons/change-active', [LessonController::class, 'changeActive'])->name('lessons.changeActive');
+        Route::delete('lessons/file/delete', [LessonController::class, 'deleteFile'])->name('lessons.delete-file');
 
-//     // Route::group(['prefix' => '/languages'], function () use ($prefix) {
-//     //     Route::controller('LanguageContoller')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'language.index');
-//     //         Route::get('/create', 'create')->name($prefix.'language.create');
-//     //         Route::post('/store', 'store')->name($prefix.'language.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix.'language.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix.'language.update');
-//     //         Route::delete('/delete/{id}', 'destroy')->name($prefix.'language.delete');
+        Route::resource('faqs', FaqController::class)->except(['show']);
 
-//     //     });
-//     // });
+        Route::resource('withdraw_requests', WithdrawRequestController::class)->except(['show']);
+        Route::post('withdraw_requests/change-status', [WithdrawRequestController::class, 'changeStatus'])->name('withdraw_requests.changeStatus');
 
+        // Route::resource('wallet_transactions', WalletTrabsactionController::class)->except(['show', 'destroy']);
+        Route::get('wallet_transactions/create/{withdraw_request}', [WalletTrabsactionController::class, 'create'])->name('wallet_transactions.create');
+        Route::post('wallet_transactions/store', [WalletTrabsactionController::class, 'store'])->name('wallet_transactions.store');
 
-//     // Route::group(['prefix' => '/words-translation'], function () use ($prefix) {
-//     //     Route::controller('WordTranslationController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'translation.index');
-//     //         Route::post('/save-Translations', 'saveTranslations')->name($prefix.'translation.saveTranslations');
+        Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('saveSettings', [SettingController::class, 'saveSettings'])->name('settings.saveSettings');
 
-//     //     });
-//     // });
+        Route::resource('roles', RoleController::class)->except(['show']);
+        Route::resource('admins', AdminController::class)->except(['show']);
+        Route::get('profile', [AdminController::class, 'profile'])->name('profile');
+        Route::post('updateProfile/{admin}', [AdminController::class, 'updateProfile'])->name('profile.update');
 
-//     // Route::group(['prefix' => '/settings'], function () use ($prefix) {
-//     //     Route::controller('SettingController')->group(function () use ($prefix)  {
-//     //         Route::get('/', 'index')->name($prefix.'settings.index');
-//     //         Route::post('saveSettings', 'saveSettings')->name($prefix.'settings.saveSettings');
-//     //     });
-//     // });
-
-
-//     //  //role routes
-//     //  Route::group(['prefix' => 'roles'], function () use ($prefix) {
-//     //     Route::controller(RoleController::class)->group(function () use ($prefix) {
-//     //         Route::get('/', 'index')->name($prefix . 'role.index');
-//     //         Route::get('/create', 'create')->name($prefix . 'role.create');
-//     //         Route::post('/store', 'store')->name($prefix . 'role.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix . 'role.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix . 'role.update');
-//     //         Route::delete('/destroy/{id}', 'destroy')->name($prefix . 'role.delete');
-//     //     });
-//     // });
-
-//     // //admins routes
-//     // Route::group(['prefix' => 'admins'], function () use ($prefix) {
-//     //     Route::controller(AdminController::class)->group(function () use ($prefix) {
-//     //         Route::get('/', 'index')->name($prefix . 'admin.index');
-//     //         Route::get('/create', 'create')->name($prefix . 'admin.create');
-//     //         Route::post('/store', 'store')->name($prefix . 'admin.store');
-//     //         Route::get('/edit/{id}', 'edit')->name($prefix . 'admin.edit');
-//     //         Route::post('/update/{id}', 'update')->name($prefix . 'admin.update');
-//     //         Route::delete('/destroy/{id}', 'destroy')->name($prefix . 'admin.delete');
-//     //     });
-//     // });
-
-//     // //admins routes
-//     // Route::group(['prefix' => 'users'], function () use ($prefix) {
-//     //     Route::controller(UserController::class)->group(function () use ($prefix) {
-//     //         Route::get('/', 'index')->name($prefix . 'user.index');
-//     //         Route::delete('/destroy/{id}', 'destroy')->name($prefix . 'user.delete');
-//     //     });
-//     // });
+    });
 
 });
 

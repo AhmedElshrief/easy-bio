@@ -14,7 +14,7 @@ class LangController extends Controller
         $langArr = config('translatable.locales');
         if($request->has('lang')){
             if (in_array($request->get('lang'), $langArr)){
-                Session::put('lang', $request->get('lang'));
+                Session::put('locale', $request->get('lang'));
                 return redirect()->back();
             }
         }

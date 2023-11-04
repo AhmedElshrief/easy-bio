@@ -2,8 +2,8 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
-                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <a href="{{ route('admin.home') }}" class="text-nowrap logo-img">
+                <img src="{{ asset($settings['logo'] ?? '')  }}" width="80" height="40" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -14,102 +14,112 @@
             <ul id="sidebarnav">
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.home') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/home.png') }}" alt="">
                         </span>
-                        <span class="hide-menu">test</span>
+                        <span class="hide-menu">{{ __('lang.dashboard') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.courses.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/course.png') }}" alt="">
                         </span>
-                        <span class="hide-menu">test</span>
+                        <span class="hide-menu">{{ __('lang.courses') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.lectures.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-box-seam"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/lecture.png') }}" alt="">
                         </span>
-                        <span class="hide-menu">@lang('lang.test')</span>
-                    </a>
-                </li>
-
-                {{-- <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.field.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-clipboard-list"></i>
-                        </span>
-                        <span class="hide-menu">{{ _trans('fields') }}</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}" href="{{ route('admin.role.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-shield-check"></i>
-                        </span>
-                        <span class="hide-menu">{{ _trans('roles') }}</span>
+                        <span class="hide-menu">{{ __('lang.lectures') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('admin.admin.create') ? 'active' : '' }}" href="{{ route('admin.admin.index') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.lessons.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-users"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/lesson.png') }}" alt="">
                         </span>
-                        <span class="hide-menu">{{ _trans('admins') }}</span>
+                        <span class="hide-menu">{{ __('lang.lessons') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.user.index') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-user"></i>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/student.png') }}" alt="">
                         </span>
-                        <span class="hide-menu">{{ _trans('users') }}</span>
+                        <span class="hide-menu">{{ __('lang.students') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-                      <span class="d-flex">
-                        <i class="ti ti-settings"></i>
-                    </span>
-                    <span class="hide-menu">{{ _trans('global_settings') }}</span>
-                </a>
-                    <ul aria-expanded="false" class="collapse first-level">
-                      <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
-                            <span>
-                                <i class="ti ti-settings"></i>
-                            </span>
-                            <span class="hide-menu">{{ _trans('settings') }}</span>
-                        </a>
-                      </li>
-                      <li class="sidebar-item">
-                        <a href="{{ route('admin.language.index') }}" class="sidebar-link">
-                          <div class="round-16 d-flex align-items-center justify-content-center">
-                            <i class="ti ti-globe"></i>
-                          </div>
-                          <span class="hide-menu">{{ _trans('languages') }}</span>
-                        </a>
-                      </li>
-                      <li class="sidebar-item">
-                        <a href="{{ route('admin.translation.index') }}" class="sidebar-link">
-                          <div class="round-16 d-flex align-items-center justify-content-center">
-                            <i class="ti ti-globe"></i>
-                          </div>
-                          <span class="hide-menu">{{ _trans('translations') }}</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li> --}}
+                    <a class="sidebar-link" href="{{ route('admin.levels.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/level.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.levels') }}</span>
+                    </a>
+                </li>
 
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.cities.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/city.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.cities') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.faqs.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/faq.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.faqs') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.admins.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/admin.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.admins') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.withdraw_requests.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/payment.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.withdraw_requests') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/setting.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.settings') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.roles.index') }}" aria-expanded="false">
+                        <span>
+                            <img width="27" height="27" src="{{ asset('assets/images/sidebar/permission.png') }}" alt="">
+                        </span>
+                        <span class="hide-menu">{{ __('lang.roles') }}</span>
+                    </a>
+                </li>
 
             </ul>
 

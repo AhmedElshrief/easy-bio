@@ -2,10 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 
-class Level extends Model
+class Level extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use Translatable;
+
+    protected $translatedAttributes = ['name'];
+    protected $guarded = [];
+
+    public function courses() {
+        return $this->hasMany(Course::class, 'level_id');
+    }
+
+    public function students() {
+        return $this->hasMany(User::class, 'level_id');
+    }
 }
+
+
+
