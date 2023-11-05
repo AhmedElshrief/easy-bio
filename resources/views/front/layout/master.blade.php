@@ -6,6 +6,7 @@
 
 <head>
     @include('front.layout.css')
+    @yield('css')
 </head>
 
 <body>

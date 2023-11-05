@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('front.home.index');
-});
+$prefix = 'front.';
+Route::get('/', [HomeController::class, 'index'])->name($prefix . 'home');
+Route::get('/courses', [HomeController::class, 'index'])->name($prefix . 'courses');
+Route::get('/courses/{id}', [HomeController::class, 'index'])->name($prefix . 'showCourses');
+Route::get('/lectures', [HomeController::class, 'index'])->name($prefix . 'lectures');
+Route::get('/lectures/{id}', [HomeController::class, 'index'])->name($prefix . 'showLectures');
+Route::get('/lessons', [HomeController::class, 'index'])->name($prefix . 'lessons');
+Route::get('/lessons/{id}', [HomeController::class, 'index'])->name($prefix . 'showLessons');
+Route::get('/contact', [HomeController::class, 'contact'])->name($prefix . 'contact');

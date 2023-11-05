@@ -5,8 +5,8 @@
     <div id="loading-center">
         <div id="loading-center-absolute">
             <div class="loading-content-2 text-center">
-                <img class="loading-logo-icon-2" src="assets/img/logo/logo-icon.png" alt="">
-                <img class="loading-logo-text-2" src="assets/img/logo/logo-text-2.png" alt="">
+                <img class="loading-logo-icon-2" width="100px" src="{{ url('/front') }}/assets/img/logo/logo-icon.png"
+                    alt="">
             </div>
         </div>
     </div>

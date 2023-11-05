@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model implements TranslatableContract
 {
@@ -28,6 +28,11 @@ class Course extends Model implements TranslatableContract
     public function lectures()
     {
         return $this->hasMany(Lecture::class, 'course_id');
+    }
+
+    public function lessons()
+    {
+        return Lesson::whereIn('lecture_id', $this->lectures->pluck('id'));
     }
 
     public function scopeFilter($query, $request)

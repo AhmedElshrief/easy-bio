@@ -29,7 +29,7 @@
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                             <div class="hero__thumb-wrapper mb--120">
                                 <div class="hero__thumb-2 scene">
-                                    <img class="hero-big" src="{{ url('/front') }}/assets/img/home.png" alt="">
+                                    <img class="hero-big" src="{{ url('/front') }}/assets/img/boy.png" alt="">
                                     <img class="hero-shape-purple"
                                         src="{{ url('/front') }}/assets/img/hero/hero-2/hero-shape-purple.png"
                                         alt="">
@@ -370,141 +370,59 @@
 
                 </div>
                 <div class="row grid">
-
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 grid-item cat1 cat2 cat4">
-                        <div class="course__item white-bg mb-30 fix">
-                            <div class="course__thumb w-img p-relative fix">
-                                <a href="course-details.html">
-                                    <img src="{{ url('/front') }}/assets/img/course/course-1.jpg" alt="">
-                                </a>
-                                <div class="course__tag">
-                                    <a href="#">Art & Design</a>
-                                </div>
-                            </div>
-                            <div class="course__content">
-                                <div class="course__meta d-flex align-items-center justify-content-between">
-                                    <div class="course__lesson">
-                                        <span><i class="far fa-book-alt"></i>43 Lesson</span>
-                                    </div>
-                                    <div class="course__rating">
-                                        <span><i class="icon_star"></i>4.5 (44)</span>
-                                    </div>
-                                </div>
-                                <h3 class="course__title"><a href="course-details.html">Become a product Manager learn
-                                        the skills & job.</a></h3>
-                                <div class="course__teacher d-flex align-items-center">
-                                    <div class="course__teacher-thumb mr-15">
-                                        <img src="{{ url('/front') }}/assets/img/course/teacher/teacher-1.jpg"
-                                            alt="">
-                                    </div>
-                                    <h6><a href="instructor-details.html">Jim Séchen</a></h6>
-                                </div>
-                            </div>
-                            <div class="course__more d-flex justify-content-between align-items-center">
-                                <div class="course__status">
-                                    <span>Free</span>
-                                </div>
-                                <div class="course__btn">
-                                    <a href="course-details.html" class="link-btn">
-                                        Know Details
-                                        <i class="far fa-arrow-right"></i>
-                                        <i class="far fa-arrow-right"></i>
+                    @foreach ($courses as $course)
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 grid-item cat1 cat2 cat4">
+                            <div class="course__item white-bg mb-30 fix">
+                                <div class="course__thumb w-img p-relative fix">
+                                    <a href="course-details.html">
+                                        <img src="{{ asset($course->image) }}" alt="">
                                     </a>
+                                    <div class="course__tag">
+                                        {{-- <a href="#">Art & Design</a> --}}
+                                    </div>
+                                </div>
+                                <div class="course__content">
+                                    <div class="course__meta d-flex align-items-center justify-content-between">
+                                        <div class="course__lesson">
+                                            <span><i class="far fa-book-alt"></i>{{ $course->lessons()->count() }}
+                                                {{ __('lang.lesson') }}</span>
+                                        </div>
+                                        <div class="course__rating">
+                                            <span><i class="icon_star"></i>{{ $course->lectures()->count() }} </span>
+                                        </div>
+                                    </div>
+                                    <h3 class="course__title">
+                                        <a href="course-details.html">{{ $course->title }}</a>
+                                    </h3>
+                                    <div class="course__teacher d-flex align-items-center">
+                                        <div class="course__teacher-thumb mr-15">
+                                            <img src="{{ asset('front/assets/img/logo/logo.png') }}" alt="">
+                                        </div>
+                                        <h6>
+                                            {{ __('lang.home_title') }}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="course__more d-flex justify-content-between align-items-center">
+                                    <div class="course__status">
+                                    </div>
+                                    <div class="course__btn">
+                                        <a href="course-details.html" class="link-btn">
+                                            {{ __('lang.view') }}
+                                            <i class="far fa-arrow-right"></i>
+                                            <i class="far fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
         </section>
         <!-- course area end -->
 
-        <!-- what area start -->
-        <section class="what__area pt-115">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                        <div class="section__title-wrapper mb-60 text-center">
-                            <h2 class="section__title">What is <span class="yellow-bg-big">Skilline? <img
-                                        src="{{ url('/front') }}/assets/img/shape/yellow-bg-2.png" alt=""></span>
-                            </h2>
-                            <p>Sloshed faff about me old mucker blatant bubble and squeak hanky panky some dodgy chav
-                                bevvy arse chimney pot I, ruddy plastered buggered smashing blow off I'm telling up the
-                                kyver he legged it bleeder jolly good, </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xxl-5 offset-xl-1 col-xl-5 offset-xl-1 col-lg-6">
-                        <div class="what__item transition-3 mb-30 p-relative fix">
-                            <div class="what__thumb w-img">
-                                <img src="{{ url('/front') }}/assets/img/what/what-1.jpg" alt="">
-                            </div>
-                            <div class="what__content p-absolute text-center">
-                                <h3 class="what__title white-color">Mostly <br> Online Learning</h3>
-                                <a href="contact.html" class="e-btn e-btn-border-2">Start a class today</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5 col-xl-5 col-lg-6">
-                        <div class="what__item transition-3 mb-30 p-relative fix">
-                            <div class="what__thumb w-img">
-                                <img src="{{ url('/front') }}/assets/img/what/what-2.jpg" alt="">
-                            </div>
-                            <div class="what__content p-absolute text-center">
-                                <h3 class="what__title white-color">Become <br> an Instructor</h3>
-                                <a href="contact.html" class="e-btn e-btn-border-2">Start teaching</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- what area end -->
-
-        <!-- why area start -->
-        <section class="why__area pt-125">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xxl-5 offset-xxl-1 col-xl-5 offset-xl-1 col-lg-6 col-md-8">
-                        <div class="why__content pr-50 mt-40">
-                            <div class="section__title-wrapper mb-30">
-                                <span class="section__sub-title">Why Choses Me</span>
-                                <h2 class="section__title">Tools for <span class="yellow-bg yellow-bg-big">Teachers<img
-                                            src="{{ url('/front') }}/assets/img/shape/yellow-bg.png"
-                                            alt=""></span> and Learners
-                                </h2>
-                                <p>Oxford chimney pot Eaton faff about blower blatant brilliant, bubble and squeak he
-                                    legged it Charles bonnet arse at public school bamboozled.</p>
-                            </div>
-                            <div class="why__btn">
-                                <a href="contact.html" class="e-btn e-btn-3 mr-30">Join for Free</a>
-                                <a href="about.html" class="link-btn">
-                                    Learn More
-                                    <i class="far fa-arrow-right"></i>
-                                    <i class="far fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-8">
-                        <div class="why__thumb">
-                            <img src="{{ url('/front') }}/assets/img/why/why.png" alt="">
-                            <img class="why-green" src="{{ url('/front') }}/assets/img/why/why-shape-green.png"
-                                alt="">
-                            <img class="why-pink" src="{{ url('/front') }}/assets/img/why/why-shape-pink.png"
-                                alt="">
-                            <img class="why-dot" src="{{ url('/front') }}/assets/img/why/why-shape-dot.png"
-                                alt="">
-                            <img class="why-line" src="{{ url('/front') }}/assets/img/why/why-shape-line.png"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- why area end -->
 
         <!-- counter area start -->
         <section class="counter__area pt-145 pb-100">
@@ -512,10 +430,12 @@
                 <div class="row">
                     <div class="col-xxl-6 offset-xl-3 col-xl-6 offset-xl-3">
                         <div class="section__title-wrapper text-center mb-60">
-                            <h2 class="section__title">We are <span class="yellow-bg yellow-bg-big">Proud<img
-                                        src="{{ url('/front') }}/assets/img/shape/yellow-bg.png" alt=""></span>
+                            <h2 class="section__title">
+                                نفخر على
                             </h2>
-                            <p>You don't have to struggle alone, you've got our assistance and help.</p>
+                            <p>
+                                لدينا الكثير من الانجازات
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -540,9 +460,9 @@
                                 </svg>
                             </div>
                             <div class="counter__content">
-                                <h4><span data-purecounter-duration="1" data-purecounter-end="345421"
-                                        class="purecounter">0</span></h4>
-                                <p>Students Enrolled</p>
+                                <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['students'] }}"
+                                        class="purecounter">{{ $data['students'] }}</span></h4>
+                                <p>الطلاب</p>
                             </div>
                         </div>
                     </div>
@@ -557,9 +477,9 @@
                                 </svg>
                             </div>
                             <div class="counter__content">
-                                <h4><span data-purecounter-duration="1" data-purecounter-end="2485"
-                                        class="purecounter">0</span></h4>
-                                <p>Total Courses</p>
+                                <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['courses'] }}"
+                                        class="purecounter">{{ $data['courses'] }}</span></h4>
+                                <p>الكورسات</p>
                             </div>
                         </div>
                     </div>
@@ -579,9 +499,9 @@
                                 </svg>
                             </div>
                             <div class="counter__content">
-                                <h4><span data-purecounter-duration="1" data-purecounter-end="24085"
-                                        class="purecounter">0</span></h4>
-                                <p>Online Learners</p>
+                                <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['lectures'] }}"
+                                        class="purecounter">{{ $data['lectures'] }}</span></h4>
+                                <p>المحاضرات</p>
                             </div>
                         </div>
                     </div>
@@ -594,9 +514,9 @@
                                 </svg>
                             </div>
                             <div class="counter__content">
-                                <h4><span data-purecounter-duration="1" data-purecounter-end="203"
-                                        class="purecounter">0</span>k</h4>
-                                <p>Foreign Followers</p>
+                                <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['lessons'] }}"
+                                        class="purecounter">{{ $data['lessons'] }}</span></h4>
+                                <p>الدروس</p>
                             </div>
                         </div>
                     </div>
@@ -605,60 +525,6 @@
         </section>
         <!-- counter area end -->
 
-        <!-- testimonial area start -->
-        <section class="testimonial__area testimonial__overlay pt-175 pb-170"
-            data-background="{{ url('/front') }}/assets/img/testimonial/testimonial-bg.jpg">
-            <div class="container">
-                <div class="col-xxl-12">
-                    <div class="testimonial__slider swiper-container">
-                        <div class="testimonial__slider-inner swiper-wrapper">
-                            <div class="testimonial__item text-center swiper-slide">
-                                <div class="testimonial__thumb">
-                                    <img src="{{ url('/front') }}/assets/img/testimonial/testi-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial__content">
-                                    <p>“ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”</p>
-
-                                    <div class="testimonial__info">
-                                        <h4>Jason Response</h4>
-                                        <span>UX Designer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial__item text-center swiper-slide">
-                                <div class="testimonial__thumb">
-                                    <img src="{{ url('/front') }}/assets/img/testimonial/testi-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial__content">
-                                    <p>“ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”</p>
-
-                                    <div class="testimonial__info">
-                                        <h4>Jason Response</h4>
-                                        <span>UX Designer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial__item text-center swiper-slide">
-                                <div class="testimonial__thumb">
-                                    <img src="{{ url('/front') }}/assets/img/testimonial/testi-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial__content">
-                                    <p>“ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”</p>
-
-                                    <div class="testimonial__info">
-                                        <h4>Jason Response</h4>
-                                        <span>UX Designer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-button-next swiper-nav"><i class="far fa-arrow-right"></i></div>
-                        <div class="swiper-button-prev swiper-nav"><i class="far fa-arrow-left"></i></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- testimonial area end -->
 
         <!-- blog area start -->
         <section class="blog__area pt-115 pb-130">
@@ -666,15 +532,15 @@
                 <div class="row">
                     <div class="col-xxl-6 offset-xxl-3">
                         <div class="section__title-wrapper text-center mb-60">
-                            <h2 class="section__title">We share <br>
-                                Our <span class="yellow-bg yellow-bg-big">thoughts <img
-                                        src="{{ url('/front') }}/assets/img/shape/yellow-bg.png" alt=""></span>on
-                                design</h2>
-                            <p>You don't have to struggle alone, you've got our assistance and help.</p>
+                            <h2 class="section__title">أخر الاخبار</h2>
+                            <p>
+                                تابع احدث المقالات
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                         <div class="blog__item white-bg mb-30 transition-3 fix">
                             <div class="blog__thumb w-img fix">
@@ -684,10 +550,18 @@
                             </div>
                             <div class="blog__content">
                                 <div class="blog__tag">
-                                    <a href="#">Art & Design</a>
+                                    <a href="#">
+                                        التعلم, اولاين
+                                    </a>
                                 </div>
-                                <h3 class="blog__title"><a href="blog-details.html">The Challenge Of Global Learning
-                                        In Public Education</a></h3>
+                                <h3 class="blog__title"><a href="#">
+                                        كيف تبدا التعلم اونلاين
+                                    </a></h3>
+                                <p>
+                                    التعليم عبر الانترنت اصبح من اهم وسائل التعليم في عصرنا هذا ، ومع التطور الكبير في
+                                    التكنولوجيا كذلك تطورت اساليب التعلم اون لاين و اصبحت كثيرة جدا . و ما أحبه حقًا في هذا
+                                    العصر الرقمي هو مدى سهولة تعلم أي شيء تريده.
+                                </p>
 
                                 <div class="blog__meta d-flex align-items-center justify-content-between">
                                     <div class="blog__author d-flex align-items-center">
@@ -696,17 +570,22 @@
                                                 alt="">
                                         </div>
                                         <div class="blog__author-info">
-                                            <h5>Jim Séchen</h5>
+                                            <h5>
+                                                {{ __('lang.home_title') }}
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="blog__date d-flex align-items-center">
                                         <i class="fal fa-clock"></i>
-                                        <span>April 02, 2022</span>
+                                        <span>
+                                            {{ date('Y-m-d') }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                         <div class="blog__item white-bg mb-30 transition-3 fix">
                             <div class="blog__thumb w-img fix">
@@ -716,29 +595,42 @@
                             </div>
                             <div class="blog__content">
                                 <div class="blog__tag">
-                                    <a href="#" class="purple">Marketing</a>
+                                    <a href="#">
+                                        الوقت و الادارة
+                                    </a>
                                 </div>
-                                <h3 class="blog__title"><a href="blog-details.html">Exactly How Technology Can Make
-                                        Reading Better</a></h3>
+                                <h3 class="blog__title"><a href="#">
+                                        كيف تدير وقتك
+                                    </a></h3>
+                                <p>
+                                    تعتبر إدارة الوقت من أهمّ العوامل التي تؤدّي إلى النجاح، وبشكل خاصّ في وقتنا الحالي، حيث
+                                    زادت أهمية تنظيم وإدارة الوقت بسبب كثرة وسائل الترفيه التي تسبّب إهدار الوقت بشكل غير
+                                    مفيد، وتعتبر إدارة الوقت من الأمور التي تحتاج إلى حزمٍ وإصرار.
+                                </p>
 
                                 <div class="blog__meta d-flex align-items-center justify-content-between">
                                     <div class="blog__author d-flex align-items-center">
                                         <div class="blog__author-thumb mr-10">
-                                            <img src="{{ url('/front') }}/assets/img/blog/author/author-2.jpg"
+                                            <img src="{{ url('/front') }}/assets/img/blog/author/author-1.jpg"
                                                 alt="">
                                         </div>
                                         <div class="blog__author-info">
-                                            <h5>Barry Tone</h5>
+                                            <h5>
+                                                {{ __('lang.home_title') }}
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="blog__date d-flex align-items-center">
                                         <i class="fal fa-clock"></i>
-                                        <span>July 02, 2022</span>
+                                        <span>
+                                            {{ date('Y-m-d') }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                         <div class="blog__item white-bg mb-30 transition-3 fix">
                             <div class="blog__thumb w-img fix">
@@ -748,29 +640,44 @@
                             </div>
                             <div class="blog__content">
                                 <div class="blog__tag">
-                                    <a href="#" class="pink">UX Design</a>
+                                    <a href="#">
+                                        النجاح و التفوق
+                                    </a>
                                 </div>
-                                <h3 class="blog__title"><a href="blog-details.html">New Chicago school budget relies
-                                        on state pension</a></h3>
+                                <h3 class="blog__title"><a href="#">
+                                        كيف تكون ناجحاً في حياتك
+                                    </a></h3>
+                                <p>
+                                    الجميع يتحدّث عن الأشخاص الناجحين وعن قدراتهم وامكانياتهم وعزيمتهم التي تجعلهم يصلون
+                                    للقمة دائماً، فهم المثال الأعلى لأي شخص يرغب تحقيق النجاح، ولأننا نريد أن تصبح أنت أيضاً
+                                    شخص ناجح سنُعرّفك على أهم التصرفات التي يقوم بها الأشخاص الناجحين لتكون مثلهم.
+                                </p>
 
                                 <div class="blog__meta d-flex align-items-center justify-content-between">
                                     <div class="blog__author d-flex align-items-center">
                                         <div class="blog__author-thumb mr-10">
-                                            <img src="{{ url('/front') }}/assets/img/blog/author/author-3.jpg"
+                                            <img src="{{ url('/front') }}/assets/img/blog/author/author-1.jpg"
                                                 alt="">
                                         </div>
                                         <div class="blog__author-info">
-                                            <h5>Barry Tone</h5>
+                                            <h5>
+                                                {{ __('lang.home_title') }}
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="blog__date d-flex align-items-center">
                                         <i class="fal fa-clock"></i>
-                                        <span>July 02, 2022</span>
+                                        <span>
+                                            {{ date('Y-m-d') }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </section>
@@ -786,15 +693,17 @@
                     <div class="row align-items-center">
                         <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-6">
                             <div class="cta__content">
-                                <h3 class="cta__title">Start learning by Downloading Apps.</h3>
+                                <h3 class="cta__title">
+                                    ابدا رحلة تعلمك فى الحال
+                                </h3>
                             </div>
                         </div>
                         <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6">
                             <div class="cta__apps d-lg-flex justify-content-end p-relative z-index-1">
-                                <a target="_blank" href="https://www.apple.com/app-store/" class="mr-10"><i
-                                        class="fab fa-apple"></i> Apple Store</a>
-                                <a target="_blank" href="https://play.google.com/store/apps" class="active"><i
-                                        class="fab fa-google-play"></i> Play Store</a>
+                                <a target="_blank" href="#" class="mr-10"><i class="fab fa-send"></i>
+                                    {{ __('lang.join_us') }}
+                                </a>
+
                             </div>
                         </div>
                     </div>
