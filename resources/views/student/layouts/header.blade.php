@@ -15,7 +15,7 @@
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row align-items-center justify-content-end">
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover show" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="true">
                         {{ Session::get('locale') == 'ar' ? 'ar' : 'en' }}
                     </a>
@@ -28,7 +28,7 @@
                             @endforeach
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
