@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'vodafone_number' => 'رقم فودافون الخاص بالتحويل',
+    'edit_wallet' => 'تعديل المحفظة',
+    'wallet' => 'محفظة',
+    'wallet_value' => 'قيمة المحفظة',
     'refuse' => 'رفض',
     'refused' => 'مرفوض',
     'business_subscription_by_month' => 'المشتركين خلال كل شهر',

@@ -28,13 +28,18 @@
                         <div class="col-md-12 pt-2">
                             <div class="form-group">
                                 <label for="amount"> {{ __('lang.amount') }} </label>
-                                {!! Form::text("amount", old("amount", $wallet->amount), [
+                                @php
+                                    $amount = \App\Models\WithdrawRequest::where('user_id', $model_id)
+                                        ->where('status', \App\Models\WithdrawRequest::PENDING)
+                                        ->first()->amount;
+                                @endphp
+                                {!! Form::text('amount', old('amount', $amount), [
                                     'class' => 'form-control',
                                 ]) !!}
                             </div>
                             <div class="form-group">
                                 <label for="note"> {{ __('lang.notes') }} </label>
-                                {!! Form::text("note", old("note", $wallet->note), [
+                                {!! Form::text('note', old('note', $wallet->note), [
                                     'class' => 'form-control',
                                 ]) !!}
                             </div>
