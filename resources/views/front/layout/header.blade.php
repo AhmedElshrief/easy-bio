@@ -19,7 +19,7 @@
                 <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-10 col-sm-8 col-6">
                     <div class="header__right d-flex justify-content-end align-items-center">
                         <div class="main-menu main-menu-2">
-                            <nav id="mobile-menu">
+                            <nav id="mobile-menu" class="m-auto">
                                 <ul>
                                     <li class="">
                                         <a href="{{ route('front.home') }}">{{ __('lang.home') }}</a>

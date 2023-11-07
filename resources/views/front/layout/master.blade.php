@@ -165,6 +165,7 @@
 
     <!-- JS here -->
     @include('front.layout.js')
+    @include('vendor.sweetalert.alert')
 </body>
 
 </html>

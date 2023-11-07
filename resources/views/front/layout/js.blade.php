@@ -13,3 +13,5 @@
 <script src="{{ url('/front') }}/assets/js/wow.min.js"></script>
 <script src="{{ url('/front') }}/assets/js/imagesloaded.pkgd.min.js"></script>
 <script src="{{ url('/front') }}/assets/js/main.js"></script>
+
+<script src="{{ asset('assets/js/sweetalert2.js') }}"></script>

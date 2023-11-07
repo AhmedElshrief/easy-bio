@@ -8,6 +8,10 @@
         .right-text {
             text-align: right !important;
         }
+
+        .main-menu ul li a {
+            color: white !important;
+        }
     </style>
 @endsection
 

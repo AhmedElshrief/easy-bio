@@ -20,10 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 $prefix = 'front.';
 Route::get('/', [HomeController::class, 'index'])->name($prefix . 'home');
-Route::get('/courses', [HomeController::class, 'index'])->name($prefix . 'courses');
-Route::get('/courses/{id}', [HomeController::class, 'index'])->name($prefix . 'showCourses');
-Route::get('/lectures', [HomeController::class, 'index'])->name($prefix . 'lectures');
-Route::get('/lectures/{id}', [HomeController::class, 'index'])->name($prefix . 'showLectures');
+Route::get('/courses', [HomeController::class, 'courses'])->name($prefix . 'courses');
+Route::get('/courses/{id}', [HomeController::class, 'viewCourse'])->name($prefix . 'showCourses');
+// Route::get('/lectures', [HomeController::class, 'index'])->name($prefix . 'lectures');
+Route::get('/lectures/{id}', [HomeController::class, 'viewLecture'])->name($prefix . 'showLecture');
 Route::get('/lessons', [HomeController::class, 'index'])->name($prefix . 'lessons');
 Route::get('/lessons/{id}', [HomeController::class, 'index'])->name($prefix . 'showLessons');
 Route::get('/contact', [HomeController::class, 'contact'])->name($prefix . 'contact');
+Route::post('/buy-lesson', [HomeController::class, 'buyLesson'])->name($prefix . 'buyLesson');

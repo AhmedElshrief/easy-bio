@@ -28,10 +28,15 @@ class AuthController extends Controller
             return $this->invalid($request);
         }
         $remember = $request->input('remember') ? true : false;
-        if ( !auth('student')->attempt($credentials, $remember) ) {
+        if (!auth('student')->attempt($credentials, $remember)) {
             return $this->invalid($request);
         }
         toast(__('lang.login_successfully'), 'success');
+
+        if (request()->session()->get('lecture_id')) {
+            return redirect()->route('front.showLecture', request()->session()->get('lecture_id'));
+        }
+
         return redirect()->route('student.home');
     }
 
@@ -51,7 +56,6 @@ class AuthController extends Controller
         }
         return false;
     }
-
 
     /**
      * Return MSG Error

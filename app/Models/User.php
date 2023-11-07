@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     public const STATUS = [
         self::ACTIVE => 'active',
-        self::BLOCKED => 'blocked'
+        self::BLOCKED => 'blocked',
     ];
 
     /**
@@ -74,7 +74,19 @@ class User extends Authenticatable
 
     public function wallet()
     {
-        return $this->hasOne(Wallet::class, 'model_id', 'id');
+        $wallet = Wallet::where('model_type', get_class($this))
+            ->where('model_id', $this->id)
+            ->first();
+
+        if (!$wallet) {
+            $wallet = Wallet::create([
+                'model_type' => get_class($this),
+                'model_id' => $this->id,
+                'value' => 0,
+            ]);
+        }
+
+        return $wallet;
     }
 
     public function lessons()
@@ -95,5 +107,28 @@ class User extends Authenticatable
                 $q->where('status', $request->status);
             }
         });
+    }
+
+    /**
+     * Updates the wallet balance by incrementing the amount and creating a new transaction.
+     *
+     * @param mixed $amount The amount to be incremented in the wallet balance.
+     * @param mixed $model (optional) The model associated with the transaction.
+     * @param mixed $note (optional) The note for the transaction.
+     * @throws Some_Exception_Class If there is an error creating the transaction.
+     * @return void
+     */
+    public function updateWallet($amount, $model = null, $note = null)
+    {
+        $this->wallet()->increment('value', $amount);
+        WalletTransaction::create([
+            'wallet_id' => $this->wallet()->id,
+            'amount' => $amount,
+            'transaction_model_type' => $model ? get_class($model) : '',
+            'transaction_model_id' => $model ? $model->id : '',
+            'note' => $note,
+            'type' => WalletTransaction::CREDIT,
+            'status' => 'Success',
+        ]);
     }
 }
