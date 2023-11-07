@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::post('students/reset-wallets', [StudentController::class, 'resetWallets'])->name('students.reset-wallets');
         Route::post('students/active-students', [StudentController::class, 'activeStudents'])->name('students.active-students');
         Route::post('students/deactive-students', [StudentController::class, 'deactiveStudents'])->name('students.deactive-students');
+        Route::get('students/edit-wallet/{wallet_id}', [StudentController::class, 'editWallet'])->name('students.edit-wallet');
+        Route::post('students/update-wallet/{wallet_id}', [StudentController::class, 'updateWallet'])->name('students.update-wallet');
 
 
         Route::resource('lessons', LessonController::class);
