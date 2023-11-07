@@ -218,4 +218,44 @@ class StudentController extends Controller
         toast(__('lang.updated_successfully'), 'success');
         return back();
     }
+
+    /**
+     * Edit a wallet.
+     * @param int $wallet_id The ID of the wallet to edit.
+     */
+    public function editWallet($wallet_id)
+    {
+        $wallet = Wallet::findOrFail($wallet_id);
+        return view('admin.students.edit_wallet_modal', [
+            'wallet' => $wallet
+        ]);
+    }
+
+    /**
+     * Updates the wallet with the given ID.
+     * @param int $wallet_id The ID of the wallet to update.
+     */
+    public function updateWallet($wallet_id)
+    {
+        $wallet = Wallet::findOrFail($wallet_id);
+
+        $data = request()->validate([
+            'value' => 'required|numeric|min:0',
+        ]);
+        $wallet->update([
+            'value' => $data['value']
+        ]);
+
+        toast(__('lang.updated_successfully'), 'success');
+        return back();
+    }
+
 }
+
+
+
+
+
+
+
+

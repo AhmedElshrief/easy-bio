@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'vodafone_number' => 'Vodafone Number of the transfer',
+    'edit_wallet' => 'Edit Wallet',
+    'wallet' => 'Wallet',
+    'wallet_value' => 'Wallet Value',
     'refuse' => 'Refuse',
     'refused' => 'Refused',
     'subscriptions_during_year' => 'The subscriptions during the year',

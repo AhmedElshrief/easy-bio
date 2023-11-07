@@ -108,6 +108,15 @@
                                 ) !!}
                             </div>
 
+                            <div class="col-md-12 pt-2">
+                                {!! Form::label('vodafone_number', __('lang.vodafone_number')) !!}
+                                {!! Form::number(
+                                    'vodafone_number',
+                                    old('vodafone_number', $settings['vodafone_number'] ?? ''),
+                                    ['class' => 'form-control'],
+                                ) !!}
+                            </div>
+
                             <div class="col-sm-12 col-md-12 pt-4">
                                 {!! Form::label('logo', __('lang.logo')) !!}
                                 <img height="50" width="50" class="rounded-circle image-preview-1 position-relative" alt=""

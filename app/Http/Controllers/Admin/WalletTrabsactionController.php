@@ -36,7 +36,7 @@ class WalletTrabsactionController extends Controller
         $data['transaction_model_id'] = $request->model_id;
         $data['transaction_model_type'] = User::class;
         $data['note'] = $request->note;
-        $data['wallet_id'] = $user->wallet->id;
+        $data['wallet_id'] = $user->wallet()->id;
 
         Wallet::where('model_id', $user->id)->where('model_type', User::class)->increment('value', $request->amount);
         $data['type'] = WalletTransaction::CREDIT;
@@ -47,18 +47,6 @@ class WalletTrabsactionController extends Controller
         toast(__('lang.created_successfully'), 'success');
         return redirect()->route('admin.withdraw_requests.index');
     }
-
-    // public function edit(WalletTransactionRequest $wallet)
-    // {
-    //     return view('admin.wallet_transactions.pay_form_modal', [
-    //         'wallet' => $wallet
-    //     ]);
-    // }
-
-    // public function update(WalletTransactionRequest $request, WalletTransaction $wallet)
-    // {
-    //     dd('pay update');
-    // }
 
 }
 
