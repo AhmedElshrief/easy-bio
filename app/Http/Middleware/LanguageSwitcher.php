@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class LanguageSwitcher
@@ -18,7 +17,7 @@ class LanguageSwitcher
      */
     public function handle($request, Closure $next)
     {
-        App::setLocale(Session::has('locale') ? Session::get('locale') : 'en');
+        App::setLocale(Session::has('locale') ? Session::get('locale') : 'ar');
         return $next($request);
     }
 }

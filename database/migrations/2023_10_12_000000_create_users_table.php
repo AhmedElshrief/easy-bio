@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('parent_phone')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('image');
             $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete()->cascadeOnUpdate();

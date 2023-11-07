@@ -21,13 +21,13 @@ class WithdrawRequestController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('admin.withdraw_requests.index', [
-            'withdraw_requests' => $this->model->paginate(15)
+            'withdraw_requests' => $this->model->filter($request)->paginate(15)
         ]);
     }
 
@@ -74,25 +74,18 @@ class WithdrawRequestController extends Controller
         return redirect()->route('admin.withdraw_requests.index');
     }
 
-    public function changeStatus(Request $request)
-    {
-        $withdraw_request = $this->model->findOrFail($request->id);
-        $withdraw_request->status = $request->value;
-        $withdraw_request->save();
-        return response()->json([
-            'success' => true,
-            'message' => __('lang.updated_successfully'),
-        ]);
-    }
-
     public function payFormModal()
     {
         return view('admin.withdraw_requests.pay_form_modal');
     }
 
-    public function pay()
+    public function refuse(WithdrawRequest $withdraw_request)
     {
-        dd('pay');
+        $withdraw_request->update([
+            'status' => WithdrawRequest::REFUSED
+        ]);
+        toast(__('lang.updated_successfully'), 'success');
+        return redirect()->route('admin.withdraw_requests.index');
     }
 }
 
