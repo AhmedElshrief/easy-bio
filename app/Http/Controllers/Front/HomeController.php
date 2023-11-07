@@ -8,6 +8,7 @@ use App\Models\Lecture;
 use App\Models\Lesson;
 use App\Models\User;
 use App\Models\UserLessons;
+use App\Models\WithdrawRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -51,6 +52,35 @@ class HomeController extends Controller
         return view('front.lessons.index', compact('resource'));
     }
 
+    public function withdraw()
+    {
+        return view('front.withdraw.index');
+    }
+
+    public function StoreWithdraw(Request $request)
+    {
+        if (!auth('student')->user()) {
+            Session::put('lecture_id', $request->lecture_id);
+            return redirect()->route('student.login');
+        }
+
+        if (!$request->amount || !$request->hasFile('image')) {
+            toast(__('lang.error'), 'error');
+            return redirect()->back();
+        }
+
+        DB::beginTransaction();
+        WithdrawRequest::create([
+            'user_id' => auth('student')->user()->id,
+            'amount' => $request->amount,
+            'status' => 'pending',
+            'image' => uploadImage($request->file('image'), config('paths.WITHDRAW_REQUESTS_PATH')),
+        ]);
+
+        toast(__('lang.request_sent_successfully'), 'success');
+        return back();
+    }
+
     public function buyLesson(Request $request)
     {
         if (!$request->lesson_id) {
@@ -65,6 +95,12 @@ class HomeController extends Controller
             Session::put('lecture_id', $lesson->lecture_id);
             return redirect()->route('student.login');
         }
+
+        if (auth('student')->user()->wallet()->value < $lesson->price) {
+            toast(__('lang.your_balance_is_not_enough'), 'error');
+            return redirect()->route('front.withdraw');
+        }
+
         DB::beginTransaction();
         $resource = UserLessons::create([
             'user_id' => auth('student')->user()->id,

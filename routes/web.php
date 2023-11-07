@@ -28,3 +28,5 @@ Route::get('/lessons', [HomeController::class, 'index'])->name($prefix . 'lesson
 Route::get('/lessons/{id}', [HomeController::class, 'index'])->name($prefix . 'showLessons');
 Route::get('/contact', [HomeController::class, 'contact'])->name($prefix . 'contact');
 Route::post('/buy-lesson', [HomeController::class, 'buyLesson'])->name($prefix . 'buyLesson');
+Route::get('/withdraw', [HomeController::class, 'withdraw'])->name($prefix . 'withdraw');
+Route::post('/withdraw', [HomeController::class, 'StoreWithdraw'])->name($prefix . 'withdraw.store');
