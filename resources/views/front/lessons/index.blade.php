@@ -12,6 +12,10 @@
         .main-menu ul li a {
             color: white !important;
         }
+
+        .sticky .main-menu ul li a {
+            color: black !important;
+        }
     </style>
 @endsection
 
@@ -134,8 +138,11 @@
                                                         </h3>
 
                                                     </div>
-                                                    <div class="course__more">
-
+                                                    <div
+                                                        class="course__more d-flex justify-content-between align-items-center">
+                                                        <div class="course__status">
+                                                            <span>{{ $item->price }} جنيه</span>
+                                                        </div>
                                                         <div class="course__btn">
                                                             <form method="post" action="{{ route('front.buyLesson') }}">
                                                                 @csrf

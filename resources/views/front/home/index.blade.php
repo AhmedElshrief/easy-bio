@@ -1,5 +1,24 @@
 @extends('front.layout.master')
 
+@section('title', __('lang.home'))
+
+@section('css')
+    <style>
+        .right-text *,
+        .right-text {
+            text-align: right !important;
+        }
+
+        .main-menu ul li a {
+            color: black !important;
+        }
+
+        .sticky .main-menu ul li a {
+            color: black !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <main>
 

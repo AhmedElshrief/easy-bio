@@ -30,11 +30,22 @@
                                     <li class="">
                                         <a href="{{ route('front.contact') }}">{{ __('lang.contact') }}</a>
                                     </li>
+                                    @if (auth('student')->user())
+                                        <li class="">
+                                            <a href="{{ route('student.home') }}">{{ __('lang.student_dashboard') }}</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>
                         <div class="header__btn header__btn-2 ml-50 d-none d-sm-block">
-                            <a href="{{ route('student.login') }}" class="e-btn">{{ __('lang.login') }}</a>
+                            @if (auth('student')->user())
+                                <img src="{{ auth('student')->user()->image_path }}" class="w3-round-large m-1"
+                                    style="width: 40px">
+                                {{ auth('student')->user()->name }}
+                            @else
+                                <a href="{{ route('student.login') }}" class="e-btn">{{ __('lang.login') }}</a>
+                            @endif
                         </div>
                         <div class="sidebar__menu d-xl-none">
                             <div class="sidebar-toggle-btn ml-30" id="sidebar-toggle">

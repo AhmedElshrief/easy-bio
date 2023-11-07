@@ -74,7 +74,7 @@
 
             <div class="w3-display-bottommiddle vodafone-container">
                 <div class="vodafone-card">
-                    <div class="phone">0101232323</div>
+                    <div class="phone">{{ $phone }}</div>
                 </div>
             </div>
         </section>

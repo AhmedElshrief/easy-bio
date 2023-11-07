@@ -14,17 +14,19 @@ class WithdrawRequest extends Model
     public const STATUS = [
         self::PENDING => 'pending',
         self::REFUSED => 'refused',
-        self::APPROVED => 'approved'
+        self::APPROVED => 'approved',
     ];
 
     protected $appends = ['image_path'];
 
-    public function getImagePathAttribute() {
+    public function getImagePathAttribute()
+    {
         $path = public_path($this->image);
-        return !$this->image || !file_exists($path)? asset('assets/images/courses/course.jpg') : asset($this->image);
+        return !$this->image || !file_exists($path) ? asset('assets/images/courses/course.jpg') : asset($this->image);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 

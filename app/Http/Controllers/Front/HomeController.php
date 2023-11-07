@@ -54,7 +54,8 @@ class HomeController extends Controller
 
     public function withdraw()
     {
-        return view('front.withdraw.index');
+        $phone = optional(DB::table('settings')->where('key', 'vodafone_number')->first())->value ?? '0100000000';
+        return view('front.withdraw.index', compact('phone'));
     }
 
     public function StoreWithdraw(Request $request)
@@ -70,13 +71,16 @@ class HomeController extends Controller
         }
 
         DB::beginTransaction();
+
+        $path = uploadImage($request->file('image'), config('paths.WITHDRAW_REQUESTS_PATH'));
         WithdrawRequest::create([
             'user_id' => auth('student')->user()->id,
             'amount' => $request->amount,
             'status' => 'pending',
-            'image' => uploadImage($request->file('image'), config('paths.WITHDRAW_REQUESTS_PATH')),
+            'image' => $path,
         ]);
 
+        DB::commit();
         toast(__('lang.request_sent_successfully'), 'success');
         return back();
     }

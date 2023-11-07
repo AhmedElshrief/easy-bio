@@ -7,6 +7,7 @@ return [
     'subscriptions_during_year' => 'الاشتراكات خلال السنه',
     'January' => 'يناير',
     'buy' => 'شراء',
+    'student_dashboard' => 'لوحة التحكم',
     'request_sent_successfully' => 'تم ارسال الطلب بنجاح',
     'your_balance_is_not_enough' => 'رصيدك غير كافي',
     'lesson_bought_successfully' => 'تم شراء الدرس  بنجاح',

@@ -35,3 +35,17 @@
         font-family: 'Cairo', sans-serif;
     }
 </style>
+<style>
+    .right-text *,
+    .right-text {
+        text-align: right !important;
+    }
+
+    .main-menu ul li a {
+        color: white !important;
+    }
+
+    .sticky .main-menu ul li a {
+        color: black !important;
+    }
+</style>
