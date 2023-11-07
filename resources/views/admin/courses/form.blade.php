@@ -33,7 +33,7 @@
                         <div class="row">
 
                             <div class="col-sm-12 text-center pt-2 mb-5">
-                                <img height="120" width="120" style="border: 1px solid #ddd"
+                                <img height="100" width="100" style="border: 1px solid #ddd"
                                     class="rounded-circle image-preview-image position-relative" alt=""
                                     src="{{ asset($course->image_path) }}">
                                 <span class="text-danger">*</span>

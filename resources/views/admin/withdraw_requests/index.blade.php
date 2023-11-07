@@ -12,13 +12,28 @@
 
     @include('admin.layouts.includes.breadcrumb', ['title' => $title])
 
+    <div class="row">
+        <div class="col-md-12">
+
+            @component('admin.layouts.includes.card', ['id' => 'filter_body'])
+                @slot('tool')
+                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}"
+                        onclick="$('#filter_body').slideToggle()">
+                        <i class="ti ti-filter"></i>
+                    </button>
+                @endslot
+
+                @slot('content')
+                    @include('admin.withdraw_requests.filter')
+                @endslot
+            @endcomponent
+        </div>
+    </div>
+
     <div class="row pt-4">
         <div class="col-md-12">
             @component('admin.layouts.includes.card')
                 @slot('tool')
-                    {{-- <a href="{{ route('admin.withdraw_requests.create') }}" class="btn btn-primary float-end mb-2">
-                        <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.withdraw_request') }}
-                    </a> --}}
                 @endslot
 
                 @slot('content')
@@ -28,7 +43,7 @@
                             <td>{{ __('lang.amount') }}</td>
                             <td>{{ __('lang.image') }}</td>
                             <td>{{ __('lang.user') }}</td>
-                            <td>{{ __('lang.approved') }}</td>
+                            <td>{{ __('lang.status') }}</td>
                             <td>{{ __('lang.actions') }}</td>
                         @endslot
 
@@ -41,37 +56,36 @@
                                             {{ $withdraw_request->amount ?? '' }}
                                         </td>
                                         <td>
-                                            <img class="rounded-circle" src="{{ $withdraw_request->image_path }}" alt="" width="50" height="50">
+                                            <img class="rounded-circle" src="{{ $withdraw_request->image_path }}" alt="" width="50"
+                                                height="50">
                                         </td>
                                         <td>{{ $withdraw_request->user->name ?? '' }}</td>
                                         <td>
-                                            <div class="col-md-12 pt-2">
-                                                <div class="form-group">
-                                                    <label class="">
-                                                        <a data-href="{{ route('admin.wallet_transactions.create', $withdraw_request->user_id) }}" data-container=".table-modal" class="btn btn-primary btn-modal">
-                                                            {{ __('lang.approve') }}
-                                                        </a>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            @if ($withdraw_request->status == 'pending')
+                                                <span class="badge bg-warning">{{ __('lang.pending') }}</span>
+                                            @elseif ($withdraw_request->status == 'refused')
+                                                <span class="badge bg-danger">{{ __('lang.refused') }}</span>
+                                            @elseif ($withdraw_request->status == 'approved')
+                                                <span class="badge bg-success">{{ __('lang.approved') }}</span>
+                                            @endif
                                         </td>
-                                        {{-- <td>
-                                            <div class="col-md-12 pt-2">
-                                                <div class="form-group">
-                                                    <label class="switch">
-                                                        <input onclick="changeActive(this,{{ $withdraw_request->id }})"
-                                                            data-status="{{ $withdraw_request->status }}" {{  $withdraw_request->status == \App\Models\WithDrawRequest::APPROVED ? 'checked' : '' }}
-                                                            class="form-check-input" value="{{ $withdraw_request->status }}" type="checkbox"
-                                                            name="status">
-                                                        <span class="slider"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td> --}}
 
                                         <td>
-                                            <a href="{{ route('admin.withdraw_requests.edit', $withdraw_request->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+
+                                            @if ($withdraw_request->status == 'pending')
+
+                                                <a data-href="{{ route('admin.wallet_transactions.create', $withdraw_request->user_id) }}"
+                                                    data-container=".table-modal" class="btn btn-primary btn-sm btn-modal">
+                                                    <i class="ti ti-plus"></i>
+                                                    {{ __('lang.approve') }}
+                                                </a>
+                                                <a href="{{ route('admin.withdraw_requests.refuse', $withdraw_request->id) }}"
+                                                    class="btn btn-danger btn-sm" id="refuse">
+                                                    <i class="ti ti-ban"></i>
+                                                    {{ __('lang.refuse') }}
+                                                </a>
+
+                                            @endif
                                             <a data-href="{{ route('admin.withdraw_requests.destroy', $withdraw_request->id) }}"
                                                 class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
                                         </td>
@@ -103,27 +117,13 @@
 
 @section('js')
     <script>
-        function changeActive(el, id) {
-            $(el).off('change').on('change', function() {
-                let value = 'pending';
-                if($(el).data('status') == 'pending') {
-                    value = 'approved';
-                    $(el).data('status', value);
-                } else if($(el).data('status') == 'approved') {
-                    value = 'pending';
-                    $(el).data('status', value);
+        $(document).ready(function() {
+            $('#refuse').on('click', function(e) {
+                e.preventDefault();
+                if(confirm("{{ __('lang.are_you_sure') }}")) {
+                    window.location.href = $(this).attr('href');
                 }
-                $.post("{{ route('admin.withdraw_requests.changeStatus') }}", {
-                    'id': id,
-                    'value': value,
-                    '_token': "{{ csrf_token() }}"
-                }, function(results) {
-                    const alertType = results.success ? "success" : "error";
-                    swal.fire("", results.message, alertType);
-                });
-            });
-        }
+            })
+        })
     </script>
 @endsection
-
-

@@ -33,11 +33,11 @@
                         <div class="row">
 
                             <div class="col-sm-12 text-center pt-2">
+                                <span class="text-danger">*</span>
                                 <img height="120" width="120" style="border: 1px solid #ddd"
                                     class="rounded-circle image-preview-image position-relative" alt=""
                                     src="{{ asset($student->image_path) }}">
                                 <br>
-
                                 <label for="image" class="btn btn-primary mt-2">
                                     <i style="font-size: 20px" class="ti ti-cloud-upload"></i>
                                 </label>

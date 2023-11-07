@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'refuse' => 'Refuse',
+    'refused' => 'Refused',
     'subscriptions_during_year' => 'The subscriptions during the year',
     'business_subscription_by_month' => 'Business Subscription by Month',
     'January' => 'January',

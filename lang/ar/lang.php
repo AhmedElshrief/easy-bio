@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'refuse' => 'رفض',
+    'refused' => 'مرفوض',
     'business_subscription_by_month' => 'المشتركين خلال كل شهر',
     'subscriptions_during_year' => 'الاشتراكات خلال السنه',
     'January' => 'يناير',

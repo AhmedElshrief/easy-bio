@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.courses.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}" href="{{ route('admin.courses.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/course.png') }}" alt="">
                         </span>
@@ -32,7 +32,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.lectures.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.lectures.*') ? 'active' : '' }}" href="{{ route('admin.lectures.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/lecture.png') }}" alt="">
                         </span>
@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.lessons.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.lessons.*') ? 'active' : '' }}" href="{{ route('admin.lessons.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/lesson.png') }}" alt="">
                         </span>
@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.students.*') ? 'active' : '' }}" href="{{ route('admin.students.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/student.png') }}" alt="">
                         </span>
@@ -59,7 +59,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.levels.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.levels.*') ? 'active' : '' }}" href="{{ route('admin.levels.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/level.png') }}" alt="">
                         </span>
@@ -68,7 +68,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.cities.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.cities.*') ? 'active' : '' }}" href="{{ route('admin.cities.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/city.png') }}" alt="">
                         </span>
@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.faqs.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}" href="{{ route('admin.faqs.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/faq.png') }}" alt="">
                         </span>
@@ -86,7 +86,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.admins.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}" href="{{ route('admin.admins.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/admin.png') }}" alt="">
                         </span>
@@ -95,7 +95,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.withdraw_requests.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.withdraw_requests.*') ? 'active' : '' }}" href="{{ route('admin.withdraw_requests.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/payment.png') }}" alt="">
                         </span>
@@ -104,7 +104,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.settings.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" href="{{ route('admin.settings.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/setting.png') }}" alt="">
                         </span>
@@ -113,7 +113,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.roles.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}" href="{{ route('admin.roles.index') }}" aria-expanded="false">
                         <span>
                             <img width="27" height="27" src="{{ asset('assets/images/sidebar/permission.png') }}" alt="">
                         </span>
