@@ -8,10 +8,12 @@ class WithdrawRequest extends Model
 {
     protected $guarded = [];
     public const PENDING = 'pending';
+    public const REFUSED = 'refused';
     public const APPROVED = 'approved';
 
     public const STATUS = [
         self::PENDING => 'pending',
+        self::REFUSED => 'refused',
         self::APPROVED => 'approved'
     ];
 
@@ -24,5 +26,14 @@ class WithdrawRequest extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function scopeFilter($query, $request)
+    {
+        return $query->where(function ($q) use ($request) {
+            if ($request->status) {
+                $q->where('status', $request->status);
+            }
+        });
     }
 }

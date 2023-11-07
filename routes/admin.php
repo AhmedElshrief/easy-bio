@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::resource('faqs', FaqController::class)->except(['show']);
 
         Route::resource('withdraw_requests', WithdrawRequestController::class)->except(['show']);
-        Route::post('withdraw_requests/change-status', [WithdrawRequestController::class, 'changeStatus'])->name('withdraw_requests.changeStatus');
+        Route::get('withdraw_requests/refuse/{withdraw_request}', [WithdrawRequestController::class, 'refuse'])->name('withdraw_requests.refuse');
 
         // Route::resource('wallet_transactions', WalletTrabsactionController::class)->except(['show', 'destroy']);
         Route::get('wallet_transactions/create/{withdraw_request}', [WalletTrabsactionController::class, 'create'])->name('wallet_transactions.create');
