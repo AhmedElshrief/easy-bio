@@ -39,7 +39,7 @@
                         <div class="message-body">
                             <a href="{{ route('admin.profile') }}" class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="ti ti-user fs-6"></i>
-                                <p class="mb-0 fs-3">{{ __('lang.profile') }}</p>
+                                <p class="mb-0 fs-3">{{ auth('admin')->user()->username }}</p>
                             </a>
 
                             <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('admin.logout') }}"

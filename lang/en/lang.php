@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'download' => 'Download',
+    'show_lesson' => 'Show Lesson',
     'register' => 'Create Account',
     'create_account' => 'Create Account',
     'vodafone_number' => 'Vodafone Number of the transfer',

@@ -30,7 +30,7 @@
                                             {{ __('student.remember_password') }}
                                         </label>
                                     </div> --}}
-                                    <a href="{{ route('student.register') }}" class="text-primary fw-bold">{{ __('lang.create_account') }}</a>
+                                    <a href="{{ route('student.register') }}" class="text-primary fw-bold text-decoration-underline">{{ __('lang.create_account') }}</a>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{{ __('lang.login') }}</button>
 

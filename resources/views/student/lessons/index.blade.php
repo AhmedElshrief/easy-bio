@@ -43,11 +43,11 @@
                                         <td>{{ $lesson->hours ?? '' }}</td>
                                         {{-- <td>{{ $lesson->vimeo_embed ?? '' }}</td> --}}
                                         <td>{{ $lesson->description ?? '' }}</td>
-                                        {{-- <td>
+                                        <td>
                                             <a href="{{ route('student.lessons.show', $lesson->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="ti ti-eye"></i>
                                             </a>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
+use App\Models\LessonFile;
 
 class LessonController extends Controller
 {
@@ -28,4 +29,25 @@ class LessonController extends Controller
         ]);
     }
 
+    public function show(Lesson $lesson)
+    {
+        return view('student.lessons.show', [
+            'lesson' => $lesson
+        ]);
+    }
+
+    /**
+     * Download a file.
+     * @param int $id The ID of the file to be downloaded.
+     */
+    public function downloadFile ($id)
+    {
+        $file = LessonFile::findOrFail($id);
+        return response()->download($file->path);
+    }
+
 }
+
+
+
+
