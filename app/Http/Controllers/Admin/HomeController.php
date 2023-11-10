@@ -20,7 +20,7 @@ class HomeController extends Controller
             ->withAdminsCount()
             ->withWithdrawRequestsCount()
             ->withSubscriptionsChart()
-            ->withMaxLesson()
+            // ->withMaxLesson()
             ->builder();
 
         // dd($data['maxLesson'], $data['maxLessonCount']);
@@ -76,8 +76,8 @@ class HomeController extends Controller
         return view('admin.home.index', [
             'totals' => $totals,
             'subscriptionsChart' => $data['subscriptionsChart'],
-            'maxLesson' => $data['maxLesson'],
-            'maxLessonCount' => $data['maxLessonCount']
+            // 'maxLesson' => $data['maxLesson'],
+            // 'maxLessonCount' => $data['maxLessonCount']
         ]);
     }
 }
