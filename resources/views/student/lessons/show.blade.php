@@ -19,11 +19,11 @@
     <div class="row pt-4">
         <div class="col-md-12">
 
-            <div id="loader" class="text-center">
+            {{-- <div id="loader" class="text-center">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-            </div>
+            </div> --}}
 
            <div class="mb-5">
                 <iframe id="video" width="100%" height="500" src="{{ $lesson->vimeo_embed }}">
