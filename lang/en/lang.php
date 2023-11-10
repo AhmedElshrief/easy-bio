@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'register' => 'Create Account',
+    'create_account' => 'Create Account',
     'vodafone_number' => 'Vodafone Number of the transfer',
     'edit_wallet' => 'Edit Wallet',
     'wallet' => 'Wallet',

@@ -25,6 +25,8 @@ Route::group(['middleware' => 'guest:student', 'prefix' => '/student'], function
     // Route Login
     Route::get('login', [AuthController::class, 'view'])->name($prefix . 'view_login');
     Route::post('login', [AuthController::class, 'login'])->name($prefix . 'login');
+    Route::get('register', [AuthController::class, 'registerForm'])->name($prefix . 'register');
+    Route::post('register', [AuthController::class, 'register'])->name($prefix . 'register.store');
 
 });
 
@@ -35,6 +37,7 @@ Route::group(['middleware' => 'auth:student', 'prefix' => '/student'],function()
     Route::get('/', [HomeController::class, 'index'])->name('student.home');
 
     Route::name('student.')->group(function () {
+
 
         Route::resource('lessons', LessonController::class)->only(['index', 'show']);
 

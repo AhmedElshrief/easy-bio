@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StudentRequest;
 use App\Http\Requests\Student\LoginRequest;
+use App\Http\Requests\Student\ProfileRequest;
+use App\Models\City;
+use App\Models\Level;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -80,4 +85,29 @@ class AuthController extends Controller
         }
         return redirect(route('student.view_login'));
     }
+
+
+    public function registerForm() {
+
+        return view('student.auth.register', [
+            'levels' => Level::get()->pluck('name', 'id'),
+            'cities' => City::get()->pluck('name', 'id')
+        ]);
+    }
+
+    public function register(StudentRequest $request) {
+        $data = $request->validated();
+        $data['password'] = bcrypt($request->password);
+        $data['image'] = uploadImage($data['image'], config('paths.STUDENTS_PATH'));
+        $data['status'] = User::ACTIVE;
+        User::create($data);
+        toast(__('lang.register_successfully'), 'success');
+        return redirect()->route('student.view_login');
+    }
 }
+
+
+
+
+
+
