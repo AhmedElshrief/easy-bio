@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lecture;
 use App\Models\Lesson;
 use App\Models\LessonFile;
+use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
@@ -18,14 +20,15 @@ class LessonController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $lessons = auth()->user()->lessons();
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('student.lessons.index', [
-            'lessons' => $lessons->paginate(15),
+            'lessons' => $this->model->filter($request)->paginate(15),
+            'lectures' => Lecture::get()->pluck('title', 'id'),
         ]);
     }
 

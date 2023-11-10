@@ -38,7 +38,7 @@ class SettingController extends Controller
             }
             // Check if there is logo_white to update
             $this->model->setMany($inputs);
-            toast(__('lang.stored'),'success','top-right')->hideCloseButton();
+            toast(__('lang.updated_successfully'),'success','top-right');
             return back();
         }catch(Exception $e)
         {

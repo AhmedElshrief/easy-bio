@@ -12,6 +12,24 @@
 
     @include('student.layouts.includes.breadcrumb', ['title' => $title])
 
+    <div class="row">
+        <div class="col-md-12">
+
+            @component('student.layouts.includes.card', ['id' => 'filter_body'])
+                @slot('tool')
+                    <button class="btn btn-xs btn-success {{ isRtl() ? 'float-start' : 'float-end' }}"
+                        onclick="$('#filter_body').slideToggle()">
+                        <i class="ti ti-filter"></i>
+                    </button>
+                @endslot
+
+                @slot('content')
+                    @include('student.lessons.filter')
+                @endslot
+            @endcomponent
+        </div>
+    </div>
+
     <div class="row pt-4">
         <div class="col-md-12">
             @component('student.layouts.includes.card')
