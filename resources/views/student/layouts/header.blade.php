@@ -30,6 +30,9 @@
                     </div>
                 </li> --}}
 
+                <li class="">{{ __('lang.egp') }}  {{ auth('student')->user()->wallet()->value }} </li>
+
+
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +43,7 @@
                         <div class="message-body">
                             <a href="{{ route('student.profile') }}" class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="ti ti-user fs-6"></i>
-                                <p class="mb-0 fs-3">{{ __('lang.profile') }}</p>
+                                <p class="mb-0 fs-3 text-decoration-underline">{{ auth('student')->user()->name ?? __('lang.profile') }}</p>
                             </a>
 
                             <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('student.logout') }}"
@@ -53,6 +56,7 @@
                         </div>
                     </div>
                 </li>
+
             </ul>
         </div>
     </nav>

@@ -9,7 +9,7 @@
                     <div class="card mb-0">
                         <div class="card-body">
                             <a href="{{ route('admin.home') }}" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                {{-- <img src="{{ asset(optional($settings->where('key','logo'))->first()->value ?? '') }}" width="180" alt=""> --}}
+                                <img src="{{ asset($settings['logo'] ?? '') }}" width="80" alt="">
                             </a>
                             {{-- <p class="text-center"></p> --}}
                             <form action="{{ route('admin.login') }}" method="POST">

@@ -30,7 +30,7 @@ class ProfileRequest extends FormRequest
             'phone' => ['nullable', Rule::unique('users', 'phone')->ignore($id)],
             'parent_phone' => ['nullable', Rule::unique('users', 'parent_phone')->ignore($id)],
             'username' =>[ 'required', Rule::unique('users', 'username')->ignore($id)],
-            'image' => ['sometimes', 'image'],
+            'image' => ['required', 'image'],
             'password' => [
                 'nullable',
                 'confirmed',

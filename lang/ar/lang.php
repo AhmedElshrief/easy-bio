@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'download' => 'تحميل',
+    'show_lesson' => 'عرض الدرس',
+    'egp' => 'المحفظة :',
+    'register' => 'انشاء الحساب',
+    'create_account' => 'انشاء حساب',
     'vodafone_number' => 'رقم فودافون الخاص بالتحويل',
     'edit_wallet' => 'تعديل المحفظة',
     'wallet' => 'محفظة',

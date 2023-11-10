@@ -6,6 +6,7 @@
 
 <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/css/w3.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
 
 @yield('css')
 
