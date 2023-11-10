@@ -35,7 +35,7 @@
                                 <span class="h4 font-weight-bold">{{ $total['count'] }}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-info text-white rounded-circle">
                                     <img width="27" height="27" src="{{ asset($total['image']) }}" alt="">
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
     </div>
 
     {{-- Max Lesson Count --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-4">
             <div class="card w3-animate-zoom w3-border w3-border-light-blue w3-hover-shadow">
                 <div class="card-body">
@@ -66,20 +66,20 @@
                                 <img width="27" height="27" src="{{ asset('assets/images/sidebar/lesson.png') }}" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
                 <span class="text-nowrap">Since last month</span>
             </p> --}}
-                </div>
+                {{-- </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- start of Chart widget with bar chart Ends-->
     <div class="row">
         <div class="col-md-12 box-col-12">
-            <div class="card o-hidden shadow-lg">
+            <div class="card o-hidden">
                 <div class="card-header">
                     <h5>{{ __('lang.subscriptions_during_year') }}</h5>
                 </div>

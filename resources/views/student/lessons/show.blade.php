@@ -12,18 +12,18 @@
 
     @include('student.layouts.includes.breadcrumb', [
         'title' => $title,
-        'url' => route('admin.lessons.index'),
+        'url' => route('student.lessons.index'),
         'new_item' => __('lang.lessons'),
     ])
 
     <div class="row pt-4">
         <div class="col-md-12">
 
-            {{-- <div id="loader" class="text-center">
+            <div id="loader" class="text-center">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-            </div> --}}
+            </div>
 
            <div class="mb-5">
                 <iframe id="video" width="100%" height="500" src="{{ $lesson->vimeo_embed }}">
@@ -36,14 +36,8 @@
                 @if (count($lesson->files) > 0)
 
                     @foreach ($lesson->files as $item)
-                    {{-- @php
-                        dd($item->id);
-                    @endphp --}}
+
                         <div class="mt-3 d-flex">
-                            {{-- <div class="delete-file h4 text-danger cursor-pointer ms-2 me-2"
-                                data-id="{{ $item->id }}">
-                                <i class="ti ti-trash"></i>
-                            </div> --}}
                             <div>
                                 <a href="{{ route('student.lessons.download', $item->id) }}" class="me-4" title="{{ __('lang.download') }}">
                                     <i class="ti ti-download"></i>
@@ -61,9 +55,6 @@
     </div>
 
 @endsection
-
-
-
 
 <script>
     $(document).ready(function() {
