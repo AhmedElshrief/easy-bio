@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ Session::get('locale') }}"
-    @if (Session::get('locale') == 'ar') direction="rtl" dir="rtl" style="direction: rtl" @endif>
+<html lang="ar" dir="rtl">
 
     <head>
         <meta charset="utf-8">
