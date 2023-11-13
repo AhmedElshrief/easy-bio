@@ -12,7 +12,8 @@ class LessonController extends Controller
 {
     protected $model;
 
-    public function __construct(Lesson $model) {
+    public function __construct(Lesson $model)
+    {
         $this->model = $model;
     }
 
@@ -22,12 +23,12 @@ class LessonController extends Controller
      */
     public function index(Request $request)
     {
-        $lessons = auth()->user()->lessons();
+        $lessons = Lesson::getAvailableLessonsForUser();
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
         confirmDelete($title, $text);
         return view('student.lessons.index', [
-            'lessons' => $this->model->filter($request)->paginate(15),
+            'lessons' => $lessons->filter($request)->paginate(15),
             'lectures' => Lecture::get()->pluck('title', 'id'),
         ]);
     }
@@ -43,14 +44,9 @@ class LessonController extends Controller
      * Download a file.
      * @param int $id The ID of the file to be downloaded.
      */
-    public function downloadFile ($id)
+    public function downloadFile($id)
     {
         $file = LessonFile::findOrFail($id);
         return response()->download($file->path);
     }
-
 }
-
-
-
-

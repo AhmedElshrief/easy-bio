@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Support\Facades\DB;
 
 class Lesson extends Model implements TranslatableContract
 {
@@ -14,12 +15,14 @@ class Lesson extends Model implements TranslatableContract
 
     protected $appends = ['image_path'];
 
-    public function getImagePathAttribute() {
+    public function getImagePathAttribute()
+    {
         $path = public_path($this->image);
-        return !$this->image || !file_exists($path)? asset('assets/images/courses/course.jpg') : asset($this->image);
+        return !$this->image || !file_exists($path) ? asset('assets/images/courses/course.jpg') : asset($this->image);
     }
 
-    public function lecture() {
+    public function lecture()
+    {
         return $this->belongsTo(Lecture::class, 'lecture_id');
     }
 
@@ -28,8 +31,19 @@ class Lesson extends Model implements TranslatableContract
         return $this->belongsToMany(User::class, 'user_lessons', 'user_id', 'lesson_id');
     }
 
-    public function files() {
+    public function files()
+    {
         return $this->hasMany(LessonFile::class, 'lesson_id');
+    }
+
+    public static function getAvailableLessonsForUser()
+    {
+        return Lesson::join('user_lessons', 'lessons.id', '=', 'user_lessons.lesson_id')
+            ->join('lesson_translations', 'lessons.id', '=', 'lesson_translations.lesson_id')
+            ->where('lesson_translations.locale', app()->getLocale())
+            ->where('lessons.active', 1)
+            ->where('user_id', auth()->user()->id)
+            ->where('user_lessons.created_at', '>=', DB::raw('DATE_SUB(NOW(), INTERVAL lessons.hours HOUR)'));
     }
 
     public function scopeFilter($query, $request)
@@ -47,5 +61,3 @@ class Lesson extends Model implements TranslatableContract
         }
     }
 }
-
-
