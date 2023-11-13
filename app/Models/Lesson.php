@@ -43,7 +43,9 @@ class Lesson extends Model implements TranslatableContract
             ->where('lesson_translations.locale', app()->getLocale())
             ->where('lessons.active', 1)
             ->where('user_id', auth()->user()->id)
-            ->where('user_lessons.created_at', '>=', DB::raw('DATE_SUB(NOW(), INTERVAL lessons.hours HOUR)'));
+            ->whereRaw('TIMESTAMPDIFF(HOUR, user_lessons.created_at, now()) <= lessons.hours')
+            ->select('lessons.*');
+
     }
 
     public function scopeFilter($query, $request)
