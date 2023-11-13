@@ -38,7 +38,6 @@ Route::group(['middleware' => 'auth:student', 'prefix' => '/student'],function()
 
     Route::name('student.')->group(function () {
 
-
         Route::get('lessons/download/{id}', [LessonController::class, 'downloadFile'])->name('lessons.download');
         Route::resource('lessons', LessonController::class)->only(['index', 'show']);
 
