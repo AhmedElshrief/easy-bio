@@ -25,21 +25,19 @@
                 </div>
             </div> --}}
 
-           <div class="mb-5">
-                <iframe id="video" width="100%" height="500" src="{{ $lesson->vimeo_embed }}">
-                </iframe>
-           </div>
+            <div class="mb-5">
+                {!! $lesson->vimeo_embed !!}
+            </div>
 
             <div>
 
                 <h3 class="mb-4">{{ __('lang.files') }}</h3>
                 @if (count($lesson->files) > 0)
-
                     @foreach ($lesson->files as $item)
-
                         <div class="mt-3 d-flex">
                             <div>
-                                <a href="{{ route('student.lessons.download', $item->id) }}" class="me-4" title="{{ __('lang.download') }}">
+                                <a href="{{ route('student.lessons.download', $item->id) }}" class="me-4"
+                                    title="{{ __('lang.download') }}">
                                     <i class="ti ti-download"></i>
                                 </a>
                                 {{-- <embed src="{{ asset($item->path) }}" width="100" height="70" alt="pdf" /> --}}
@@ -63,7 +61,7 @@
             $('#video').show();
         });
 
-        $('#closeModal').on('click', function (e) {
+        $('#closeModal').on('click', function(e) {
             $('#video').attr('src', '');
         });
     });
