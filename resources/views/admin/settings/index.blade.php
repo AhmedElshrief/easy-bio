@@ -91,6 +91,15 @@
                             </div>
 
                             <div class="col-md-6 pt-2">
+                                {!! Form::label('twitter', __('lang.twitter')) !!}
+                                {!! Form::text(
+                                    'twitter',
+                                    old('twitter', $settings['twitter'] ?? ''),
+                                    ['class' => 'form-control'],
+                                ) !!}
+                            </div>
+
+                            <div class="col-md-6 pt-2">
                                 {!! Form::label('email', __('lang.email')) !!}
                                 {!! Form::email(
                                     'email',
@@ -99,7 +108,7 @@
                                 ) !!}
                             </div>
 
-                            <div class="col-md-12 pt-2">
+                            <div class="col-md-6 pt-2">
                                 {!! Form::label('phone', __('lang.phone')) !!}
                                 {!! Form::number(
                                     'phone',

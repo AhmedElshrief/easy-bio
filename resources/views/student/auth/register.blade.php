@@ -12,11 +12,10 @@
                                 <img src="{{ asset($settings['logo'] ?? '') }}" width="80" alt="">
                             </a> --}}
                             {{-- <p class="text-center"></p> --}}
-                            <form action="{{ route('student.register.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('student.register.store') }}" method="post" enctype="multipart/form-data" style="font-size: 16px">
                                 @csrf
 
                                 <div class="text-center mb-4">
-                                    <span class="text-danger">*</span>
                                     <img height="120" width="120" style="border: 1px solid #ddd"
                                         class="rounded-circle image-preview-image position-relative" alt=""
                                         src="{{ asset('assets/images/profile/user-1.jpg') }}">
@@ -29,7 +28,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    {!! Form::label('name',__('lang.name') ) !!}
+                                    {!! Form::label('name',__('lang.fourth_name'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::text('name', old('name'), [
                                             "class"=>'form-control form-input',
@@ -39,7 +38,7 @@
                                     !!}
                                 </div>
 
-                                <div class="mb-4">
+                                {{-- <div class="mb-4">
                                     {!! Form::label('email',__('lang.email') ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::email('email', old('email'), [
@@ -48,10 +47,10 @@
                                             "placeholder"=> __('lang.email')
                                         ])
                                     !!}
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-4">
-                                    {!! Form::label('username',__('lang.username') ) !!}
+                                    {!! Form::label('username',__('lang.username'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::text('username', old('username'), [
                                             "class"=>'form-control form-input',
@@ -62,7 +61,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    {!! Form::label('phone',__('lang.phone') ) !!}
+                                    {!! Form::label('phone',__('lang.student_phone'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::text('phone', old('phone'), [
                                             "class"=>'form-control form-input',
@@ -73,7 +72,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    {!! Form::label('parent_phone',__('lang.parent_phone') ) !!}
+                                    {!! Form::label('parent_phone',__('lang.parent_phone'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::text('parent_phone', old('parent_phone'), [
                                             "class"=>'form-control form-input',
@@ -84,7 +83,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    {!! Form::label('password', __('lang.password')) !!}
+                                    {!! Form::label('password', __('lang.password'), ['class' => 'mb-2']) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::password('password', [
                                         'class' => 'form-control',
@@ -95,7 +94,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    {!! Form::label('password_confirmation', __('lang.password_confirmation')) !!}
+                                    {!! Form::label('password_confirmation', __('lang.password_confirmation'), ['class' => 'mb-2']) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::password('password_confirmation', [
                                         'class' => 'form-control',
@@ -106,7 +105,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    {!! Form::label('level_id',__('lang.level') ) !!}
+                                    {!! Form::label('level_id',__('lang.level'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::select('level_id', $levels, old('level_id'), [
                                             "class"=>'form-control form-select select2',
@@ -117,7 +116,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    {!! Form::label('city_id',__('lang.city') ) !!}
+                                    {!! Form::label('city_id',__('lang.city'), ['class' => 'mb-2'] ) !!}
                                     <span class="text-danger">*</span>
                                     {!! Form::select('city_id', $cities, old('city_id'), [
                                             "class"=>'form-control form-select select2',

@@ -33,7 +33,6 @@
                         <div class="row">
 
                             <div class="col-sm-12 text-center pt-2">
-                                <span class="text-danger">*</span>
                                 <img height="120" width="120" style="border: 1px solid #ddd"
                                     class="rounded-circle image-preview-image position-relative" alt=""
                                     src="{{ asset($student->image_path) }}">
@@ -42,8 +41,7 @@
                                     <i style="font-size: 20px" class="ti ti-cloud-upload"></i>
                                 </label>
                                 <input type="file" onchange="changeImage(this, 'image')" id="image"
-                                    class="form-control image d-none" name="image" {{ $student->id ? '' : 'required' }}
-                                    accept="image/*">
+                                    class="form-control image d-none" name="image" accept="image/*">
                             </div>
 
 
@@ -90,9 +88,9 @@
                         </div>
 
                         <div class="col-sm-12 col-md-12 pt-2">
-                            {!! Form::label('phone',__('lang.phone') ) !!}
+                            {!! Form::label('phone',__('lang.student_phone') ) !!}
                             <span class="text-danger">*</span>
-                            {!! Form::number('phone', old('phone', $student->phone), [
+                            {!! Form::text('phone', old('phone', $student->phone), [
                                     "class"=>'form-control form-input',
                                     'required',
                                     "placeholder"=> __('lang.phone')
@@ -103,7 +101,7 @@
                         <div class="col-sm-12 col-md-12 pt-2">
                             {!! Form::label('parent_phone',__('lang.parent_phone') ) !!}
                             <span class="text-danger">*</span>
-                            {!! Form::number('parent_phone', old('parent_phone', $student->parent_phone), [
+                            {!! Form::text('parent_phone', old('parent_phone', $student->parent_phone), [
                                     "class"=>'form-control form-input',
                                     'required',
                                     "placeholder"=> __('lang.parent_phone')
