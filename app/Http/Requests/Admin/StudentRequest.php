@@ -33,9 +33,7 @@ class StudentRequest extends FormRequest
             'username' => ['required', Rule::unique('users', 'username')->ignore($id, 'id')],
             'password' => ['nullable'],
             'status' => ['nullable'],
-            'image' => ['nullable', 'image:png', 'mimes:png,jpg,jpeg,svg',
-                Rule::requiredIf(function () { return !(isset($this->route('student')->image)); })
-            ],
+            'image' => ['nullable', 'image:png', 'mimes:png,jpg,jpeg,svg'],
             'level_id' => ['required', 'numeric'],
             'city_id' => ['required', 'numeric'],
         ];

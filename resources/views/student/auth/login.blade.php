@@ -15,8 +15,8 @@
                             <form action="{{ route('student.login') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">{{ __('lang.email') }}</label>
-                                    <input type="email" autocomplete="new-mail" placeholder="ex@gmail.com" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="username" class="form-label">{{ __('lang.username') }}</label>
+                                    <input type="username" autocomplete="new-mail" placeholder="ahmed123" name="username" class="form-control @error('username') is-invalid @enderror" id="username" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label">{{ __('lang.password') }}</label>
@@ -30,9 +30,9 @@
                                             {{ __('student.remember_password') }}
                                         </label>
                                     </div> --}}
-                                    <a href="{{ route('student.register') }}" class="text-primary fw-bold text-decoration-underline">{{ __('lang.create_account') }}</a>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-1 rounded-2">{{ __('lang.login') }}</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{{ __('lang.login') }}</button>
+                                <a href="{{ route('student.register') }}" class="btn btn-info w-100 py-8 fs-4 mb-2 rounded-2">{{ __('lang.create_account') }}</a>
 
                             </form>
                         </div>

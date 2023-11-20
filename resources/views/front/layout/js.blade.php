@@ -15,3 +15,9 @@
 <script src="{{ url('/front') }}/assets/js/main.js"></script>
 
 <script src="{{ asset('assets/js/sweetalert2.js') }}"></script>
+
+<script>
+    document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+    });
+</script>

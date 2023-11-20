@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'watch_lessons' => 'Watch Lessons',
     'download' => 'Download',
     'show_lesson' => 'Show Lesson',
     'register' => 'Create Account',
@@ -90,6 +91,7 @@ return [
     'address_en' => 'English Address',
     'about_us_ar' => 'Arabic About Us',
     'about_us_en' => 'English About Us',
+    'about_platform' => "About Platform",
     'app_link' => 'App Link',
     'youtube' => 'Youtube Link',
     'facebook' => 'Facebook Link',

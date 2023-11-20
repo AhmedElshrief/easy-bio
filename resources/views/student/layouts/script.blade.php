@@ -11,6 +11,9 @@
     @yield('js')
 
     <script>
+        document.addEventListener('contextmenu', event => {
+            event.preventDefault();
+        });
         $(document).ready(function() {
             $('.select2').select2();
         });

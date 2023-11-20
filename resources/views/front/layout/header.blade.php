@@ -25,10 +25,10 @@
                                         <a href="{{ route('front.home') }}">{{ __('lang.home') }}</a>
                                     </li>
                                     <li class="">
-                                        <a href="{{ route('front.courses') }}">{{ __('lang.courses') }}</a>
+                                        <a href="{{ route('front.courses') }}">{{ __('lang.watch_lessons') }}</a>
                                     </li>
                                     <li class="">
-                                        <a href="{{ route('front.contact') }}">{{ __('lang.contact') }}</a>
+                                        <a href="{{ route('front.contact') }}">{{ __('lang.about_platform') }}</a>
                                     </li>
                                     @if (auth('student')->user())
                                         <li class="">
