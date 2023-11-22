@@ -42,9 +42,9 @@
                                 <h2>
                                     {{ __('lang.home_title') }}
                                 </h2>
-                                <button>
-                                    {{ __('lang.get_started') }}
-                                </button>
+                                <a href="{{ route('front.courses') }}" role="button" class="btn btn-primary w3-large">
+                                    {{ __('lang.watch_lessons') }}
+                                </a>
 
                             </div>
                         </div>
@@ -396,7 +396,7 @@
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 grid-item cat1 cat2 cat4">
                             <div class="course__item white-bg mb-30 fix">
                                 <div class="course__thumb w-img p-relative fix">
-                                    <a href="course-details.html">
+                                    <a href="{{ route('front.showCourses', $course->id) }}">
                                         <img src="{{ asset($course->image) }}" alt="">
                                     </a>
                                     <div class="course__tag">
@@ -414,7 +414,7 @@
                                         </div>
                                     </div>
                                     <h3 class="course__title">
-                                        <a href="course-details.html">{{ $course->title }}</a>
+                                        <a href="{{ route('front.showCourses', $course->id) }}">{{ $course->title }}</a>
                                     </h3>
                                     <div class="course__teacher d-flex align-items-center">
                                         <div class="course__teacher-thumb mr-15">
@@ -429,7 +429,7 @@
                                     <div class="course__status">
                                     </div>
                                     <div class="course__btn">
-                                        <a href="course-details.html" class="link-btn">
+                                        <a href="{{ route('front.showCourses', $course->id) }}" class="link-btn">
                                             {{ __('lang.view') }}
                                             <i class="far fa-arrow-right"></i>
                                             <i class="far fa-arrow-right"></i>

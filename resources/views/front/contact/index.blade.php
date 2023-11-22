@@ -55,7 +55,7 @@
                                     عن المنصة :
                                 </h5>
                                 <div class=" w3-align-right right-text">
-                                    أهلاً بكم في منصة Easy Bio حيث علم الأحياء كما لم تراه من قبل
+                                    أهلاً بكم في منصة ايزى بيوا حيث علم الأحياء كما لم تراه من قبل
 
                                 </div>
                                 <h5 class=" w3-align-right right-text">
@@ -174,7 +174,9 @@
                                             </div>
                                             <div class="contact__info-text">
                                                 <h4>{{ trans('lang.email') }}</h4>
-                                                <p><a href="mailto:kingabdo_sas@yahoo.com">kingabdo_sas@yahoo.com</a></p>
+                                                <p><a
+                                                        href="mailto:{{ $settings['email'] ?? '#' }}">{{ $settings['email'] ?? '#' }}</a>
+                                                </p>
                                             </div>
                                         </div>
                                     </li>
@@ -188,7 +190,9 @@
                                             </div>
                                             <div class="contact__info-text">
                                                 <h4>{{ __('lang.phone') }}</h4>
-                                                <p><a href="tel:01119763599">01119763599</a></p>
+                                                <p><a
+                                                        href="tel:{{ $settings['phone'] ?? '#' }}">{{ $settings['phone'] ?? '#' }}</a>
+                                                </p>
                                             </div>
                                         </div>
                                     </li>
@@ -196,11 +200,11 @@
                                 <div class="contact__social pl-30">
                                     <h4>Follow Us</h4>
                                     <ul>
-                                        <li><a target="_blank"
-                                                href="https://www.facebook.com/abdelrahmanA97?mibextid=2JQ9oc"
-                                                class="fb"><i class="social_facebook"></i></a></li>
-                                        <li><a href="#" class="tw"><i class="social_twitter"></i></a></li>
-                                        <li><a href="#" class="pin"><i class="social_pinterest"></i></a></li>
+                                        <li><a target="_blank" href="{{ $settings['facebook'] ?? '#' }}" class="fb"><i
+                                                    class="social_facebook"></i></a></li>
+                                        <li><a href="{{ $settings['twitter'] ?? '#' }}" class="tw"><i
+                                                    class="social_twitter"></i></a></li>
+
                                     </ul>
                                 </div>
                             </div>

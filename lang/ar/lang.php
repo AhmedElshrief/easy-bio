@@ -9,6 +9,7 @@ return [
     'download' => 'تحميل',
     'show_lesson' => 'عرض الدرس',
     'egp' => 'المحفظة :',
+    'useful_links' => 'روابط مهمة',
     'register' => 'انشاء الحساب',
     'create_account' => 'انشاء حساب',
     'vodafone_number' => 'رقم فودافون الخاص بالتحويل',

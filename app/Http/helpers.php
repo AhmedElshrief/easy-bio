@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * this uploaded file
  * @param string $path
@@ -8,11 +7,8 @@
  * @return full path of uploaded
  */
 
-use App\Models\Word;
-use Illuminate\Support\Facades\Cache;
-
 if (!function_exists('uploadImage')) {
-    function uploadImage($file, $path,$old_file = null)
+    function uploadImage($file, $path, $old_file = null)
     {
         $realName = $file->getClientOriginalName();
         $filename = $file->hashName();
@@ -28,7 +24,6 @@ if (!function_exists('uploadImage')) {
     }
 }
 
-
 /**
  * this delete file
  * @param array or string $path
@@ -42,7 +37,7 @@ if (!function_exists('deleteImage')) {
                     unlink($value);
                 }
             }
-        }else{
+        } else {
             if (file_exists($files)) {
                 unlink($files);
             }
@@ -124,3 +119,17 @@ if (!function_exists('isMobile')) {
     }
 }
 
+// /**
+//  * response json
+//  */
+
+// if (!function_exists('getSetting')) {
+//     function getSetting($key)
+//     {
+//         return [
+//             'status' => $status,
+//             'message' => $message,
+//             'data' => $data,
+//         ];
+//     }
+// }

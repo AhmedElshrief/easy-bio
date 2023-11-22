@@ -112,7 +112,7 @@
                                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                 <div class="course__item white-bg mb-30 fix">
                                                     <div class="course__thumb w-img p-relative fix">
-                                                        <a href="course-details.html">
+                                                        <a href="#">
                                                             <img src="{{ asset($item->image) }}" alt="">
                                                         </a>
                                                         <div class="course__tag">

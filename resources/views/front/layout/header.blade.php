@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-10 col-sm-8 col-6">
-                    <div class="header__right d-flex justify-content-end align-items-center">
+                    <div class="header__right d-flex justify-content-start align-items-center">
                         <div class="main-menu main-menu-2">
                             <nav id="mobile-menu" class="m-auto">
                                 <ul>
@@ -38,7 +38,8 @@
                                 </ul>
                             </nav>
                         </div>
-                        <div class="header__btn header__btn-2 ml-50 d-none d-sm-block">
+                        <div
+                            class="header__right d-flex justify-content-start header__btn header__btn-2 ml-50 d-none d-sm-block">
                             @if (auth('student')->user())
                                 <img src="{{ auth('student')->user()->image_path }}" class="w3-round-large m-1"
                                     style="width: 40px">

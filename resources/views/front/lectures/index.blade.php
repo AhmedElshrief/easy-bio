@@ -116,7 +116,7 @@
                                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                 <div class="course__item white-bg mb-30 fix">
                                                     <div class="course__thumb w-img p-relative fix">
-                                                        <a href="course-details.html">
+                                                        <a href="{{ route('front.showLecture', $item->id) }}">
                                                             <img src="{{ asset($item->image) }}" alt="">
                                                         </a>
                                                         <div class="course__tag">
@@ -147,7 +147,8 @@
                                                         <div class="course__status">
                                                         </div>
                                                         <div class="course__btn">
-                                                            <a href="course-details.html" class="link-btn">
+                                                            <a href="{{ route('front.showLecture', $item->id) }}"
+                                                                class="link-btn">
                                                                 {{ __('lang.view') }}
                                                                 <i class="far fa-arrow-right"></i>
                                                                 <i class="far fa-arrow-right"></i>

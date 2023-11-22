@@ -7,7 +7,10 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{ url('/front') }}/assets/img/favicon.png">
 <!-- CSS here -->
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/preloader.css">
-<link rel="stylesheet" href="{{ url('/front') }}/assets/css/bootstrap.min.css">
+
+{{-- <link rel="stylesheet" href="{{ url('/front') }}/assets/css/bootstrap.min.css"> --}}
+
+<link rel="stylesheet" href="{{ url('/front') }}/assets/css/bootstrap.rtl.css">
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/meanmenu.css">
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/animate.min.css">
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/owl.carousel.min.css">
@@ -18,11 +21,14 @@
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/elegantFont.css">
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/default.css">
 <link rel="stylesheet" href="{{ url('/front') }}/assets/css/style.css">
+<link rel="stylesheet" href="{{ url('/front') }}/assets/css/rtl.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" />
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+</style>
 
+<style>
     body,
     *,
     h1,
