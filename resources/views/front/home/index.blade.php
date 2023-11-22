@@ -35,13 +35,16 @@
                     <div class="row align-items-center">
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                             <div class="hero__content hero__content-2 p-relative z-index-1">
-                                <h3 class="hero__title hero__title-2">
+                                <h1 class="hero__title hero__title-2">
                                     EASY BIO
 
-                                </h3>
-                                <h4>
+                                </h1>
+                                <h2>
                                     {{ __('lang.home_title') }}
-                                </h4>
+                                </h2>
+                                <button>
+                                    {{ __('lang.get_started') }}
+                                </button>
 
                             </div>
                         </div>
