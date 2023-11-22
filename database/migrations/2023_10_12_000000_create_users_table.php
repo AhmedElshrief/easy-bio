@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('status')->default('active');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete()->cascadeOnUpdate();
             $table->softDeletes();

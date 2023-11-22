@@ -16,53 +16,39 @@
         'new_item' => __('lang.lessons'),
     ])
 
-    <div class="row pt-4">
-        <div class="col-md-12">
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col-md-12">
 
-            {{-- <div id="loader" class="text-center">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div class="mb-5">
+                    {!! $lesson->vimeo_embed !!}
                 </div>
-            </div> --}}
 
-            <div class="mb-5">
-                {!! $lesson->vimeo_embed !!}
-            </div>
+                <div class="mb-5">
+                    <h3>{{ __('lang.description') }}</h3>
+                    <p>{{ $lesson->description ?? '' }}</p>
+                </div>
 
-            <div>
+                <div>
 
-                <h3 class="mb-4">{{ __('lang.files') }}</h3>
-                @if (count($lesson->files) > 0)
-                    @foreach ($lesson->files as $item)
-                        <div class="mt-3 d-flex">
-                            <div>
-                                <a href="{{ route('student.lessons.download', $item->id) }}" class="me-4"
-                                    title="{{ __('lang.download') }}">
-                                    <i class="ti ti-download"></i>
-                                </a>
-                                {{-- <embed src="{{ asset($item->path) }}" width="100" height="70" alt="pdf" /> --}}
-                                <a href="{{ asset($item->path) }}" target="_blank">{{ $item->origin_name }}</a>
-
+                    <h3 class="mb-4">{{ __('lang.files') }}</h3>
+                    @if (count($lesson->files) > 0)
+                        @foreach ($lesson->files as $item)
+                            <div class="mt-3 d-flex">
+                                <div>
+                                    <a href="{{ route('student.lessons.download', $item->id) }}" class="me-4"
+                                        title="{{ __('lang.download') }}">
+                                        <i class="ti ti-download"></i>
+                                    </a>
+                                    <a href="{{ asset($item->path) }}" target="_blank">{{ $item->origin_name }}</a>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
+                        @endforeach
+                    @endif
+                </div>
 
+            </div>
         </div>
     </div>
 
 @endsection
-
-<script>
-    $(document).ready(function() {
-        $('#video').on('load', function() {
-            $('#loader').hide();
-            $('#video').show();
-        });
-
-        $('#closeModal').on('click', function(e) {
-            $('#video').attr('src', '');
-        });
-    });
-</script>

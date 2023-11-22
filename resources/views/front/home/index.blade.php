@@ -119,7 +119,7 @@
                                         <div class="hero__class-text">
                                             <h5>{{ __('lang.new_student_ux') }}</h5>
                                             <p>{{ __('lang.tomorrow_desc') }}</p>
-                                            <a href="/">{{ __('lang.join_us') }}</a>
+                                            <a href="{{ url('/courses') }}">{{ __('lang.join_us') }}</a>
                                         </div>
                                     </div>
                                     <div class="hero__mic">
@@ -461,33 +461,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div
-                        class="col-xxl-2 offset-xxl-1 col-xl-2 offset-xl-1 col-lg-3 col-md-3 offset-md-0 col-sm-5 offset-sm-2">
-                        <div class="counter__item mb-30">
-                            <div class="counter__icon user mb-15">
-                                <svg viewBox="0 0 490.7 490.7">
-                                    <path class="st0"
-                                        d="m245.3 98c-39.7 0-72 32.3-72 72s32.3 72 72 72 72-32.3 72-72-32.3-72-72-72zm0 123.3c-28.3 0-51.4-23-51.4-51.4s23-51.4 51.4-51.4 51.4 23 51.4 51.4-23 51.4-51.4 51.4z" />
-                                    <path class="st0"
-                                        d="m389.3 180.3c-28.3 0-51.4 23-51.4 51.4s23 51.4 51.4 51.4c28.3 0 51.4-23 51.4-51.4s-23.1-51.4-51.4-51.4zm0 82.2c-17 0-30.8-13.9-30.8-30.8s13.9-30.8 30.8-30.8 30.8 13.9 30.8 30.8-13.9 30.8-30.8 30.8z" />
-                                    <path class="st0"
-                                        d="m102.9 180.3c-28.3 0-51.4 23-51.4 51.4s23 51.4 51.4 51.4 51.4-23 51.4-51.4-23-51.4-51.4-51.4zm0 82.2c-17 0-30.8-13.9-30.8-30.8s13.9-30.8 30.8-30.8 30.8 13.9 30.8 30.8-13.7 30.8-30.8 30.8z" />
-                                    <path class="st0"
-                                        d="m245.3 262.5c-73.7 0-133.6 59.9-133.6 133.6 0 5.7 4.6 10.3 10.3 10.3s10.3-4.6 10.3-10.3c0-62.3 50.7-113 113-113s113.1 50.7 113.1 113c0 5.7 4.6 10.3 10.3 10.3s10.3-4.6 10.3-10.3c0-73.7-60-133.6-133.7-133.6z" />
-                                    <path class="st0"
-                                        d="m389.3 303.6c-17 0-33.5 4.6-47.9 13.4-4.8 3-6.4 9.2-3.5 14.2 3 4.8 9.2 6.4 14.2 3.5 11.2-6.8 24.1-10.4 37.3-10.4 39.7 0 72 32.3 72 72 0 5.7 4.6 10.3 10.3 10.3s10.3-4.6 10.3-10.3c-0.2-51.3-41.8-92.7-92.7-92.7z" />
-                                    <path class="st0"
-                                        d="m149.4 316.9c-14.5-8.7-30.9-13.3-47.9-13.3-51 0-92.5 41.5-92.5 92.5 0 5.7 4.6 10.3 10.3 10.3s10.3-4.6 10.3-10.3c0-39.7 32.3-72 72-72 13.2 0 26 3.6 37.2 10.4 4.8 3 11.2 1.4 14.2-3.5 2.9-4.9 1.2-11.1-3.6-14.1z" />
-                                </svg>
-                            </div>
-                            <div class="counter__content">
-                                <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['students'] }}"
-                                        class="purecounter">{{ $data['students'] }}</span></h4>
-                                <p>الطلاب</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row d-flex justify-content-center">
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-5">
                         <div class="counter__item counter__pl-80 mb-30">
                             <div class="counter__icon book mb-15">
@@ -523,7 +497,7 @@
                             <div class="counter__content">
                                 <h4><span data-purecounter-duration="1" data-purecounter-end="{{ $data['lectures'] }}"
                                         class="purecounter">{{ $data['lectures'] }}</span></h4>
-                                <p>المحاضرات</p>
+                                <p>الفصول</p>
                             </div>
                         </div>
                     </div>
@@ -722,7 +696,8 @@
                         </div>
                         <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6">
                             <div class="cta__apps d-lg-flex justify-content-end p-relative z-index-1">
-                                <a target="_blank" href="#" class="mr-10"><i class="fab fa-send"></i>
+                                <a target="_blank" href="{{ url('/courses') }}" class="mr-10"><i
+                                        class="fab fa-send"></i>
                                     {{ __('lang.join_us') }}
                                 </a>
 

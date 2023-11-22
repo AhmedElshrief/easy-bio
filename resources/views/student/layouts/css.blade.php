@@ -10,8 +10,22 @@
 
 @yield('css')
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
+</style>
 
 <style>
+
+    *,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Rubik', 'Tajawal', sans-serif;
+    }
+
     /* The switch - the box around the slider */
     .switch {
         font-size: 12px;

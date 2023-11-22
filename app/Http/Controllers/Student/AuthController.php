@@ -54,11 +54,11 @@ class AuthController extends Controller
     {
         $inputs = $request->validated();
 
-        if (is_numeric($inputs['email'])) {
-            return ['phone' => $inputs['email'], 'password' => $inputs['password']];
-        } elseif (filter_var($inputs['email'], FILTER_VALIDATE_EMAIL)) {
-            return ['email' => $inputs['email'], 'password' => $inputs['password']];
-        }
+        // if (is_numeric($inputs['email'])) {
+        return ['username' => $inputs['username'], 'password' => $inputs['password']];
+        // } elseif (filter_var($inputs['email'], FILTER_VALIDATE_EMAIL)) {
+            // return ['email' => $inputs['email'], 'password' => $inputs['password']];
+        // }
         return false;
     }
 
@@ -98,7 +98,9 @@ class AuthController extends Controller
     public function register(StudentRequest $request) {
         $data = $request->validated();
         $data['password'] = bcrypt($request->password);
-        $data['image'] = uploadImage($data['image'], config('paths.STUDENTS_PATH'));
+        if($request->hasFile('image')) {
+            $data['image'] = uploadImage($request->image, config('paths.STUDENTS_PATH'));
+        }
         $data['status'] = User::ACTIVE;
         User::create($data);
         toast(__('lang.register_successfully'), 'success');

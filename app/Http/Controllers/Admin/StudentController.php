@@ -88,7 +88,9 @@ class StudentController extends Controller
     {
         $data = $request->validated();
         $data['password'] = bcrypt($request->password);
-        $data['image'] = uploadImage($data['image'], config('paths.STUDENTS_PATH'));
+        if($request->has('image')) {
+            $data['image'] = uploadImage($data['image'], config('paths.STUDENTS_PATH'));
+        }
         $student = $this->model->create($data);
         toast(__('lang.created_successfully'), 'success');
         return redirect()->route('admin.students.index');

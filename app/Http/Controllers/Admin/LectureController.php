@@ -65,7 +65,7 @@ class LectureController extends Controller
     public function edit(Lecture $lecture)
     {
         return view('admin.lectures.form', [
-            'courses' => Course::get()->pluck('name', 'id'),
+            'courses' => Course::get()->pluck('title', 'id'),
             'lecture' => $lecture
         ]);
     }
