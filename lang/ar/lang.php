@@ -7,6 +7,7 @@ return [
     'parent_phone' => 'رقم هاتف ولي الامر',
     'watch_lessons' => 'شاهد الدروس',
     'download' => 'تحميل',
+    'website' => 'الموقع الرئيسى',
     'show_lesson' => 'عرض الدرس',
     'egp' => 'المحفظة :',
     'useful_links' => 'روابط مهمة',

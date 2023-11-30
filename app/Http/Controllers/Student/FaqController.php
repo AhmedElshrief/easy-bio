@@ -10,7 +10,8 @@ class FaqController extends Controller
 {
     protected $model;
 
-    public function __construct(Faq $model) {
+    public function __construct(Faq $model)
+    {
         $this->model = $model;
     }
 
@@ -22,9 +23,16 @@ class FaqController extends Controller
     {
         $title = __('lang.delete_item');
         $text = __('lang.are_you_sure');
+
+        $query = $this->model->query();
+
+        if (request()->search) {
+            $query->WhereTranslationLike('question', '%' . request()->search . '%');
+        }
+
         confirmDelete($title, $text);
         return view('student.faqs.index', [
-            'faqs' => $this->model->paginate(15)
+            'faqs' => $query->get(),
         ]);
     }
 
@@ -35,7 +43,7 @@ class FaqController extends Controller
     public function create()
     {
         return view('student.faqs.form', [
-            'faq' => $this->model
+            'faq' => $this->model,
         ]);
     }
 
@@ -60,7 +68,7 @@ class FaqController extends Controller
     public function edit(Faq $faq)
     {
         return view('student.faqs.form', [
-            'faq' => $faq
+            'faq' => $faq,
         ]);
     }
 
