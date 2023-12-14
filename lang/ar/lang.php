@@ -11,6 +11,7 @@ return [
     'show_lesson' => 'عرض الدرس',
     'egp' => 'المحفظة :',
     'useful_links' => 'روابط مهمة',
+    'not_enough_balance' => 'لابط ان تشحن المحفظه على الاقل بواحد جنيه',
     'register' => 'انشاء الحساب',
     'create_account' => 'انشاء حساب',
     'vodafone_number' => 'رقم فودافون الخاص بالتحويل',

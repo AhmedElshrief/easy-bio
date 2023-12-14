@@ -106,16 +106,26 @@
 
     <div class="accordion-container">
 
-        @foreach ($faqs as $faq)
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    {{ $faq->question }}<span class="icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>{{ $faq->answer }}</p>
-                </div>
+        @if (auth()->user()->wallet()->value <= 0)
+            <div class="alert alert-danger" role="alert">
+                {{ __('lang.not_enough_balance') }}
+
+                <a role="button" class="btn btn-primary"
+                    href="{{ route('front.withdraw') }}">{{ __('lang.withdraw_request') }}</a>
             </div>
-        @endforeach
+        @else
+            @foreach ($faqs as $faq)
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        {{ $faq->question }}<span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>{{ $faq->answer }}</p>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+
 
     </div>
 
