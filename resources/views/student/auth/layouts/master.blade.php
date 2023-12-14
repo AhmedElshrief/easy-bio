@@ -23,12 +23,12 @@
         <!-- Sidebar Start -->
         @include('front.layout.header')
 
-        @include('vendor.sweetalert.alert')
         @yield('content')
 
 
         @include('student.auth.layouts.script')
 
+        @include('vendor.sweetalert.alert')
         <script>
             $('#header-sticky').addClass('header__area header__transparent header__padding-2 sticky');
         </script>
