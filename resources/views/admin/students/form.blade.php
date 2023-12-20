@@ -79,6 +79,26 @@
                         </div>
 
                         <div class="col-sm-12 col-md-12 pt-2">
+                            {!! Form::label('password_confirmation',__('lang.password_confirmation') ) !!}
+                            {!! Form::text('password_confirmation', old('password_confirmation'), [
+                                    "class"=>'form-control form-input',
+                                    "placeholder"=> __('lang.password_confirmation')
+                                ])
+                            !!}
+                        </div>
+
+                        <div class="mb-4">
+                            {!! Form::label('password_confirmation', __('lang.password_confirmation'), ['class' => 'mb-2']) !!}
+                            <span class="text-danger">*</span>
+                            {!! Form::password('password_confirmation', [
+                                'class' => 'form-control',
+                                'required',
+                                'placeholder' => __('lang.password_confirmation'),
+                            ]) !!}
+                            <div class="invalid-feedback">{{ __('admin.please_enter_valid_value') }}.</div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 pt-2">
                             {!! Form::label('email',__('lang.email') ) !!}
                             {!! Form::email('email', old('email', $student->email), [
                                     "class"=>'form-control form-input',
