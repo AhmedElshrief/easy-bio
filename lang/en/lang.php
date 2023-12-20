@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'enter_valid_value' => 'Enter valid value',
+    'enter_value_to_reset_wallets' => 'Enter value to reset wallets',
     'watch_lessons' => 'Watch Lessons',
     'download' => 'Download',
     'show_lesson' => 'Show Lesson',

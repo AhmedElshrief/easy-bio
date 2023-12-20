@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'enter_valid_value' => 'ادخل قيمه صحيحه',
+    'enter_value_to_reset_wallets' => 'ادخل قيمه لاعاده تعيين المحفظة',
     'created_successfully' => 'تم الانشاء بنجاح',
     'register_successfully' => 'تم التسجيل بنجاح',
     'student_phone' => 'رقم هاتف الطالب',
