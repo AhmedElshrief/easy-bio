@@ -27,10 +27,10 @@
                 <div class="row">
                     <div class="col-xxl-12">
                         <div class="page__title-wrapper mt-110">
-                            <h3 class="page__title">{{ __('lang.courses') }}</h3>
+                            <h3 class="page__title mb-4">{{ __('lang.courses') }}</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">{{ __('lang.home') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('front.home') }}">{{ __('lang.home') }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ __('lang.courses') }}</li>
                                 </ol>
                             </nav>
