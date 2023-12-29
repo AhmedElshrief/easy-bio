@@ -8,7 +8,7 @@
                         <div class="footer__widget mb-50">
                             <div class="footer__widget-head mb-22">
                                 <div class="footer__logo">
-                                    <a href="index.html">
+                                    <a href="{{ route('front.home') }}">
                                         <img src="{{ asset('front/assets/img/logo/logo.png') }}" width="50px"
                                             alt="">
                                     </a>
