@@ -44,7 +44,7 @@
                         class="btn btn-danger float-end m-2">
                         <i class="ti ti-trash"></i> {{ __('lang.delete_students') }}
                     </a>
-                    <a data-href="{{ route('admin.students.reset-wallets') }}" onclick="submitForm(this)"
+                    <a data-href="{{ route('admin.students.reset-wallets') }}" id="reset_wallet" onclick="resetWallets(this)"
                         class="btn btn-info float-end m-2">
                         <i class="ti ti-reset"></i> {{ __('lang.reset_wallets') }}
                     </a>
@@ -155,6 +155,18 @@
 
 @section('js')
     <script>
+        function resetWallets(el) {
+            let value = prompt("{{ __('lang.enter_value_to_reset_wallets') }}");
+
+            if (value == null || value == "") {
+                alert("{{ __('lang.enter_valid_value') }}");
+                return;
+            }
+            $('#list_form').append('<input type="hidden" name="value" value="' + Number(value) + '">');
+            $('#list_form').attr('action', $(el).data('href'));
+            $('#list_form').submit();
+        }
+
         function changeActive(el, id) {
             $(el).off('change').on('change', function() {
                 let value = 'blocked';

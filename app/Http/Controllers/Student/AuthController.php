@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StudentRequest;
+use App\Http\Requests\Student\RegisterStudentRequest;
 use App\Http\Requests\Student\LoginRequest;
-use App\Http\Requests\Student\ProfileRequest;
 use App\Models\City;
 use App\Models\Level;
 use App\Models\User;
@@ -95,7 +94,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(StudentRequest $request) {
+    public function register(RegisterStudentRequest $request) {
         $data = $request->validated();
         $data['password'] = bcrypt($request->password);
         if($request->hasFile('image')) {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Student;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StudentRequest extends FormRequest
+class RegisterStudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,7 +31,7 @@ class StudentRequest extends FormRequest
             'phone' => ['required', Rule::unique('users', 'phone')->ignore($id, 'id')],
             'parent_phone' => ['required', Rule::unique('users', 'parent_phone')->ignore($id, 'id')],
             'username' => ['required', Rule::unique('users', 'username')->ignore($id, 'id')],
-            'password' => ['nullable'],
+            'password' => ['required', 'confirmed', 'min:8'],
             'status' => ['nullable'],
             'image' => ['nullable', 'image:png', 'mimes:png,jpg,jpeg,svg'],
             'level_id' => ['required', 'numeric'],

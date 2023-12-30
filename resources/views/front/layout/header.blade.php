@@ -6,7 +6,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-2 col-sm-4 col-6">
                     <div class="header__left d-flex">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{ route('front.home') }}">
                                 <img width="50px" src="{{ url('/front') }}/assets/img/logo/logo.png" alt="logo">
                             </a>
                         </div>

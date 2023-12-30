@@ -12,6 +12,10 @@
         .main-menu ul li a {
             color: white !important;
         }
+
+        pre {
+            overflow: visible;
+        }
     </style>
 @endsection
 
@@ -25,10 +29,11 @@
                 <div class="row">
                     <div class="col-xxl-12">
                         <div class="page__title-wrapper mt-110">
-                            <h3 class="page__title">{{ __('lang.contact') }}</h3>
+                            <h3 class="page__title mb-4">{{ __('lang.contact') }}</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">{{ __('lang.home') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">{{ __('lang.home') }}</a>
+                                    </li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ __('lang.contact') }}</li>
                                 </ol>
                             </nav>
@@ -111,14 +116,14 @@
                     </div>
                     <div class="col-xxl-4 offset-xxl-1 col-xl-4 offset-xl-1 col-lg-5 offset-lg-1">
                         <div class="contact__info white-bg p-relative z-index-1">
-                            <div class="contact__shape">
+                            {{-- <div class="contact__shape">
                                 <img class="contact-shape-1"
                                     src="{{ url('/front') }}/assets/img/contact/contact-shape-1.png" alt="">
                                 <img class="contact-shape-2"
                                     src="{{ url('/front') }}/assets/img/contact/contact-shape-2.png" alt="">
                                 <img class="contact-shape-3"
                                     src="{{ url('/front') }}/assets/img/contact/contact-shape-3.png" alt="">
-                            </div>
+                            </div> --}}
                             <div class="contact__info-inner white-bg">
                                 <ul>
                                     <li>

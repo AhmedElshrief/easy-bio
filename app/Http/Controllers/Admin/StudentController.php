@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StudentRequest;
+use App\Http\Requests\Admin\StoreStudentRequest;
 use App\Models\City;
 use App\Models\Course;
 use App\Models\Level;
@@ -64,7 +64,7 @@ class StudentController extends Controller
      * @param  Course $course
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentRequest $request, User $student)
+    public function update(StoreStudentRequest $request, User $student)
     {
         $data = $request->validated();
         unset($data['password']);
@@ -84,7 +84,7 @@ class StudentController extends Controller
         return redirect()->route('admin.students.index');
     }
 
-    public function store(StudentRequest $request)
+    public function store(StoreStudentRequest $request)
     {
         $data = $request->validated();
         $data['password'] = bcrypt($request->password);
@@ -183,11 +183,12 @@ class StudentController extends Controller
     public function resetWallets(Request $request)
     {
         $request->validate([
-            'student_ids' => 'required|array'
+            'student_ids' => 'required|array',
+            'value' => 'required|numeric'
         ]);
         Wallet::where('model_type', User::class)
             ->whereIn('model_id', $request->student_ids)
-            ->update(['value' => 0]);
+            ->update(['value' => $request->value]);
         toast(__('lang.updated_successfully'), 'success');
         return back();
     }
