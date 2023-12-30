@@ -16,6 +16,10 @@
         pre {
             overflow: visible;
         }
+
+        .section__title-wrapper {
+            line-height: 30px;
+        }
     </style>
 @endsection
 
