@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'app_icon' => 'App Icon',
+    'show_lesson' => 'Show Lesson',
     'enter_valid_value' => 'Enter valid value',
     'enter_value_to_reset_wallets' => 'Enter value to reset wallets',
     'watch_lessons' => 'Watch Lessons',

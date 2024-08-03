@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => '/admin'],function() use
         Route::get('students/restore/{id}', [StudentController::class, 'restore'])->name('students.restore');
         Route::delete('students/hard-delete/{id}', [StudentController::class, 'hardDelete'])->name('students.hard-delete');
         Route::post('students/delete-students', [StudentController::class, 'deleteStudents'])->name('students.delete-students');
+        Route::post('students/force-delete-students', [StudentController::class, 'forceDeleteStudents'])->name('students.force-delete-students');
+        Route::post('students/restore-students', [StudentController::class, 'restoreStudents'])->name('students.restore-students');
         Route::post('students/reset-wallets', [StudentController::class, 'resetWallets'])->name('students.reset-wallets');
         Route::post('students/active-students', [StudentController::class, 'activeStudents'])->name('students.active-students');
         Route::post('students/deactive-students', [StudentController::class, 'deactiveStudents'])->name('students.deactive-students');

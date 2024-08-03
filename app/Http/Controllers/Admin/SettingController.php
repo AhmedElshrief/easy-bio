@@ -36,6 +36,14 @@ class SettingController extends Controller
                 $path = optional($setting)->value? public_path(optional($setting)->value) : null;
                 $inputs['logo'] = uploadImage($request->file('logo') , config('paths.SETTINGS_PATH'), $path ?? null);
             }
+
+            if($request->file('app_icon'))
+            {
+                $setting = $settings->where('key','app_icon')->first();
+                $path = optional($setting)->value? public_path(optional($setting)->value) : null;
+                $inputs['app_icon'] = uploadImage($request->file('app_icon') , config('paths.SETTINGS_PATH'), $path ?? null);
+            }
+
             // Check if there is logo_white to update
             $this->model->setMany($inputs);
             toast(__('lang.updated_successfully'),'success','top-right');

@@ -63,7 +63,7 @@
                                         <td>{{ $lesson->description ?? '' }}</td>
                                         <td>
                                             <a href="{{ route('student.lessons.show', $lesson->id) }}" class="btn btn-primary btn-sm">
-                                                <i class="ti ti-eye"></i>
+                                                <i class="ti ti-eye"></i> {{ __('lang.show_lesson_here') }}
                                             </a>
                                         </td>
                                     </tr>

@@ -87,7 +87,7 @@
                             !!}
                         </div>
 
-                        <div class="mb-4">
+                        {{-- <div class="mb-4">
                             {!! Form::label('password_confirmation', __('lang.password_confirmation'), ['class' => 'mb-2']) !!}
                             <span class="text-danger">*</span>
                             {!! Form::password('password_confirmation', [
@@ -96,7 +96,7 @@
                                 'placeholder' => __('lang.password_confirmation'),
                             ]) !!}
                             <div class="invalid-feedback">{{ __('admin.please_enter_valid_value') }}.</div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-12 col-md-12 pt-2">
                             {!! Form::label('email',__('lang.email') ) !!}

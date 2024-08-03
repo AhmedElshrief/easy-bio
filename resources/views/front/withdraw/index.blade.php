@@ -62,7 +62,7 @@
                             <h3 class="page__title">{{ __('lang.withdraw_request') }}</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">{{ __('lang.home') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">{{ __('lang.home') }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ __('lang.withdraw_request') }}
                                     </li>
                                 </ol>

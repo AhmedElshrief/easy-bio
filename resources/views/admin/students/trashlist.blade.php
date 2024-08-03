@@ -16,22 +16,20 @@
         'new_item' => __('lang.students'),
     ])
 
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-md-12">
 
-            @component('admin.layouts.includes.card', ['title' => __('lang.filter'), 'id' => 'filter_body', 'icon' => true])
-                @slot('tool')
-                    <button class="btn btn-xs btn-success" onclick="$('#filter_body').slideToggle()">
-                        <i class="ti ti-filter"></i>
-                    </button>
-                @endslot
+            <a data-href="{{ route('admin.students.force-delete-students') }}" onclick="submitForm(this)"
+                class="btn btn-danger float-end m-2">
+                <i class="ti ti-trash"></i> {{ __('lang.delete_students') }}
+            </a>
 
-                @slot('content')
-                    @include('admin.students.filter')
-                @endslot
-            @endcomponent
+            <a data-href="{{ route('admin.students.restore-students') }}" onclick="submitForm(this)"
+                class="btn btn-primary float-end m-2">
+                <i class="ti ti-arrow-right"></i> {{ __('lang.restore_students') }}
+            </a>
         </div>
-    </div> --}}
+    </div>
 
     <div class="row pt-4">
         <div class="col-md-12">
@@ -52,8 +50,15 @@
 
                         @slot('data')
                             @if (count($students) > 0)
+                            <input type="checkbox" class ="w3-check {{ isRtl() ? 'ms-2' : 'me-2' }}" id="select_all">
+                            <label for="select_all">{{ __('lang.select_all') }}</label>
+                            <form action="" method="post" id="list_form">
+                                @csrf
                                 @foreach ($students as $student)
                                     <tr>
+                                        <td>
+                                            <input type="checkbox" class="w3-check" name="student_ids[]" value="{{ $student->id }}">
+                                        </td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <img class="rounded-circle" src="{{ $student->image_path }}" alt="" width="50"
@@ -76,6 +81,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                            </form>
                             @else
                                 <tr>
                                     <td colspan="10">
@@ -102,5 +108,22 @@
                 return false
             }
         })
+
+        function submitForm(el) {
+            if (!confirm("{{ __('lang.are_you_sure') }}")) {
+                return false;
+            }
+            $('#list_form').attr('action', $(el).data('href'));
+            $('#list_form').submit();
+        }
+
+
+        $('#select_all').on('change', function() {
+            if ($(this).is(':checked')) {
+                $('.w3-check').prop('checked', true);
+            } else {
+                $('.w3-check').prop('checked', false);
+            }
+        });
     </script>
 @endsection

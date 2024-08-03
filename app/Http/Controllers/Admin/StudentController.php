@@ -175,6 +175,26 @@ class StudentController extends Controller
         return back();
     }
 
+    public function forceDeleteStudents(Request $request)
+    {
+        $request->validate([
+            'student_ids' => 'required|array'
+        ]);
+        $this->model->whereIn('id', $request->student_ids)->forceDelete();
+        toast(__('lang.deleted_successfully'), 'success');
+        return back();
+    }
+
+    public function restoreStudents(Request $request)
+    {
+        $request->validate([
+            'student_ids' => 'required|array'
+        ]);
+        $this->model->whereIn('id', $request->student_ids)->restore();
+        toast(__('lang.restored_successfully'), 'success');
+        return back();
+    }
+
     /**
      * Reset the wallets for the specified students.
      * @param Request $request The request object containing the student IDs.
