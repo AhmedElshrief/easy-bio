@@ -82,7 +82,7 @@
                                         </td>
                                         <td>
                                             <a data-href="{{ route('admin.lessons.show', $lesson->id) }}" data-container=".table-modal"
-                                                class="btn btn-sm btn-modal btn-info"> <i class="ti ti-eye"></i>
+                                                class="btn btn-sm btn-modal btn-info"> <i class="ti ti-eye"></i> {{ __('lang.show_lesson_here') }}
                                             </a>
                                             <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-primary btn-sm"><i
                                                     class="ti ti-pencil"></i></a>

@@ -73,6 +73,15 @@
                             </div>
 
                             <div class="col-md-6 pt-2">
+                                {!! Form::label('computer_app_link', __('lang.computer_app_link')) !!}
+                                {!! Form::text(
+                                    'computer_app_link',
+                                    old('computer_app_link', $settings['computer_app_link'] ?? ''),
+                                    ['class' => 'form-control'],
+                                ) !!}
+                            </div>
+
+                            <div class="col-md-6 pt-2">
                                 {!! Form::label('youtube', __('lang.youtube')) !!}
                                 {!! Form::text(
                                     'youtube',
@@ -131,6 +140,13 @@
                                 <img height="50" width="50" class="rounded-circle image-preview-1 position-relative" alt=""
                                     src="{{ asset($settings['logo'] ?? '') }}">
                                 <input type="file" class="form-control " onchange="changeImage(this, 1)" name="logo">
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                {!! Form::label('app_icon', __('lang.app_icon')) !!}
+                                <img height="50" width="50" class="rounded-circle image-preview-2 position-relative" alt=""
+                                    src="{{ asset($settings['app_icon'] ?? '') }}">
+                                <input type="file" class="form-control " onchange="changeImage(this, 2)" name="app_icon">
                             </div>
 
                         </div>

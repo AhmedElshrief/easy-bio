@@ -20,8 +20,26 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="mb-5">
+                {{-- <div class="mb-5">
                     {!! $lesson->vimeo_embed !!}
+                </div> --}}
+
+                <div class="mb-5 ">
+                    <h3>{{ __('lang.to_watch_the_videos_that_you_have_please_download_mobile_app_or_computer_version') }}</h3>
+                    <div class="d-flex justify-content-center mt-5">
+                        <a href="{{ $settings['app_link'] ?? '#' }}" class="bg-primary text-white p-3 rounded me-4"
+                            title="{{ __('lang.download') }}" target="_blank">
+                            <i class="ti ti-download"></i>
+                            {{ __('lang.download_app') }}
+                        </a>
+
+                        <a href="{{ $settings['computer_app_link'] ?? '#'  }}" class="bg-danger text-white p-3 rounded me-4"
+                            title="{{ __('lang.download') }}" target="_blank">
+                            <i class="ti ti-download"></i>
+                            {{ __('lang.download_computer_app') }}
+                        </a>
+
+                    </div>
                 </div>
 
                 <div class="mb-5">

@@ -34,7 +34,7 @@
                             <h3 class="page__title">{{ __('lang.lessons') }}</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">{{ __('lang.home') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">{{ __('lang.home') }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ __('lang.lessons') }}</li>
                                 </ol>
                             </nav>
@@ -108,7 +108,7 @@
                                 <div class="tab-pane fade show active" id="grid" role="tabpanel"
                                     aria-labelledby="grid-tab">
                                     <div class="row">
-                                        @foreach ($resource->lessons()->get() as $item)
+                                        @foreach ($resource->lessons()->where('active', 1)->get() as $item)
                                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                 <div class="course__item white-bg mb-30 fix">
                                                     <div class="course__thumb w-img p-relative fix">

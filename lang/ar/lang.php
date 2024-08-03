@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'restore_students' => 'استعادة الطلاب',
+    'download_app' => 'انقر هنا لتحميل أبلكيشن الموبايل',
+    'download_computer_app' => 'انقر هنا لتحميل برنامج الحاسوب',
+    'to_watch_the_videos_that_you_have_please_download_mobile_app_or_computer_version' => 'لمشاهدة الفيديوهات التي تم شرائها الرجاء تحميل أبلكيشن الموبايل أو برنامج الحاسوب',
+    'computer_app_link' => 'رابط برنامج الحاسوب',
+    'app_icon' => 'ايقونة التطبيق',
+    'show_lesson_here' => 'اضط هنا للمشاهدة',
     'enter_valid_value' => 'ادخل قيمه صحيحه',
     'enter_value_to_reset_wallets' => 'ادخل قيمه لاعاده تعيين المحفظة',
     'created_successfully' => 'تم الانشاء بنجاح',
@@ -157,7 +164,7 @@ return [
     'update' => 'تحديث',
     'description' => 'الوصف',
     'title' => 'الاسم',
-    'courses' => 'الدروس',
+    'courses' => 'الدورات',
     'course' => 'دورة',
     'deleted_successfully' => 'تم الحذف بنجاح',
     'added_successfully' => 'تمت الإضافة بنجاح',
